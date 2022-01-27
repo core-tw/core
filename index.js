@@ -1,6 +1,9 @@
 const Discord = require('discord.js');
 require('discord-inline-reply');
 const config = require('./data/config.json');
+const User = require('./model/User.js');
+const checkRequire = require('./database/checkRequire.js');
+const loadUser = require('./database/loadUser.js');
 const express = require('express');
 const fs = require('fs');
 var mongoose = undefined;
@@ -24,31 +27,31 @@ for (let folder of commandFolders) {
   }
 }
 
-client.on('ready', async() => {
+client.on('ready', async () => {
   console.clear();
   console.log("|- core 啟動中");
   console.time(config.system_time);
   await client.user.setPresence({
-      status: "online"
+    status: "online"
   });
-  await client.user.setActivity( "系統上線" , {
+  await client.user.setActivity("系統上線", {
     type: "PLAYING"
   });
 
   console.log("|- 連結至雲端資料庫");
-  mongoose = await require('./linkDatabase.js')();
+  mongoose = await require('./database/connect.js')();
   console.log("|- core 系統 all green");
   console.timeLog(config.system_time);
 });
 
 
-client.on('message', message => {
-  if (!message.content.startsWith(config.prefix)) return;
-  let { member, content, guild } = message;
-  let args = message.content.slice(config.prefix.length).trim().split(/ +/);
-  let commandName = args.shift().toLowerCase();
-  let arguments = content.split(/[ ]+/);
-  arguments.shift();
+client.on('message', async msg => {
+  if (!msg.content.startsWith(config.prefix)) return;
+  let { member, content, guild } = msg;
+  let str = msg.content.slice(config.prefix.length).trim().split(/ +/);
+  let commandName = str.shift().toLowerCase();
+  let args = content.split(/[ ]+/);
+  args.shift();
   let cmd =
     client.commands.get(commandName) ||
     client.commands.find(
@@ -56,6 +59,11 @@ client.on('message', message => {
     );
 
   if (!cmd) return;
+
+  if (args.length < cmd.minArgs || (cmd.maxArgs !== null && args.length > cmd.maxArgs)) {
+    msg.lineReply(`**參數錯誤**\n需求 :**<command> ${cmd.expectedArgs}**`)
+    return;
+  }
 
   let { cooldowns } = client;
 
@@ -67,37 +75,52 @@ client.on('message', message => {
   let timestamps = cooldowns.get(cmd.num);
 
   let cooldownAmount = (cmd.cooldown || 3) * 1000;
-  
-  if (timestamps.has(message.author.id)) {
-    let expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+  if (timestamps.has(msg.author.id)) {
+    let expirationTime = timestamps.get(msg.author.id) + cooldownAmount;
 
     if (now < expirationTime) {
       let timeLeft = (expirationTime - now) / 1000;
-      return message.lineReply(`拜託了，請再等${timeLeft.toFixed(1)}秒吧！`);
+      return msg.lineReply(`指令冷卻中，請於**${timeLeft.toFixed(1)}**秒後再次嘗試`);
     }
   }
-  timestamps.set(message.author.id, now);
-  setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+  timestamps.set(msg.author.id, now);
+  setTimeout(() => timestamps.delete(msg.author.id), cooldownAmount);
 
   try {
-    switch(cmd.type) {
-      case "game":
-        cmd.execute(message);
-        break;
-      case "object":
-        cmd.execute(message);
-        break;
-      case "others":
-        cmd.execute(message);
-        break;
+    let user = await loadUser(msg, User);
+    if (!user) {
+      user = null;
+      if (cmd.requireObject.length > 0 || (cmd.level && cmd.level > 1)) {
+        if (cmd.level > 1 && user.level < cmd.level) {
+          msg.lineReply(`等級需求：**${cmd.level}　級**`);
+          return;
+        }
+        if (cmd.requireObject.length > 0) {
+          let have = await checkRequire(msg, user, cmd.requireObject);
+          if (!have) return;
+        }
+      }
+    } else {
+      if (cmd.requireObject.length > 0 || (cmd.level && cmd.level > 1)) {
+        if (cmd.level > 1 && user.level < cmd.level) {
+          msg.lineReply(`等級需求：**${cmd.level}　級**`);
+          return;
+        }
+        if (cmd.requireObject.length > 0) {
+          let have = await checkRequire(msg, user, cmd.requireObject);
+          if (!have) return;
+        }
+      }
     }
+    cmd.execute(msg, args, user, User);
   } catch (error) {
     console.error(error);
-    message.lineReply('系統錯誤，請洽系統管理員 櫻2#0915');
+    msg.lineReply(config.error_str);
   }
 
 });
 
-client.login(process.env.token).catch((err)=>{
-  console.log(err)
+client.login(process.env.token).catch((err) => {
+  console.log(err);
 })
