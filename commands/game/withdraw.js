@@ -1,5 +1,5 @@
-const loadUser = require('./../../database/loadUser.js');
 const loadBank = require('./../../database/loadBank.js');
+const config = require('./../../data/config.json');
 const Bank = require('./../../model/Bank.js');
 module.exports = {
   num: 1,
@@ -14,6 +14,7 @@ module.exports = {
   requireObject: ["銀行卡"],
   async execute(msg, args, user, User) {
     let bank = await loadBank(msg, user, Bank);
+    if(!bank) return msg.lineReply(config.error_str);
     if (msg.content.search("all") != -1) {
       user.coin += user.bank;
       bank.coin = 0
@@ -29,7 +30,7 @@ module.exports = {
       return
     }
     if (!isNaN(Number(args[1]))) {
-      if (user.bank < Number(args[0]) || Number(args[0]) < 1) return msg.lineReply(`您沒有那麼多錢喔`);
+      if (user.bank < Number(args[0]) || Number(args[0]) < 1) return msg.lineReply(`您沒有那麼多${config.money}喔`);
       bank.coin -= Number(args[0]);
       user.coin += Number(args[0]);
       user.save().catch(err => console.log(err));

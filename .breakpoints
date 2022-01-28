@@ -3,31 +3,39 @@
     "commands/game/withdraw.js": [
       {
         "id": "c4dadcf2-df2a-4b91-9dde-7aa13ffffc4f",
-        "line": 30,
-        "version": 334,
-        "index": 862
+        "line": 3,
+        "version": 401,
+        "index": 111
+      }
+    ],
+    "commands/others/start.js": [
+      {
+        "id": "cdbbb6c9-00f8-4abd-9825-4313203b035e",
+        "line": 44,
+        "version": 951,
+        "index": 1206
       }
     ],
     "index.js": [
       {
         "id": "6adf2095-b6e7-4dc6-9a0a-86b826d26755",
         "line": 16,
-        "version": 758,
-        "index": 524
+        "version": 1271,
+        "index": 519
       },
       {
         "id": "0c95c109-e3c4-4512-86a9-ea0ad8a387c9",
-        "line": 77,
-        "version": 758,
-        "index": 2267
+        "line": 90,
+        "version": 1271,
+        "index": 2682
       }
     ],
     "model/User.js": [
       {
         "id": "b1f4107a-d5d6-46f9-945a-8b3297ed426b",
-        "line": 23,
-        "version": 87,
-        "index": 560
+        "line": 4,
+        "version": 119,
+        "index": 81
       }
     ]
   }

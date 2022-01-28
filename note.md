@@ -7,7 +7,7 @@
 area list<br>
 0 母星
 
-
+要有稱號 title
 
 ```
 // 通用架構

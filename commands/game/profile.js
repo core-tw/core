@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
+const Weapons = require('./../../data/weapon.js');
 const config = require('./../../data/config.json');
+const map = require('./../../data/map.js');
+const loadUser = require('./../../database/loadUser.js');
 module.exports = {
   num: 3,
   name: ['面板', 'profile', 'p'],
@@ -15,21 +18,17 @@ module.exports = {
     msg.react('✅');
     const mention_user = msg.mentions.users.first();
     if (mention_user) {
-      const another_user = await User.findOne({
-        userId: mention_user.id,
-      });
+      const another_user = await loadUser(mention_user.id, User);
       if (!another_user) return msg.lineReply(config.notFindUser);
       let icon = mention_user.displayAvatarURL();
       generateEmbed(another_user, icon);
     } else {
-      if(args[0]) {
-        const another_user = await User.findOne({
-          userId: args[0],
-        });
+      if (args[0]) {
+        const another_user = await loadUser(args[0], User);
         if (!another_user) return msg.lineReply(config.notFindUser);
         let icon = mention_user.displayAvatarURL();
         generateEmbed(another_user, icon);
-      } else if(user) {
+      } else if (user) {
         let icon = msg.author.displayAvatarURL();
         msg.channel.send(generateEmbed(user, icon));
         return;
@@ -37,13 +36,60 @@ module.exports = {
         msg.lineReply(config.notFindUser);
       }
     }
-    function generateEmbed(user, icon){
-      return new Discord.MessageEmbed()
-      .setColor(config.embed_color)
-      .setTitle(`${user.name}`)
-      .setDescription(`所在區域 -\\ **母星** \\`)
-      .setThumbnail(icon)
-      .setTimestamp();
+    function generateEmbed(user, icon) {
+      console.log(user);
+      let level = `
+      等級 | ${user.level}
+      經驗 | ${user.xp} / ${user.reqxp}
+      `;
+
+      let body = `
+      血量 :drop_of_blood: | ${user.hp} / ${user.thp}
+      攻擊 :crossed_swords: | ${user.atk}
+      防禦 :shield: | ${user.def}`;
+
+      let money = `
+      **虛空能量** :cyclone: - ${user.mp} / ${user.tmp}
+      **${config.money}** - ${user.coin}`;
+
+      let weapon = `
+      ➤ ${Weapons[user.weapon]['描述']}
+      攻速 - ${Weapons[user.weapon]['攻速']}
+      攻擊加成 - ${Weapons[user.weapon]['攻擊加成']} %
+      防禦加成 - ${Weapons[user.weapon]['防禦加成']} %
+      移動加成 - ${Weapons[user.weapon]['移動加成']} %`;
+
+      let embed = new Discord.MessageEmbed()
+        .setColor(config.embed_color)
+        .setAuthor(`${user.name}`, icon)
+        //.setDescription(``)
+        .setThumbnail(icon)
+        .addFields([
+          {
+            name: `所在區域 -\\ **${map[user.area]['名稱']}** \\`,
+            value: level,
+            inline: false
+          },
+          {
+            name: "身體數據",
+            value: body,
+            inline: true
+          },
+          {
+            name: "財產",
+            value: money,
+            inline: true
+          },
+          {
+            name: `武裝 -\\ **${user.weapon}** \\`,
+            value: weapon,
+            inline: false
+          }
+        ])
+        .setTimestamp();
+
+      // embed.setTitle(``)
+      return embed;
     }
   }
 }

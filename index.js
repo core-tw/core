@@ -6,7 +6,7 @@ const checkRequire = require('./database/checkRequire.js');
 const loadUser = require('./database/loadUser.js');
 const express = require('express');
 const fs = require('fs');
-var mongoose = undefined;
+var mongoose = null;
 
 const app = express();
 const port = 3000;
@@ -18,18 +18,20 @@ client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 
 // 指令註冊
+let commandList = [];
 let commandFolders = fs.readdirSync('./commands');
 for (let folder of commandFolders) {
   let commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
   for (let file of commandFiles) {
     let command = require(`./commands/${folder}/${file}`);
     client.commands.set(command.num, command);
+    commandList.push(`${command.num}. ${command.name[0]}`);
   }
 }
 
 client.on('ready', async () => {
   console.clear();
-  console.log("|- core 啟動中");
+  console.log(config.console_prefix +"core 啟動中");
   console.time(config.system_time);
   await client.user.setPresence({
     status: "online"
@@ -38,9 +40,20 @@ client.on('ready', async () => {
     type: "PLAYING"
   });
 
-  console.log("|- 連結至雲端資料庫");
+  console.log(config.console_prefix +"連結至雲端資料庫");
   mongoose = await require('./database/connect.js')();
-  console.log("|- core 系統 all green");
+
+  console.log(config.console_prefix + "檢查指令");
+  commandList = commandList.sort((a, b) => {
+    return Number(a.split('.')[0]) - Number(b.split('.')[0]);
+  }).join('\n');
+  console.log(commandList);
+  
+  fs.writeFile('./command.txt', commandList, function(err){
+    if(err) console.log(err);
+  });
+
+  console.log(config.console_prefix +"core 系統 all green");
   console.timeLog(config.system_time);
 });
 
@@ -88,7 +101,7 @@ client.on('message', async msg => {
   setTimeout(() => timestamps.delete(msg.author.id), cooldownAmount);
 
   try {
-    let user = await loadUser(msg, User);
+    let user = await loadUser(msg.author.id, User);
     if (!user) {
       user = null;
       if (cmd.requireObject.length > 0 || (cmd.level && cmd.level > 1)) {
