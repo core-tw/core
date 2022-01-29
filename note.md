@@ -11,6 +11,9 @@ area list<br>
 
 ```
 // 通用架構
+const {  } = require('./../../_data_.js');
+const {  } = require('./../../_database_.js');
+const {  } = require('./../../_model_.js');
 module.exports = {
   num: ,
   name: [],
@@ -22,7 +25,8 @@ module.exports = {
   level: ,
   cooldown: ,
   requireObject: [],
-  async execute(msg) {
+  requirePermission: [],
+  async execute(msg, args, user) {
   }
 }
 ```

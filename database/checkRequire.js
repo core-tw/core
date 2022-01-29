@@ -5,7 +5,6 @@ const Item = require('./../model/Item.js');
 module.exports = async (msg, user, reqs) => {
   try {
     if (!user) {
-      msg.lineReply(config.error_str);
       return false;
     }
     let list = [];

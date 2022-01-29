@@ -1,6 +1,6 @@
-const loadBank = require('./../../database/loadBank.js');
-const config = require('./../../data/config.json');
-const Bank = require('./../../model/Bank.js');
+const { config } = require('./../../_data_.js');
+const { loadBank } = require('./../../_database_.js');
+const { Bank } = require('./../../_model_.js');
 module.exports = {
   num: 1,
   name: ['領錢', 'withdraw', 'w'],
@@ -12,7 +12,8 @@ module.exports = {
   level: 1,
   cooldown: 10,
   requireObject: ["銀行卡"],
-  async execute(msg, args, user, User) {
+  requirePermission: [],
+  async execute(msg, args, user) {
     let bank = await loadBank(msg, user, Bank);
     if(!bank) return msg.lineReply(config.error_str);
     if (msg.content.search("all") != -1) {

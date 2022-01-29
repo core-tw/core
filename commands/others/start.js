@@ -1,14 +1,10 @@
 const Discord = require('discord.js');
-const Player = require('./../../data/human/player.js');
-const Weapons = require('./../../data/weapon.js');
-const Objects = require('./../../data/object.js');
-const config = require('./../../data/config.json');
-const findName = require('./../../data/findName.js');
-const addItem = require('./../../database/addItem.js');
-const loadUser = require('./../../database/loadUser.js')
+const { Weapons, Objects, Player, config } = require('./../../_data_.js');
+const { addItem } = require('./../../_database_.js');
+const { User } = require('./../../_model_.js');
 module.exports = {
   num: 0,
-  name: ['遊戲開始', 'start'],
+  name: ['遊戲開始', '開始遊戲', 'start'],
   type: "others",
   expectedArgs: '',
   description: '開始冒險吧～',
@@ -17,7 +13,8 @@ module.exports = {
   level: null,
   cooldown: null,
   requireObject: [],
-  async execute(msg, args, user, User) {
+  requirePermission: [],
+  async execute(msg, args, user) {
     msg.react('✅');
 
     let player = new Player();
@@ -100,9 +97,15 @@ module.exports = {
       let add = await addItem(msg, newuser, Objects['公民證']['ID']);
       if (add === "error") return;
       msg.channel.send(config.additem.replace("item", "公民證"));
+
+      add = await addItem(msg, newuser, Objects['母星通行證']['ID']);
+      if (add === "error") return;
+      msg.channel.send(config.additem.replace("item", "母星通行證"));
+
       add = await addItem(msg, newuser, Weapons[player.weapon]['ID']);
       if (add === "error") return;
       msg.channel.send(config.additem.replace("item", player.weapon));
+      
     });
 
 
@@ -136,9 +139,3 @@ module.exports = {
     }
   }
 }
-
-/**
- * 1. 名子
- * 2. 性別
- * 3. 初始武器
- */

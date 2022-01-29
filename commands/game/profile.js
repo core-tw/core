@@ -1,8 +1,7 @@
 const Discord = require('discord.js');
-const Weapons = require('./../../data/weapon.js');
-const config = require('./../../data/config.json');
-const map = require('./../../data/map.js');
-const loadUser = require('./../../database/loadUser.js');
+const { Weapons, config, map } = require('./../../_data_.js');
+const { loadUser } = require('./../../_database_.js');
+const { User } = require('./../../_model_.js');
 module.exports = {
   num: 3,
   name: ['面板', 'profile', 'p'],
@@ -14,20 +13,21 @@ module.exports = {
   level: null,
   cooldown: 5,
   requireObject: ['公民證'],
-  async execute(msg, args, user, User) {
+  requirePermission: [],
+  async execute(msg, args, user) {
     msg.react('✅');
     const mention_user = msg.mentions.users.first();
     if (mention_user) {
       const another_user = await loadUser(mention_user.id, User);
       if (!another_user) return msg.lineReply(config.notFindUser);
       let icon = mention_user.displayAvatarURL();
-      generateEmbed(another_user, icon);
+      msg.channel.send(generateEmbed(another_user, icon));
     } else {
       if (args[0]) {
         const another_user = await loadUser(args[0], User);
         if (!another_user) return msg.lineReply(config.notFindUser);
         let icon = mention_user.displayAvatarURL();
-        generateEmbed(another_user, icon);
+        msg.channel.send(generateEmbed(another_user, icon));
       } else if (user) {
         let icon = msg.author.displayAvatarURL();
         msg.channel.send(generateEmbed(user, icon));
@@ -37,7 +37,6 @@ module.exports = {
       }
     }
     function generateEmbed(user, icon) {
-      console.log(user);
       let level = `
       等級 | ${user.level}
       經驗 | ${user.xp} / ${user.reqxp}

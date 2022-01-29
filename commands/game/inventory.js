@@ -1,10 +1,7 @@
 const Discord = require('discord.js');
-const Item = require('./../../model/Item.js');
-const Weapons = require('./../../data/weapon.js');
-const Objects = require('./../../data/object.js');
-const findName = require('./../../data/findName.js');
-const config = require('./../../data/config.json');
-const loadUser = require('./../../database/loadUser.js');
+const { Weapons, Objects, findName, config } = require('./../../_data_.js');
+const { loadUser } = require('./../../_database_.js');
+const { User, Item } = require('./../../_model_.js');
 module.exports = {
   num: 4,
   name: ['背包', 'inventory', 'i'],
@@ -16,7 +13,8 @@ module.exports = {
   level: null,
   cooldown: 5,
   requireObject: ['公民證'],
-  async execute(msg, args, user, User) {
+  requirePermission: [],
+  async execute(msg, args, user) {
     msg.react('✅');
     const mention_user = msg.mentions.users.first();
     if (mention_user) {

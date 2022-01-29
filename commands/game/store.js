@@ -1,13 +1,7 @@
 const Discord = require('discord.js');
-const Item = require('./../../model/Item.js');
-const Store = require('./../../data/store.js');
-const findName = require('./../../data/findName.js');
-const config = require('./../../data/config.json');
-const loadUser = require('./../../database/loadUser.js');
-const addItem = require('./../../database/addItem.js');
-const map = require('./../../data/map.js');
+const { Weapons, Objects, Store, config, map } = require('./../../_data_.js');
 module.exports = {
-  num: 5,
+  num: 6,
   name: ['商店', 'store', 'shop'],
   type: 'game',
   expectedArgs: '',
@@ -17,21 +11,82 @@ module.exports = {
   level: 1,
   cooldown: 5,
   requireObject: ['公民證'],
-  async execute(msg, args, user, User) {
+  requirePermission: ['MANAGE_MESSAGES'],
+  async execute(msg, args, user) {
     msg.react('✅');
-    if(!user) return msg.lineReply(config.notFindUser);
+    if (!user) return msg.lineReply(config.notFindUser);
 
-    const creatembed = index  => {
-      let current = datas.slice(index, index + max);
-      let embed = new Discord.MessageEmbed()
-      .setTitle('商店')
+    let mainEmbed = new Discord.MessageEmbed()
+      .setTitle('歡迎光臨本商店')
       .setColor(config.embed_color)
-      .setFooter(`${map[user.area]}`)
+      .setDescription(`
+    想要查看一般商品，請點擊🇦
+
+    想要查看武裝，請點擊🇧`)
+      .setFooter(`${map[user.area]["名稱"]}`)
       .setTimestamp();
 
-      current.map(d=>{
-        embed.addField(`-| ${a1[0]}`,`${a2.trim()}\n編輯者：<@${d.authorId}>`,true)
-      })
+    var datas = [];
+    var store_type = null;
+
+    msg.channel.send(mainEmbed).then(async (m) => {
+      await m.react('🇦');
+      await m.react('🇧');
+      const collector = m.createReactionCollector(
+        (reaction, user) => ['🇦', '🇧'].includes(reaction.emoji.name) && user.id === msg.author.id,
+        { time: 60000 }
+      );
+      let currentIndex = 0
+      let locked = false;
+      collector.on('collect', async reaction => {
+        await m.reactions.removeAll();
+        if(locked) return;
+        if (reaction.emoji.name === '🇦') {
+          store_type = "一般商品";
+          for (let ob in Objects) {
+            datas.push({
+              name: ob,
+              description: Objects[ob]['描述'],
+              price: Objects[ob].cost
+            });
+          }
+        } else if (reaction.emoji.name === '🇧') {
+          store_type = "武裝";
+          for (let w in Weapons) {
+            datas.push({
+              name: w,
+              description: Weapons[w]['描述'],
+              price: Weapons[w].cost
+            });
+          }
+        }
+        await m.edit(creatembed(currentIndex));
+        m.react('➡️');
+        const collector2 = m.createReactionCollector(
+          (reaction, user) => ['⬅️', '➡️'].includes(reaction.emoji.name) && user.id === msg.author.id,
+          { time: 60000 }
+        );
+        let currentIndex2 = 0;
+        collector2.on('collect', async reaction => {
+          await m.reactions.removeAll();
+          reaction.emoji.name === '⬅️' ? currentIndex2 -= 1 : currentIndex2 += 1
+          await m.edit(creatembed(currentIndex2));
+          if (currentIndex2 !== 0) await m.react('⬅️');
+          if (currentIndex2 + 1 < datas.length) await m.react('➡️');
+        });
+      });
+    });
+
+    const creatembed = index => {
+      let current = datas.slice(index, index + 1);
+      let embed = new Discord.MessageEmbed()
+        .setTitle(store_type)
+        .setColor(config.embed_color)
+        .setFooter(`${map[user.area]["名稱"]}`)
+        .setTimestamp();
+      current.map(d => {
+        embed.addField(`${d.name}`, `${d.description}\n價格 - ${d.price}`, true)
+      });
       return embed;
     }
   }

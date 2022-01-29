@@ -1,6 +1,5 @@
-const Store = require('./../../data/store.js');
-const config = require('./../../data/config.json');
-const addItem = require('./../../database/addItem.js');
+const { Store, config } = require('./../../_data_.js');
+const { addItem } = require('./../../_database_.js');
 module.exports = {
   num: 5,
   name: ['購買', 'buy', 'b'],
@@ -12,7 +11,8 @@ module.exports = {
   level: 1,
   cooldown: 5,
   requireObject: ['公民證'],
-  async execute(msg, args, user, User) {
+  requirePermission: [],
+  async execute(msg, args, user) {
     msg.react('✅');
     if(!user) return msg.lineReply(config.notFindUser);
     if(!Store[args[0]]) return msg.lineReply(`查無 ${args[0]}，請您檢查是否打錯字`);

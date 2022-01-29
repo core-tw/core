@@ -1,33 +1,41 @@
 {
   "files": {
+    "_model_.js": [
+      {
+        "id": "56460b8c-1dac-4079-834c-a9a88fb7abea",
+        "line": 1,
+        "version": 10,
+        "index": 0
+      }
+    ],
     "commands/game/withdraw.js": [
       {
         "id": "c4dadcf2-df2a-4b91-9dde-7aa13ffffc4f",
-        "line": 3,
-        "version": 401,
-        "index": 111
+        "line": 1,
+        "version": 450,
+        "index": 0
       }
     ],
     "commands/others/start.js": [
       {
         "id": "cdbbb6c9-00f8-4abd-9825-4313203b035e",
-        "line": 44,
-        "version": 951,
-        "index": 1206
+        "line": 41,
+        "version": 988,
+        "index": 1025
       }
     ],
     "index.js": [
       {
         "id": "6adf2095-b6e7-4dc6-9a0a-86b826d26755",
-        "line": 16,
-        "version": 1271,
-        "index": 519
+        "line": 15,
+        "version": 1387,
+        "index": 468
       },
       {
         "id": "0c95c109-e3c4-4512-86a9-ea0ad8a387c9",
-        "line": 90,
-        "version": 1271,
-        "index": 2682
+        "line": 96,
+        "version": 1387,
+        "index": 2836
       }
     ],
     "model/User.js": [

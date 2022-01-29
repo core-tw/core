@@ -1,11 +1,10 @@
 const Discord = require('discord.js');
 require('discord-inline-reply');
-const config = require('./data/config.json');
-const User = require('./model/User.js');
-const checkRequire = require('./database/checkRequire.js');
-const loadUser = require('./database/loadUser.js');
 const express = require('express');
 const fs = require('fs');
+const { config } = require('./_data_.js');
+const { loadUser, checkRequire } = require('./_database_.js');
+const { User } = require('./_model_.js');
 var mongoose = null;
 
 const app = express();
@@ -31,7 +30,7 @@ for (let folder of commandFolders) {
 
 client.on('ready', async () => {
   console.clear();
-  console.log(config.console_prefix +"core 啟動中");
+  console.log(config.console_prefix + "core 啟動中");
   console.time(config.system_time);
   await client.user.setPresence({
     status: "online"
@@ -40,27 +39,26 @@ client.on('ready', async () => {
     type: "PLAYING"
   });
 
-  console.log(config.console_prefix +"連結至雲端資料庫");
+  console.log(config.console_prefix + "連結至雲端資料庫");
   mongoose = await require('./database/connect.js')();
 
   console.log(config.console_prefix + "檢查指令");
   commandList = commandList.sort((a, b) => {
     return Number(a.split('.')[0]) - Number(b.split('.')[0]);
   }).join('\n');
-  console.log(commandList);
-  
-  fs.writeFile('./command.txt', commandList, function(err){
-    if(err) console.log(err);
+
+  fs.writeFile('./command.txt', commandList, function(err) {
+    if (err) console.log(err);
   });
 
-  console.log(config.console_prefix +"core 系統 all green");
+  console.log(config.console_prefix + "core 系統 all green");
   console.timeLog(config.system_time);
 });
 
 
 client.on('message', async msg => {
   if (!msg.content.startsWith(config.prefix)) return;
-  let { member, content, guild } = msg;
+  let { content, guild } = msg;
   let str = msg.content.slice(config.prefix.length).trim().split(/ +/);
   let commandName = str.shift().toLowerCase();
   let args = content.split(/[ ]+/);
@@ -76,6 +74,13 @@ client.on('message', async msg => {
   if (args.length < cmd.minArgs || (cmd.maxArgs !== null && args.length > cmd.maxArgs)) {
     msg.lineReply(`**參數錯誤**\n需求 :**<command> ${cmd.expectedArgs}**`)
     return;
+  }
+
+  for (let p in cmd.requirePermission) {
+    if (!msg.guild.me.hasPermission(cmd.requirePermission[p])) {
+      msg.lineReply(`**權限錯誤**\n請給予我 **${cmd.requirePermission[p]}** 的權限`)
+      return;
+    }
   }
 
   let { cooldowns } = client;
@@ -104,36 +109,23 @@ client.on('message', async msg => {
     let user = await loadUser(msg.author.id, User);
     if (!user) {
       user = null;
-      if (cmd.requireObject.length > 0 || (cmd.level && cmd.level > 1)) {
-        if (cmd.level > 1 && user.level < cmd.level) {
-          msg.lineReply(`等級需求：**${cmd.level}　級**`);
-          return;
-        }
-        if (cmd.requireObject.length > 0) {
-          let have = await checkRequire(msg, user, cmd.requireObject);
-          if (!have) return;
-        }
-      }
     } else {
-      if (cmd.requireObject.length > 0 || (cmd.level && cmd.level > 1)) {
-        if (cmd.level > 1 && user.level < cmd.level) {
-          msg.lineReply(`等級需求：**${cmd.level}　級**`);
-          return;
-        }
-        if (cmd.requireObject.length > 0) {
-          let have = await checkRequire(msg, user, cmd.requireObject);
-          if (!have) return;
-        }
+    if (cmd.requireObject.length > 0 || (cmd.level && cmd.level > 1)) {
+      if (cmd.level > 1 && user.level < cmd.level) {
+        msg.lineReply(`等級需求：**${cmd.level}　級**`);
+        return;
+      }
+      if (cmd.requireObject.length > 0) {
+        let have = await checkRequire(msg, user, cmd.requireObject);
+        if (!have) return;
       }
     }
-    cmd.execute(msg, args, user, User);
-  } catch (error) {
-    console.error(error);
-    msg.lineReply(config.error_str);
   }
-
+  cmd.execute(msg, args, user);
+} catch (error) {
+  console.error(error);
+  msg.lineReply(config.error_str);
+}
 });
 
-client.login(process.env.token).catch((err) => {
-  console.log(err);
-})
+client.login(process.env.token);
