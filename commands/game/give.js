@@ -1,6 +1,5 @@
 const { config } = require('./../../_data_.js');
 const { loadUser } = require('./../../_database_.js');
-const { User } = require('./../../_model_.js');
 module.exports = {
   num: 2,
   name: ['給予', 'give', 'g'],
@@ -16,7 +15,7 @@ module.exports = {
   async execute(msg, args, user) {
     const mention_user = msg.mentions.users.first();
     if (mention_user) {
-      const to_user = await loadUser(mention_user.id, User)
+      const to_user = await loadUser(mention_user.id)
       if (!to_user) return msg.lineReply(config.notFindUser);
       if (!isNaN(Number(args[1]))) {
         if (user.coin < Number(args[1]) || Number(args[1]) < 1) {
@@ -36,7 +35,7 @@ module.exports = {
         msg.lineReply(`請輸入正確的數字`);
       }
     } else {
-      const to_user = await loadUser(args[0], User)
+      const to_user = await loadUser(args[0])
       if (!to_user) return msg.lineReply(config.notFindUser);
       if (!isNaN(Number(args[1]))) {
         if (user.coin < Number(args[1]) || Number(args[1]) < 1) {

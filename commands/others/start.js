@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { Weapons, Objects, Player, config } = require('./../../_data_.js');
+const { Weapons, Objects, Player, config, game_info, bodyType } = require('./../../_data_.js');
 const { addItem } = require('./../../_database_.js');
 const { User } = require('./../../_model_.js');
 module.exports = {
@@ -72,26 +72,50 @@ module.exports = {
 
       await m.channel.awaitMessages(filter3, { max: 1, time: 1200000, errors: ['time'] }).catch(err => { });
 
+      let typeEmbed = mainEmbed;
+      typeEmbed
+        .setDescription(`
+          暱稱 - ${player.name}
+          性別 - ${player.gender == "male" ? "男性" : "女性"}
+          初始武裝 - ${player.weapon}
+          請反應下的表情符號決定型號：
+          1. 基本型
+          2. 強襲型
+          3. 機動型
+          4. 指揮型
+          5. 特裝強化型`)
+        .setTimestamp()
+        .setFooter("player creating");
+
+      let m2 = await m.channel.send(typeEmbed);
+      await m2.react('1️⃣');
+      await m2.react('2️⃣');
+      await m2.react('3️⃣');
+      await m2.react('4️⃣');
+      await m2.react('5️⃣');
+      await m2.awaitReactions(filter4, { max: 1, time: 120000, errors: ['time'] }).catch(err => { });
       let finalEmbed = mainEmbed;
       finalEmbed
         .setDescription(`
           暱稱 - ${player.name}
           性別 - ${player.gender == "male" ? "男性" : "女性"}
-          初始武裝 - ${player.weapon}`)
+          初始武裝 - ${player.weapon}
+          型號 - ${bodyType[player.type]['型號']}`)
         .setTimestamp()
         .setFooter("player created");
-
-      await m.channel.send(finalEmbed);
-      await m.delete()
+        
+      m2.edit(finalEmbed);
+      await m.delete();
       for (let w in mlist) {
-        await mlist[w].delete()
+        await mlist[w].delete();
       }
 
       var newuser = new User({
         userId: msg.author.id,
         name: player.name || msg.author.tag,
         gender: player.gender,
-        weapon: player.weapon
+        weapon: player.weapon,
+        type: player.type
       });
       await newuser.save().catch(err => console.log(err));
       let add = await addItem(msg, newuser, Objects['公民證']['ID']);
@@ -105,6 +129,11 @@ module.exports = {
       add = await addItem(msg, newuser, Weapons[player.weapon]['ID']);
       if (add === "error") return;
       msg.channel.send(config.additem.replace("item", player.weapon));
+      for(let i in game_info['start']) {
+        setTimeout(async()=>{
+          await msg.channel.send(game_info['start'][i]);
+        },i*3500 + 3000);
+      }
       
     });
 
@@ -135,6 +164,27 @@ module.exports = {
         player.weapon = m.content;
         m.react('✅');
         return true;
+      }
+    }
+
+    let filter4 = (reaction, user) => {
+      if (user.id != msg.author.id) return;
+      switch(reaction.emoji.name) {
+        case '1️⃣':
+          player.type = 0;
+          return true;
+        case '2️⃣':
+          player.type = 1;
+          return true;
+        case '3️⃣':
+          player.type = 2;
+          return true;
+        case '4️⃣':
+          player.type = 3;
+          return true;
+        case '5️⃣':
+          player.type = 4;
+          return true;
       }
     }
   }

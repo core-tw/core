@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const { Weapons, config, map } = require('./../../_data_.js');
 const { loadUser } = require('./../../_database_.js');
-const { User } = require('./../../_model_.js');
 module.exports = {
   num: 3,
   name: ['面板', 'profile', 'p'],
@@ -18,13 +17,13 @@ module.exports = {
     msg.react('✅');
     const mention_user = msg.mentions.users.first();
     if (mention_user) {
-      const another_user = await loadUser(mention_user.id, User);
+      const another_user = await loadUser(mention_user.id);
       if (!another_user) return msg.lineReply(config.notFindUser);
       let icon = mention_user.displayAvatarURL();
       msg.channel.send(generateEmbed(another_user, icon));
     } else {
       if (args[0]) {
-        const another_user = await loadUser(args[0], User);
+        const another_user = await loadUser(args[0]);
         if (!another_user) return msg.lineReply(config.notFindUser);
         let icon = mention_user.displayAvatarURL();
         msg.channel.send(generateEmbed(another_user, icon));

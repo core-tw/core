@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const { Weapons, Objects, findName, config } = require('./../../_data_.js');
 const { loadUser } = require('./../../_database_.js');
-const { User, Item } = require('./../../_model_.js');
+const { Item } = require('./../../_model_.js');
 module.exports = {
   num: 4,
   name: ['背包', 'inventory', 'i'],
@@ -18,13 +18,13 @@ module.exports = {
     msg.react('✅');
     const mention_user = msg.mentions.users.first();
     if (mention_user) {
-      const another_user = await loadUser(mention_user.id, User);
+      const another_user = await loadUser(mention_user.id);
       if (!another_user) return msg.lineReply(config.notFindUser);
       let icon = mention_user.displayAvatarURL();
       msg.channel.send(await generateEmbed(another_user, icon));
     } else {
       if (args[0]) {
-        const another_user = await loadUser(args[0], User);
+        const another_user = await loadUser(args[0]);
         if (!another_user) return msg.lineReply(config.notFindUser);
         let icon = mention_user.displayAvatarURL();
         msg.channel.send(await generateEmbed(another_user, icon));

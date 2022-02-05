@@ -1,6 +1,5 @@
 const { config } = require('./../../_data_.js');
 const { loadBank } = require('./../../_database_.js');
-const { Bank } = require('./../../_model_.js');
 module.exports = {
   num: 1,
   name: ['領錢', 'withdraw', 'w'],
@@ -14,7 +13,7 @@ module.exports = {
   requireObject: ["銀行卡"],
   requirePermission: [],
   async execute(msg, args, user) {
-    let bank = await loadBank(msg, user, Bank);
+    let bank = await loadBank(msg, user);
     if(!bank) return msg.lineReply(config.error_str);
     if (msg.content.search("all") != -1) {
       user.coin += user.bank;

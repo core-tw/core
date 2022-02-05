@@ -3,5 +3,6 @@ module.exports = class {
     this.name = "";
     this.gender = "";
     this.weapon = "";
+    this.type = "";
   }
 }

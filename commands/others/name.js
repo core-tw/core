@@ -1,6 +1,4 @@
 const { config } = require('./../../_data_.js');
-const { loadUser } = require('./../../_database_.js');
-const {  } = require('./../../_model_.js');
 module.exports = {
   num: 7,
   name: ["改名", "名字", "名子", "changename", "name", "cn"],

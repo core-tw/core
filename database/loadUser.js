@@ -1,5 +1,5 @@
-const config = require('./../data/config.json');
-module.exports = async (id, User) => {
+const { User } = require('./../_model_.js')
+module.exports = async id => {
   const user = await User.findOne({
     userId: id,
   });

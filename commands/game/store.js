@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { Weapons, Objects, Store, config, map } = require('./../../_data_.js');
+const { Weapons, Objects, config, map } = require('./../../_data_.js');
 module.exports = {
   num: 6,
   name: ['商店', 'store', 'shop'],

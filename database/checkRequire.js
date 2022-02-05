@@ -1,7 +1,5 @@
-const config = require('./../data/config.json');
-const weapon = require('./../data/weapon.js');
-const object = require('./../data/object.js');
-const Item = require('./../model/Item.js');
+const { config, Objects, Weapons } = require('./../_data_.js');
+const { Item } = require('./../_model_.js');
 module.exports = async (msg, user, reqs) => {
   try {
     if (!user) {
@@ -11,7 +9,7 @@ module.exports = async (msg, user, reqs) => {
     for(let r in reqs) {
       let item = await Item.findOne({
         owmer: user._id,
-        itemId: object[reqs[r]]['ID'] || weapon[reqs[r]]['ID'],
+        itemId: Objects[reqs[r]]['ID'] || Weapons[reqs[r]]['ID'],
       });
       if (!item || item.amount < 1) {
         list.push(reqs[r]);

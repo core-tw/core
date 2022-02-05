@@ -3,8 +3,7 @@ require('discord-inline-reply');
 const express = require('express');
 const fs = require('fs');
 const { config } = require('./_data_.js');
-const { loadUser, checkRequire } = require('./_database_.js');
-const { User } = require('./_model_.js');
+const { loadUser, checkRequire, checkLevel } = require('./_database_.js');
 var mongoose = null;
 
 const app = express();
@@ -106,7 +105,7 @@ client.on('message', async msg => {
   setTimeout(() => timestamps.delete(msg.author.id), cooldownAmount);
 
   try {
-    let user = await loadUser(msg.author.id, User);
+    let user = await loadUser(msg.author.id);
     if (!user) {
       user = null;
     } else {
@@ -122,6 +121,9 @@ client.on('message', async msg => {
     }
   }
   cmd.execute(msg, args, user);
+  if(user) {
+    checkLevel(msg, user);
+  }
 } catch (error) {
   console.error(error);
   msg.lineReply(config.error_str);
