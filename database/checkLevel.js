@@ -3,6 +3,7 @@ const { config } = require('./../_data_.js');
 module.exports = (msg, user) => {
   if (!user) return;
   let old_level = user.level;
+  let change = false;
   while (user.xp >= user.reqxp) {
     user.thp += 0 * user.level;
     user.tmp += 0;
@@ -11,10 +12,11 @@ module.exports = (msg, user) => {
     user.xp -= user.reqxp;
     user.reqxp = Math.floor(user.reqxp * config.level_up_req);
     user.level += 1;
+    change = true;
   }
-  user.hp = user.thp;
-  user.mp = user.tmp;
-  if (user.level !== old_level) {
+  if(change) {
+    user.hp = user.thp;
+    user.mp = user.tmp;
     let level_str = `
     權限提升至 ${user.level}
     經驗值 ${user.xp} / ${user.reqxp}`;

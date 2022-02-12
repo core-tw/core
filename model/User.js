@@ -7,6 +7,7 @@ const Users = mongoose.Schema({
   gender: { type: String, required: true },
   type: { type: Number, default: 0 },
   status:{ type: String, default: "正常" },
+  party:{ type: String, default: "平民" },
 
   level: { type: Number, default: 1 },
   xp: { type: Number, default: 0 },
@@ -20,7 +21,6 @@ const Users = mongoose.Schema({
 
   atk: { type: Number, default: 10 },
   def: { type: Number, default: 10 },
-  atkSpeed : { type: Number, default: 10 },
   speed: { type: Number, default: 10 },
 
   coin: { type: Number, default: 100 },

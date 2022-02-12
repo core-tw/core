@@ -6,13 +6,14 @@ module.exports = (msg, skill, user, to_user) => {
   user.mp -= skill['MP消耗'];
   if (ran() >= skill['發動機率']) {
     user.save().catch(err => console.log(err));
-    return "rate";
+    return "機率";
   }
+  
+  if (skill['效果']['血量回復']) {
+    user.hp += Math.round(user.thp * (skill['效果']['血量回復'] / 100));
+  }
+
   if (!to_user) {
-    // 做用在自身
-    if (skill['效果']['血量回復']) {
-      user.hp += user.thp * skill['效果']['血量回復'];
-    }
     if (skill['效果']['MP傳輸'][0]) {
       loop(user.userId, skill['效果']['MP傳輸'][1], "mp", skill['效果']['MP傳輸'][0]);
     }
@@ -37,36 +38,75 @@ module.exports = (msg, skill, user, to_user) => {
     }
     
     // 閃避
-    let sp = to_user.speed - user.speed;
+    let sp = (to_user.speed + Weapons[to_user.weapon]['移動加成']) - (user.speed + Weapons[user.weapon]['移動加成']);
     if(sp >= config.speed_delta && (ran()+sp) > ran() ) {
       user.save().catch(err => console.log(err));
       return "閃避";
     }
     
-    to_user.hp -= Math.round((user.atk + user.atk * Weapons[user.weapon]['攻擊加成']) * skill['傷害加成'])
+    if (skill['效果']['生命回復']) {
+      to_user.hp += Math.round(to_user.thp * skill['效果']['血量回復'] / 100);
+    }
+    if (skill['效果']['MP傳輸'][0]) {
+      loop(to_user.userId, skill['效果']['MP傳輸'][1], "mp", skill['效果']['MP傳輸'][0]);
+    }
+    if (skill['效果']['攻擊力上升'][0]) {
+      loop(to_user.userId, skill['效果']['攻擊力上升'][1], "atk", skill['效果']['攻擊力上升'][0]);
+    }
+    if (skill['效果']['防禦力上升'][0]) {
+      loop(to_user.userId, skill['效果']['防禦力上升'][1], "def", skill['效果']['防禦力上升'][0]);
+    }
+    if (skill['效果']['速度上升'][0]) {
+      loop(to_user.userId, skill['效果']['速度上升'][1], "speed", skill['效果']['速度上升'][0]);
+    }
+    if (skill['效果']['功速上升'][0]) {
+      loop(to_user.userId, skill['效果']['功速上升'][1], "atkSpeed", skill['效果']['功速上升'][0]);
+    }
+    
+
+    let atk = Math.round((user.atk + user.atk * (Weapons[user.weapon]['攻擊加成']/100)) * skill['傷害加成'] + ran(user.atk)/2);
+    let to_def = to_user.def + Math.round(to_user.def * (Weapons[to_user.weapon]['防禦加成']/100) + ran(to_user.def)/2);
+    damage = Math.round((atk * atk) / to_def);
+    to_user.hp -= damage;
+    if(to_use.hp > to_use.thp) {
+      to_use.hp = to_use.thp;
+    }
+    to_user.save().catch(err => console.log(err));
   }
-  to_user.save().catch(err => console.log(err));
+  if(user.hp > user.thp) {
+    user.hp = user.thp;
+  }
   user.save().catch(err => console.log(err));
   return "正常";
 }
-// const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 /** 發動步驟
  * 1. 檢查等級
  * 2. 檢查MP
  * 3. 發動機率
  * 4. 武裝加成
+ * "正常"
+ * "閃避"
+ * "無敵"
+ * "機率"
+ * 
+ * 之後要偵測其他狀態
+ * 減傷護盾
  */
 
-function ran() {
-  return Math.floor(Math.random() * 100)
+function ran(n) {
+  if(!n) return Math.floor(Math.random() * 100);
+  return Math.floor(Math.random() * n);
 }
 function loop(id, times, p, add) {
   let t = 0;
   let n = setInterval(async () => {
-    console.log(p, t);
-    let u = await loadUser(id)
+    let u = await loadUser(id);
     u[p] += add;
-    await user.save().catch(err => console.log(err));
+    if(u.hp > u.thp) {
+      u.hp = u.thp;
+    }
+    await u.save().catch(err => console.log(err));
     if (t == times) {
       clearInterval(n);
     }

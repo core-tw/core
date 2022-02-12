@@ -43,8 +43,11 @@ module.exports = {
 
       let body = `
       血量 :drop_of_blood: | ${user.hp} / ${user.thp}
+      能量 ⚡️ | ${user.mp} / ${user.tmp}
       攻擊 :crossed_swords: | ${user.atk}
-      防禦 :shield: | ${user.def}`;
+      防禦 :shield: | ${user.def}
+      速度 👟 | ${user.speed}
+      **${config.money}** - ${user.coin}`;
 
       let money = `
       **虛空能量** :cyclone: - ${user.mp} / ${user.tmp}
@@ -69,7 +72,7 @@ module.exports = {
             inline: false
           },
           {
-            name: "身體數據",
+            name: "狀態欄",
             value: body,
             inline: true
           },

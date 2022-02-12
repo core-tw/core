@@ -8,6 +8,14 @@
         "index": 0
       }
     ],
+    "battle/use.js": [
+      {
+        "id": "ddf13258-5419-4355-b962-c38bde77761d",
+        "line": 29,
+        "version": 1527,
+        "index": 957
+      }
+    ],
     "commands/game/withdraw.js": [
       {
         "id": "c4dadcf2-df2a-4b91-9dde-7aa13ffffc4f",
@@ -19,9 +27,9 @@
     "commands/others/start.js": [
       {
         "id": "cdbbb6c9-00f8-4abd-9825-4313203b035e",
-        "line": 41,
-        "version": 1436,
-        "index": 1054
+        "line": 47,
+        "version": 2143,
+        "index": 1118
       }
     ],
     "database/loadBank.js": [
@@ -36,19 +44,19 @@
       {
         "id": "ffb7e45d-4f8b-4afe-9d31-d90fc0fe6bee",
         "line": 4,
-        "version": 1567,
+        "version": 1569,
         "index": 108
       },
       {
         "id": "6adf2095-b6e7-4dc6-9a0a-86b826d26755",
         "line": 14,
-        "version": 1567,
+        "version": 1569,
         "index": 438
       },
       {
         "id": "0c95c109-e3c4-4512-86a9-ea0ad8a387c9",
         "line": 94,
-        "version": 1567,
+        "version": 1569,
         "index": 2773
       }
     ],
@@ -56,13 +64,13 @@
       {
         "id": "b1f4107a-d5d6-46f9-945a-8b3297ed426b",
         "line": 4,
-        "version": 248,
+        "version": 269,
         "index": 81
       },
       {
         "id": "e7e31286-8687-4041-b9ec-f8f7c2ca61de",
         "line": 7,
-        "version": 248,
+        "version": 269,
         "index": 164
       }
     ]

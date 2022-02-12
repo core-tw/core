@@ -7,7 +7,7 @@ const { loadUser, checkRequire, checkLevel } = require('./_database_.js');
 var mongoose = null;
 
 const app = express();
-const port = 3000;
+const port = 3030;
 app.get('/', (req, res) => res.send('link start!'));
 app.listen(port, () => console.log(`連接至http://localhost:${port}`));
 

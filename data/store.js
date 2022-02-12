@@ -1,3 +1,5 @@
+// 整合Weapons和Objects
+
 const Weapons = require('./weapon.js');
 const Objects = require('./object.js');
 const Store = {};
