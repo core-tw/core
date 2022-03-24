@@ -4,7 +4,7 @@
       {
         "id": "56460b8c-1dac-4079-834c-a9a88fb7abea",
         "line": 1,
-        "version": 10,
+        "version": 22,
         "index": 0
       }
     ],
@@ -32,6 +32,20 @@
         "index": 1118
       }
     ],
+    "data/weapon.js": [
+      {
+        "id": "908c10e6-9663-4811-9bff-40dab933e2bd",
+        "line": 2,
+        "version": 685,
+        "index": 28
+      },
+      {
+        "id": "090030d6-3092-49ab-8ffb-1e01b348c1a4",
+        "line": 11,
+        "version": 685,
+        "index": 212
+      }
+    ],
     "database/loadBank.js": [
       {
         "id": "54ec5be5-9f81-4ef5-a9a9-6386eeb52955",
@@ -42,35 +56,29 @@
     ],
     "index.js": [
       {
-        "id": "ffb7e45d-4f8b-4afe-9d31-d90fc0fe6bee",
-        "line": 4,
-        "version": 1569,
-        "index": 108
-      },
-      {
         "id": "6adf2095-b6e7-4dc6-9a0a-86b826d26755",
-        "line": 14,
-        "version": 1569,
-        "index": 438
+        "line": 1,
+        "version": 2740,
+        "index": 6
       },
       {
         "id": "0c95c109-e3c4-4512-86a9-ea0ad8a387c9",
-        "line": 94,
-        "version": 1569,
-        "index": 2773
+        "line": 1,
+        "version": 2740,
+        "index": 6
       }
     ],
     "model/User.js": [
       {
         "id": "b1f4107a-d5d6-46f9-945a-8b3297ed426b",
         "line": 4,
-        "version": 269,
+        "version": 291,
         "index": 81
       },
       {
         "id": "e7e31286-8687-4041-b9ec-f8f7c2ca61de",
         "line": 7,
-        "version": 269,
+        "version": 291,
         "index": 164
       }
     ]
