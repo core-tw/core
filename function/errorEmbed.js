@@ -6,7 +6,7 @@ module.exports = (channel, author, type, content) => {
 		embeds: [
 			new MessageEmbed()
 			.setAuthor({
-				name: type,
+				name: type?type:"系統錯誤",
 			})
 	    	.setColor(embedColor.error)
 			.setDescription(content)

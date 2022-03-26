@@ -35,13 +35,15 @@ for (let folder of commandFolders) {
 
 // 檢查所有物品
 let itemList = [];
-let itemFiles = fs.readdirSync('./data/items').filter(file => file.endsWith('.json'));
+let itemFiles = fs.readdirSync('./objects/items').filter(file => file.endsWith('.json'));
 for (let file of itemFiles) {
 	let f = JSON.parse(
-		fs.readFileSync(`./data/items/${file}`, 'utf-8')
+		fs.readFileSync(`./objects/items/${file}`, 'utf-8')
 	)
 	for (let w in f) {
-		itemList.push(`${f[w]['id']}. ${w} | ${f[w]["type"]} | ${f[w]["volume"]}`);
+		itemList.push(
+			`${f[w]['id']}. ${w} | ${f[w]["type"]} | ${f[w]["volume"]}`
+		);
 	}
 }
 
@@ -57,7 +59,7 @@ client.on('ready', async () => {
 	});
 
 	console.log(config.console_prefix + "連結至雲端資料庫");
-  	mongoose = await require('./database/connect.js')();
+  	mongoose = await require('./_database_.js').connect();
 });
 
 client.on('messageCreate', async msg => {
@@ -130,6 +132,11 @@ client.on('messageCreate', async msg => {
 		
 	}
 });
+
+// 處理升級和死亡
+//client.on('messageCreate', async msg => {
+	
+//});
 
 client.login(process.env.token);
 

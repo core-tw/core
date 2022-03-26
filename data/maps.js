@@ -1,3 +1,7 @@
+/*
+	怪物方面會引用自./creatures.js
+*/
+const creatures = require("./creatures.js")
 module.exports = {
 	biomes: {
         plains: "平原",
@@ -31,7 +35,9 @@ module.exports = {
 			area: {
 				"韋瓦恩": {
 					UUID: "0001_",
-					description: "帝國母星的行政中樞"
+					description: "帝國母星的行政中樞",
+					rate: 80,
+					creatures: creatures["母星"]["韋瓦恩"]
 				}
 			}
 		}

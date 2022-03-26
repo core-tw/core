@@ -35,8 +35,12 @@ const Users = mongoose.Schema({
 
 	// 屬性統計
 	stat: {
-		atk: { type: Number, default: 10 },
-		def: { type: Number, default: 10 },
+		HEA: { type: Number, default: 10 },
+		STR: { type: Number, default: 10 },
+		SOR: { type: Number, default: 10 },
+	    VIT: { type: Number, default: 10 },
+	    INT: { type: Number, default: 10 },
+	    VEL: { type: Number, default: 10 },
 	},
 	
 	// 晶玉數量

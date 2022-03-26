@@ -8,10 +8,12 @@ const {
 	UUID_PREFIX
 } = require('./../../_enum_.js');
 const config = require('./../../config.json');
+
+// 為遊戲註冊帳號
 module.exports = {
 	num: 0,
-	name: ['遊戲開始', '開始遊戲', 'start'],
-	type: "others",
+	name: ['遊戲開始', '開始遊戲', 'start', 's'],
+	type: "start",
 	expectedArgs: '',
 	description: '開始冒險吧～',
 	minArgs: 0,
@@ -100,23 +102,17 @@ module.exports = {
 			// 機型
 			filter = (reaction, user) => {
 				if(user.id === msg.author.id) {
-					switch(reaction.emoji.name) {
-				        case '1️⃣':
-				          	player['type'] = 0;
-				          	return true;
-				        case '2️⃣':
-				          	player['type'] = 1;
-				          	return true;
-				        case '3️⃣':
-				          	player['type'] = 2;
-				          	return true;
-				        case '4️⃣':
-				          	player['type'] = 3;
-				          	return true;
-				        case '5️⃣':
-				          	player['type'] = 4;
-				          	return true;
-				    }
+					let cases = {
+						'1️⃣': 0,
+				        '2️⃣': 1,
+				        '3️⃣': 2,
+				        '4️⃣': 3,
+				        '5️⃣': 4
+					}
+					if(cases[reaction.emoji.name]) {
+						player['type'] = cases[reaction.emoji.name];
+						return true;
+					}
 				}
 				return false;
 			}
@@ -178,7 +174,7 @@ module.exports = {
 					Maps['planet']['母星'].UUID +
 					Maps['planet']['母星']['area']['韋瓦恩'].UUID,
 			});
-			newUser.save();
+			//newUser.save();
 		} catch (err) {
 			console.log(err);
 			log(client, err.toString());

@@ -1,3 +1,4 @@
+// 遊戲介紹
 module.exports = {
 	data: `
 
