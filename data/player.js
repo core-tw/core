@@ -1,44 +1,99 @@
 // 玩家相關
+const attribute = {
+	HEA: {
+	    name: "血",
+		description: "",
+		initial: 100
+	},
+	STR: {
+	    name: "勢",
+		description: "",
+		initial: 40
+	},
+	SOR: {
+		name: "靈",
+		description: "",
+		initial: 20
+	},
+	VIT: {
+	    name: "體",
+		description: "",
+		initial: 10
+	},
+	INT: {
+	    name: "睿",
+		description: "",
+		initial: 5
+	},
+	VEL: {
+	    name: "迅",
+		description: "",
+		initial: 10
+	}
+}
+
 module.exports = {
-	types: [
+	typesList: [
 		"基本型",
 		"強襲型",
 		"潛伏型",
 		"指揮型",
-		"裝甲型",
+		"裝甲型"
 	],
-	attribute: {
-		HEA: {
-	        name: "血",
-			mean: "生命值",
-			description: "血量隨著等級或武器特效而升降，且不會自然恢復，需要食用藥水或進入安全屋"
+	types: {
+		"基本型": {
+			upgrade: {
+				// 血量都一樣
+				// 會等差的是公差
+				// 這裡是等差的公差
+				HEA: 0,
+				STR: 2,
+				SOR: 2,
+				VIT: 2,
+				INT: 2,
+				VEL: 2
+			}
 		},
-		STR: {
-	        name: "勢",
-			mean: "攻擊力",
-			description: "空手攻擊時能造成的傷害"
-	    },
-		SOR: {
-			name: "靈",
-			mean: "能量量值、能量攻擊力",
-			description: "隨職業而有所不同，當前靈量越高，魔法傷害也就越高"
+		"強襲型": {
+			upgrade: {
+				HEA: 0,
+				STR: 4,
+				SOR: 1,
+				VIT: 1,
+				INT: 1,
+				VEL: 3
+			}
 		},
-	    VIT: {
-	        name: "體",
-			mean: "防禦力、藥水功率",
-			description: ""
-	    },
-	    INT: {
-	        name: "睿",
-			mean: "魔法防禦、幸運度",
-			description: ""
-	    },
-	    VEL: {
-	        name: "迅",
-			mean: "閃避率",
-			description: ""
-	    },
-	    append: {
-	    }
-	}
+		"潛伏型": {
+			upgrade: {
+				HEA: 0,
+				STR: 1,
+				SOR: 3,
+				VIT: 1,
+				INT: 1,
+				VEL: 4
+			}
+		},
+		"指揮型": {
+			upgrade: {
+				HEA: 0,
+				STR: 1,
+				SOR: 3,
+				VIT: 1,
+				INT: 4,
+				VEL: 1
+			}
+		},
+		"裝甲型": {
+			upgrade: {
+				HEA: 0,
+				STR: 3,
+				SOR: 1,
+				VIT: 4,
+				INT: 1,
+				VEL: 1
+			}
+		},
+	},
+	attribute: attribute
 };

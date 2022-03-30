@@ -1,5 +1,6 @@
 const fs = require('fs');
 const config = require('./config.json');
+const { floor, random, round, pow } = Math;
 
 const express = require('express');
 const app = express();
@@ -7,8 +8,14 @@ const port = process.env.port || 3000;
 app.get('/', (req, res) => res.send('link start!'));
 app.listen(port, () => console.log(`連接至http://localhost:${port}`));
 
+// 重要常數
+const xpIncreaseRate = 1.1;
+
+
 const { log, errorEmbed } = require('./_functions_.js');
 const { Users, Items, Banks } = require('./_models_.js');
+const { Player } = require('./_enum_.js');
+const { loadUser } = require('./_database_.js');
 const { Client, Intents, Collection } = require('discord.js');
 const client = new Client({
 	intents: [
@@ -119,24 +126,53 @@ client.on('messageCreate', async msg => {
 	  	timestamps.set(author.id, now);
 	  	setTimeout(() => timestamps.delete(author.id), cooldownAmount);
 
-		const user = await Users.findOne({
-		    userId: author.id,
-		});
+		const user = await loadUser(author.id)
+
 		if(user) {
-			// check
+			// 偵測物件
 		}
-		cmd.execute(msg, args, client, user);
+		await cmd.execute(msg, args, client, user);
+		
 	} catch(err) {
 		log(client, err.toString());
 	} finally {
-		
+		try {
+			const newUser = await loadUser(author.id);
+			
+			if(newUser) {
+				// 處理升級和死亡
+				if(newUser.xp >= newUser.reqxp) {
+					newUser.level += 1;
+					
+					newUser.xp = 0;
+					newUser.reqxp *= xpIncreaseRate;
+	
+					/*
+						血量上升公式
+						a = x/10  - [x/10]
+						y = 0.5 × [x/10] × (20×a^4 + 10×[x/10] + [x])
+					*/
+					let L = newUser.level / 10;
+					let fL = floor(L);
+					let a = (L - fL);
+					newUser.stat.tHEA = (newUser.level <= 10) ? ( 100 + newUser.level ) : ( 0.5 * fL * ( (20 * pow(a, 2)) + 10 * fL + newUser.level) ) + 100;
+	
+					let upgrade = Player.types[Player.typesList[newUser.type]].upgrade;
+					newUser.stat.tSOR += upgrade.SOR;
+					newUser.stat.tSTR += upgrade.STR;
+					newUser.stat.tVIT += upgrade.VIT;
+					newUser.stat.tINT += upgrade.INT;
+					newUser.stat.tVEL += upgrade.VEL;
+				}
+				if(newUser.hp <= 0) {
+					// 處理死亡
+				}
+			}
+		} catch(err) {
+			log(client, err.toString());
+		}
 	}
 });
-
-// 處理升級和死亡
-//client.on('messageCreate', async msg => {
-	
-//});
 
 client.login(process.env.token);
 

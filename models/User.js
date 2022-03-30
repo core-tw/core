@@ -25,22 +25,25 @@ const Users = mongoose.Schema({
 	xp: { type: Number, default: 0 },
 	reqxp: { type: Number, default: 100 },
 
-	// 血量
-	hp: { type: Number, default: 100 },
-	thp: { type: Number, default: 100 },
-
-	// 能量
-	ep: { type: Number, default: 20 },
-	tep: { type: Number, default: 20 },
-
 	// 屬性統計
 	stat: {
 		HEA: { type: Number, default: 10 },
-		STR: { type: Number, default: 10 },
+		tHEA: { type: Number, default: 10 },
+		
 		SOR: { type: Number, default: 10 },
+		tSOR: { type: Number, default: 10 },
+		
+		STR: { type: Number, default: 10 },
+		tSTR: { type: Number, default: 10 },
+		
 	    VIT: { type: Number, default: 10 },
+		tVIT: { type: Number, default: 10 },
+		
 	    INT: { type: Number, default: 10 },
+		tINT: { type: Number, default: 10 },
+		
 	    VEL: { type: Number, default: 10 },
+		tVEL: { type: Number, default: 10 },
 	},
 	
 	// 晶玉數量

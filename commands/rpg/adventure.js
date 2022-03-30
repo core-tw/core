@@ -7,8 +7,9 @@ const {
 	random
 } = require('./../../_functions_.js');
 const {
-	Maps,
 	Creatures,
+	Maps,
+	Player
 } = require('./../../_enum_.js');
 const config = require('./../../config.json');
 
@@ -120,7 +121,8 @@ module.exports = {
 			小怪的數據要隨著使用者的等級變化
 			有5種 弱 中下 中 中上 強
 			*/
-			let lv = random(5) - 2
+			const { attribute } = Player;
+			let lv = random(5) - 2;
 			let {
 				hp,
 				atk,
@@ -135,9 +137,12 @@ module.exports = {
 			}
 			m_lv += lv;
 			m_lv = m_lv > 0 ? m_lv : 1;
-			hp = Math.round(100 + hp * m_lv + random(user.level * 5));
+			hp = Math.round(attribute.HEA.initial + hp * m_lv + random(user.level * 5));
 			atk = Math.round(10 + atk * m_lv + random(user.level * 5));
 			def = Math.round(10 + def * m_lv + random(user.level * 5));
+
+
+
 			await channel.send(
 				`${monsterName}\n` +
 				`hp - ${hp}\n` +

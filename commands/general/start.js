@@ -19,7 +19,7 @@ module.exports = {
 	minArgs: 0,
 	maxArgs: 0,
 	level: null,
-	cooldown: null,
+	cooldown: 60000,
 	requireItems: [],
 	requireBotPermissions: ["MANAGE_MESSAGES"],
 	async execute(msg, args, client, user) {
@@ -117,8 +117,8 @@ module.exports = {
 				return false;
 			}
 			let types = "";
-			for(let t in Player.types) {
-				types += `\n${Number(t)+1}. ${Player.types[t]}`;
+			for(let t in Player.typesList) {
+				types += `\n${Number(t)+1}. ${Player.typesList[t]}`;
 			}
 			embed
 				.setDescription(
@@ -150,7 +150,7 @@ module.exports = {
 				.setDescription(
 					`暱稱 - **${player['name']}**\n` +
 					`性別 - **${player['male']? "男性" : "女性"}**\n` +
-					`機型 - **${Player.types[player.type]}**` +
+					`機型 - **${Player.typesList[player.type]}**` +
 					GameInfo.data
 				)
 		      	.setFooter({

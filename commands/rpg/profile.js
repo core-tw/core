@@ -49,12 +49,12 @@ module.exports = {
 				    經驗 － ${user.xp} / ${user.reqxp}`;
 			
 			    let body = `
-					⨢血⨢ - ${user.hp} / ${user.thp}
-			      	⨢靈⨢ - ${user.ep} / ${user.tep}
-			      	⨢勢⨢ - ${user.stat.STR}
-			      	⨢體⨢ - ${user.stat.VIT}
-			      	⨢睿⨢ - ${user.stat.INT}
-					⨢迅⨢ - ${user.stat.VEL}
+					⨢血⨢ - ${user.stat.HEA} / ${user.stat.tHEA}
+			      	⨢靈⨢ - ${user.stat.SOR} / ${user.stat.tSOR}
+			      	⨢勢⨢ - ${user.stat.STR} / ${user.stat.tVEL}
+			      	⨢體⨢ - ${user.stat.VIT} / ${user.stat.tVEL}
+			      	⨢睿⨢ - ${user.stat.INT} / ${user.stat.tVEL}
+					⨢迅⨢ - ${user.stat.VEL} / ${user.stat.tVEL}
 			
 			      	**${config.coinName}** - ${user.coin}`;
 			      let embed = new MessageEmbed()
