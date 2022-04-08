@@ -72,3 +72,8 @@ const exampleEmbed = new MessageEmbed()
 
 channel.send({ embeds: [exampleEmbed] });
 ```
+
+# 血量上升公式
+a = x/10  - [x/10]
+
+y = 0.5 × [x/10] × (20×a^4 + 10×[x/10] + [x])

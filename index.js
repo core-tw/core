@@ -1,22 +1,22 @@
+
+
 const fs = require('fs');
+const express = require('express');
 const config = require('./config.json');
+const setting = require('./setting.json');// 重要常數設定
+const { log, errorEmbed } = require('./_functions_.js');
+const { Users, Items, Banks } = require('./_models_.js');
+const { Player, UUID_PREFIX, Maps, Reactions } = require('./_enum_.js');
+const { loadUser } = require('./_database_.js');
+const { Client, Intents, Collection } = require('discord.js');
 const { floor, random, round, pow } = Math;
 
-const express = require('express');
+
 const app = express();
 const port = process.env.port || 3000;
 app.get('/', (req, res) => res.send('link start!'));
 app.listen(port, () => console.log(`連接至http://localhost:${port}`));
 
-// 重要常數
-const xpIncreaseRate = 1.1;
-
-
-const { log, errorEmbed } = require('./_functions_.js');
-const { Users, Items, Banks } = require('./_models_.js');
-const { Player } = require('./_enum_.js');
-const { loadUser } = require('./_database_.js');
-const { Client, Intents, Collection } = require('discord.js');
 const client = new Client({
 	intents: [
 		Intents.FLAGS.GUILDS,
@@ -68,6 +68,7 @@ client.on('ready', async () => {
 	console.log(config.console_prefix + "連結至雲端資料庫");
   	mongoose = await require('./_database_.js').connect();
 });
+
 
 client.on('messageCreate', async msg => {
 	let { 
@@ -132,45 +133,68 @@ client.on('messageCreate', async msg => {
 			// 偵測物件
 		}
 		await cmd.execute(msg, args, client, user);
+		const updateUser = await loadUser(author.id);
 		
+		if(updateUser) {
+			// 玩家死亡
+			if(updateUser.stat.HEA <= 0) {
+				let r_coin = coinToDetain * updateUser.level;
+				let byBank = false;
+				let byXp = false;
+				updateUser.stat.HEA = updateUser.stat.tHEA;
+				updateUser.planet = UUID_PREFIX['Maps'] + Maps['planet']['母星'].UUID;
+				updateUser.area = updateUser.planet + Maps['planet']['母星']['area']['韋瓦恩'].UUID;
+
+				if(updateUser.coin >= r_coin) {
+					updateUser.coin -= r_coin;
+				} else {
+					if(updateUser.bank && updateUser.bank.coin >= r_coin) {
+						byBank = true;
+						updateUser.bank.coin -= r_coin;
+					} else {
+						byXp = true;
+						updateUser.xp -= r_coin * 100;
+					}
+				}
+
+				// 生成句子
+                let　str = Reactions.sentences[
+                    Math.floor(Math.random() * Reactions.sentence.length )
+                ];
+                str
+                    .replace(Reactions.tags.name, updateUser.name)
+                    .replace(Reactions.tags.gender, updateUser.male?"男子":"女子");
+                
+				msg.channel.send(str);
+			}
+
+			
+			// 玩家升級
+			if(updateUser.xp >= updateUser.reqxp) {
+				updateUser.level += 1;
+		
+				updateUser.xp = 0;
+				updateUser.reqxp *= xpIncreaseRate;
+
+				let L = updateUser.level / 10;
+				let fL = floor(L);
+				let a = (L - fL);
+				updateUser.stat.tHEA = (updateUser.level <= 10) ? ( 100 + updateUser.level ) : ( 0.5 * fL * ( (20 * pow(a, 2)) + 10 * fL + updateUser.level) ) + 100;
+	
+				let upgrade = Player.types[Player.typesList[updateUser.type]].upgrade;
+				updateUser.stat.tSOR += upgrade.SOR;
+				updateUser.stat.tSTR += upgrade.STR;
+				updateUser.stat.tVIT += upgrade.VIT;
+				updateUser.stat.tINT += upgrade.INT;
+				updateUser.stat.tVEL += upgrade.VEL;
+			}
+            
+			await updateUser.save();
+		}
 	} catch(err) {
 		log(client, err.toString());
 	} finally {
-		try {
-			const newUser = await loadUser(author.id);
-			
-			if(newUser) {
-				// 處理升級和死亡
-				if(newUser.xp >= newUser.reqxp) {
-					newUser.level += 1;
-					
-					newUser.xp = 0;
-					newUser.reqxp *= xpIncreaseRate;
-	
-					/*
-						血量上升公式
-						a = x/10  - [x/10]
-						y = 0.5 × [x/10] × (20×a^4 + 10×[x/10] + [x])
-					*/
-					let L = newUser.level / 10;
-					let fL = floor(L);
-					let a = (L - fL);
-					newUser.stat.tHEA = (newUser.level <= 10) ? ( 100 + newUser.level ) : ( 0.5 * fL * ( (20 * pow(a, 2)) + 10 * fL + newUser.level) ) + 100;
-	
-					let upgrade = Player.types[Player.typesList[newUser.type]].upgrade;
-					newUser.stat.tSOR += upgrade.SOR;
-					newUser.stat.tSTR += upgrade.STR;
-					newUser.stat.tVIT += upgrade.VIT;
-					newUser.stat.tINT += upgrade.INT;
-					newUser.stat.tVEL += upgrade.VEL;
-				}
-				if(newUser.hp <= 0) {
-					// 處理死亡
-				}
-			}
-		} catch(err) {
-			log(client, err.toString());
-		}
+		
 	}
 });
 

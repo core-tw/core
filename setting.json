@@ -1,0 +1,7 @@
+{
+	"coinName": "晶玉",
+	"xpIncreaseRate": 1.1,
+	"coinToDetain": 500,
+	"dodgeLikelihood": 0.2,
+	"allDodgeLikelihood": 0.1
+}

@@ -10,7 +10,8 @@ const {
 } = require('./../../_database_.js');
 const config = require('./../../config.json');
 
-// 為遊戲註冊帳號
+/* 給予
+*/
 module.exports = {
 	num: 3,
 	name: ['給予', 'give', 'g'],
@@ -36,10 +37,7 @@ module.exports = {
 			const wait = (ms) => {
 				return new Promise(resolve => setTimeout(resolve, 5000));
 			}
-			const {
-				author,
-				channel
-			} = msg;
+			const { author, channel } = msg;
 			
 			const mention_user = msg.mentions.users.first();
 		    if (mention_user) {

@@ -174,7 +174,9 @@ module.exports = {
 					Maps['planet']['母星'].UUID +
 					Maps['planet']['母星']['area']['韋瓦恩'].UUID,
 			});
-			//newUser.save();
+			
+			newUser.save();
+			
 		} catch (err) {
 			console.log(err);
 			log(client, err.toString());

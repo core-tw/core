@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const { attribute } = require('./../_enum_.js').Player;
 const Users = mongoose.Schema({
 	userId: { type: String, required: true },
 	name: { type: String, default: 'an anonymous player' },
@@ -27,23 +27,23 @@ const Users = mongoose.Schema({
 
 	// 屬性統計
 	stat: {
-		HEA: { type: Number, default: 10 },
-		tHEA: { type: Number, default: 10 },
+		HEA: { type: Number, default: attribute.HEA.initial },
+		tHEA: { type: Number, default: attribute.HEA.initial },
 		
-		SOR: { type: Number, default: 10 },
-		tSOR: { type: Number, default: 10 },
+		SOR: { type: Number, default: attribute.SOR.initial },
+		tSOR: { type: Number, default: attribute.SOR.initial },
 		
-		STR: { type: Number, default: 10 },
-		tSTR: { type: Number, default: 10 },
+		STR: { type: Number, default: attribute.STR.initial },
+		tSTR: { type: Number, default: attribute.STR.initial },
 		
-	    VIT: { type: Number, default: 10 },
-		tVIT: { type: Number, default: 10 },
+	    VIT: { type: Number, default: attribute.VIT.initial },
+		tVIT: { type: Number, default: attribute.VIT.initial },
 		
-	    INT: { type: Number, default: 10 },
-		tINT: { type: Number, default: 10 },
+	    INT: { type: Number, default: attribute.INT.initial },
+		tINT: { type: Number, default: attribute.INT.initial },
 		
-	    VEL: { type: Number, default: 10 },
-		tVEL: { type: Number, default: 10 },
+	    VEL: { type: Number, default: attribute.VEL.initial },
+		tVEL: { type: Number, default: attribute.VEL.initial },
 	},
 	
 	// 晶玉數量

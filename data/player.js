@@ -8,12 +8,12 @@ const attribute = {
 	STR: {
 	    name: "勢",
 		description: "",
-		initial: 40
+		initial: 10
 	},
 	SOR: {
 		name: "靈",
 		description: "",
-		initial: 20
+		initial: 10
 	},
 	VIT: {
 	    name: "體",
@@ -23,7 +23,7 @@ const attribute = {
 	INT: {
 	    name: "睿",
 		description: "",
-		initial: 5
+		initial: 10
 	},
 	VEL: {
 	    name: "迅",
@@ -95,5 +95,10 @@ module.exports = {
 			}
 		},
 	},
-	attribute: attribute
+	attribute: attribute,
+	status: {
+		"BURN_": {
+			name: "燒傷",
+		}
+	}
 };

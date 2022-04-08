@@ -1,16 +1,12 @@
 const { MessageEmbed } = require('discord.js');
 const { Users } = require('./../../_models_.js');
-const {
-	area,
-	errorEmbed,
-	log,
-} = require('./../../_functions_.js');
-const {
-	loadUser
-} = require('./../../_database_.js');
+const { area, errorEmbed, log } = require('./../../_functions_.js');
+const { loadUser } = require('./../../_database_.js');
 const config = require('./../../config.json');
+const { coinName } = require('./../../setting.json');
 
-// 為遊戲註冊帳號
+/* 個人面板
+*/
 module.exports = {
 	num: 2,
 	name: ['面板', 'profile', 'p'],
@@ -25,7 +21,8 @@ module.exports = {
 	requireBotPermissions: ["MANAGE_MESSAGES"],
 	async execute(msg, args, client, user) {
 	    try {
-			await msg.react('✅');			
+			await msg.react('✅');		
+			
 			if(!user) {
 				msg.reply({
 					content: `您還沒有帳戶喔`,
@@ -33,10 +30,9 @@ module.exports = {
 				});
 				return;
 			}
-			const {
-				author,
-				channel
-			} = msg;
+			
+			const { author, channel } = msg;
+			
 			const createEmbed = (user, icon) => {
 				let a = area.getArea(user.area);
 				if(!a) {
@@ -56,7 +52,7 @@ module.exports = {
 			      	⨢睿⨢ - ${user.stat.INT} / ${user.stat.tVEL}
 					⨢迅⨢ - ${user.stat.VEL} / ${user.stat.tVEL}
 			
-			      	**${config.coinName}** - ${user.coin}`;
+			      	**${coinName}** - ${user.coin}`;
 			      let embed = new MessageEmbed()
 			        .setColor(config.embedColor.normal)
 					.setAuthor({

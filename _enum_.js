@@ -4,6 +4,7 @@ const classes = require(fl + "classes.js");
 const player = require(fl + "player.js");
 const gameInfo = require(fl + "gameInfo.js");
 const creatures = require(fl + "creatures.js");
+const reaction = require(fl + "reaction.js");
 module.exports = {
     Maps: maps,
     Status: {},
@@ -11,6 +12,7 @@ module.exports = {
 	Player: player,
 	GameInfo: gameInfo,
 	Creatures: creatures,
+    Reactions: reaction,
 	UUID_PREFIX: {
 		Maps: "MAPS_",
 	    Status: "STATUS_",

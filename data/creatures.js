@@ -15,6 +15,7 @@ module.exports = {
 				hp: 5,
 				atk: 1,
 				def: 1,
+				dodge: 1,
 				rate: 90,
 				lvLimit: [1, 10],
 				descrition: "體長兩公尺以上，前顎強而有力，並能釋放體內儲存的電力來電死敵人"
