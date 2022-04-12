@@ -1,5 +1,5 @@
 const fl = "./database/"
 module.exports = {
-	connect: require(fl + 'connect.js'),
-	loadUser: require(fl + 'loadUser.js')
+  connect: require(fl + 'connect.js'),
+  loadUser: require(fl + 'loadUser.js')
 }
