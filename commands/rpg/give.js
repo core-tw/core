@@ -3,7 +3,7 @@ const { Users } = require('./../../_models_.js');
 const { area, errorEmbed, log } = require('./../../_functions_.js');
 const { loadUser } = require('./../../_database_.js');
 const config = require('./../../config.json');
-
+const { coinName } = require('./../../setting.json');
 /* 給予
 */
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
   name: ['給予', 'give', 'g'],
   type: "rpg",
   expectedArgs: '<@user> <amount>',
-  description: `轉移您身上一部份的${config.money}給其他人`,
+  description: `轉移您身上一部份的${coinName}給其他人`,
   minArgs: 2,
   maxArgs: 2,
   level: 1,
@@ -48,7 +48,7 @@ module.exports = {
               errorEmbed(channel, author, null, `您輸入的數字好像怪怪的喔`);
               return;
             } else {
-              errorEmbed(channel, author, null, `您沒有那麼多${config.coinName}喔`);
+              errorEmbed(channel, author, null, `您沒有那麼多${coinName}喔`);
               return;
             }
           }
@@ -80,7 +80,7 @@ module.exports = {
               errorEmbed(channel, author, null, `您輸入的數字好像怪怪的喔`);
               return;
             } else {
-              errorEmbed(channel, author, null, `您沒有那麼多${config.coinName}喔`);
+              errorEmbed(channel, author, null, `您沒有那麼多${coinName}喔`);
               return;
             }
           }

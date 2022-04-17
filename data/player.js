@@ -1,3 +1,5 @@
+const { items } = require("./../_objects_.js");
+
 // 玩家相關
 const attribute = {
   HEA: {
@@ -30,72 +32,136 @@ const attribute = {
     description: "",
     initial: 10
   }
-}
+};
+
+const classes = {
+	list: [
+	  "學徒級",
+	  "騎士級",
+	  "夜空級",
+	  "微光級",
+	  "星光級",
+	  "星屑級",
+	  "皓月級",
+	  "炎陽級",
+	  "域主級",
+	  "宙王級",
+	  "不朽",
+	],
+	need: {
+		"學徒級": null,
+		"騎士級": {
+			"母星通行證": {
+				amount: 1,
+				data: items.data["母星通行證"]
+			}
+		}
+	}
+};
 
 module.exports = {
   typesList: [
-    "基本型",
-    "強襲型",
-    "潛伏型",
-    "指揮型",
-    "裝甲型"
+		"駭客",
+		"領航者",
+		"傀儡師",
+		"暗殺者",
+		"刻印師",
+		"控能師",
+		"藥劑師",
+		"槍砲師"
   ],
   types: {
-    "基本型": {
-      upgrade: {
-        // 血量都一樣
-        // 會等差的是公差
-        // 這裡是等差的公差
-        HEA: 0,
-        STR: 2,
-        SOR: 2,
-        VIT: 2,
-        INT: 2,
-        VEL: 2
-      }
-    },
-    "強襲型": {
+    "駭客": {
+			description: "可破解星艦或電子設備的防火牆，較高級者甚至能搶奪其掌控權",
       upgrade: {
         HEA: 0,
-        STR: 4,
-        SOR: 1,
-        VIT: 1,
-        INT: 1,
-        VEL: 3
+        STR: 0,
+        SOR: 0,
+        VIT: 0,
+        INT: 0,
+        VEL: 0
       }
     },
-    "潛伏型": {
+		"領航者": {
+			description: "可御駛星艦",
       upgrade: {
         HEA: 0,
-        STR: 1,
-        SOR: 3,
-        VIT: 1,
-        INT: 1,
-        VEL: 4
+        STR: 0,
+        SOR: 0,
+        VIT: 0,
+        INT: 0,
+        VEL: 0
       }
     },
-    "指揮型": {
+		"傀儡師": {
+			description: "擁有操控類技能",
       upgrade: {
         HEA: 0,
-        STR: 1,
-        SOR: 3,
-        VIT: 1,
-        INT: 4,
-        VEL: 1
+        STR: 0,
+        SOR: 0,
+        VIT: 0,
+        INT: 0,
+        VEL: 0
       }
     },
-    "裝甲型": {
+		"暗殺者": {
+			description: "擁有潛行類技能",
       upgrade: {
         HEA: 0,
-        STR: 3,
-        SOR: 1,
-        VIT: 4,
-        INT: 1,
-        VEL: 1
+        STR: 0,
+        SOR: 0,
+        VIT: 0,
+        INT: 0,
+        VEL: 0
       }
     },
+		"刻印師": {
+			description: "擁有製造類技能",
+      upgrade: {
+        HEA: 0,
+        STR: 0,
+        SOR: 0,
+        VIT: 0,
+        INT: 0,
+        VEL: 0
+      }
+    },
+		"控能師": {
+			description: "擁有能量控制類技能",
+      upgrade: {
+        HEA: 0,
+        STR: 0,
+        SOR: 0,
+        VIT: 0,
+        INT: 0,
+        VEL: 0
+      }
+    },
+		"藥劑師": {
+			description: "擁有修補、治癒類技能",
+      upgrade: {
+        HEA: 0,
+        STR: 0,
+        SOR: 0,
+        VIT: 0,
+        INT: 0,
+        VEL: 0
+      }
+    },
+		"槍砲師": {
+			description: "擁有槍砲類技能 ",
+      upgrade: {
+        HEA: 0,
+        STR: 0,
+        SOR: 0,
+        VIT: 0,
+        INT: 0,
+        VEL: 0
+      }
+    }
   },
   attribute: attribute,
+	classes: classes,
   status: {
     "BURN_": {
       name: "燒傷",

@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 const { Users } = require('./../../_models_.js');
 const { area, errorEmbed, log } = require('./../../_functions_.js');
+const { Player: { typesList } } = require('./../../_enum_.js');
 const { loadUser } = require('./../../_database_.js');
 const config = require('./../../config.json');
 const { coinName } = require('./../../setting.json');
@@ -41,6 +42,7 @@ module.exports = {
         }
         let info =
           `**所在區域 -\\ ${a[0]} ${a[1]} \\ **
+						職業 － ${typesList[user.type]}
 				    等級 － ${user.level}
 				    經驗 － ${user.xp} / ${user.reqxp}`;
 

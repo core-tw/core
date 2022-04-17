@@ -43,9 +43,6 @@ module.exports = {
 }
 ```
 
-# 提醒事項
-- 冒險指令冷卻要改回15秒
-
 # embed備忘
 ```js
 // at the top of your file
@@ -77,3 +74,9 @@ channel.send({ embeds: [exampleEmbed] });
 a = x/10  - [x/10]
 
 y = 0.5 × [x/10] × (20×a^4 + 10×[x/10] + [x])
+
+# UUID規範
+1. 位置，星球=星球，地區=星球 + 地區
+2. 物品，物品=分類 + 物品
+3. 小怪，星球 + 地區 + 小怪
+

@@ -1,7 +1,6 @@
 {
 	"母星通行證": {
 		"UUID": "母星通行證_",
-		"type": "card",
 		"forSale": null,
 		"volume": 1,
 		"description": "可在母星大部分的地方自由移動",

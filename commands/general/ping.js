@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const { log } = require('./../../_functions_.js');
 const config = require('./../../config.json');
 
 // 延遲

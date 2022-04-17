@@ -1,12 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 const { Users } = require('./../../_models_.js');
 const { log } = require('./../../_functions_.js');
-const {
-  Maps,
-  Player,
-  GameInfo,
-  UUID_PREFIX
-} = require('./../../_enum_.js');
+const { Maps, Player, GameInfo, UUID_PREFIX } = require('./../../_enum_.js');
 const config = require('./../../config.json');
 
 // 為遊戲註冊帳號
@@ -19,7 +14,7 @@ module.exports = {
   minArgs: 0,
   maxArgs: 0,
   level: null,
-  cooldown: 60000,
+  cooldown: 60,
   requireItems: [],
   requireBotPermissions: ["MANAGE_MESSAGES"],
   async execute(msg, args, client, user) {
@@ -97,9 +92,9 @@ module.exports = {
         max: 1,
         time: 120000,
         errors: ['time']
-      }).catch(err => { });
+      }).catch(err => {});
 
-      // 機型
+      // 職業
       filter = (reaction, user) => {
         if (user.id === msg.author.id) {
           let cases = {
@@ -107,9 +102,12 @@ module.exports = {
             '2️⃣': 1,
             '3️⃣': 2,
             '4️⃣': 3,
-            '5️⃣': 4
+            '5️⃣': 4,
+						'6️⃣': 5,
+						'7️⃣': 6,
+						'8️⃣': 7
           }
-          if (cases[reaction.emoji.name]) {
+          if (typeof cases[reaction.emoji.name] !== "undefined") {
             player['type'] = cases[reaction.emoji.name];
             return true;
           }
@@ -124,7 +122,7 @@ module.exports = {
         .setDescription(
           `暱稱 - **${player['name']}**\n` +
           `性別 - **${player['male'] ? "男性" : "女性"}**\n` +
-          `請反應下的表情符號決定機型` +
+          `請反應下的表情符號決定職業` +
           types
         )
         .setTimestamp();
@@ -134,6 +132,9 @@ module.exports = {
       await m.react('3️⃣');
       await m.react('4️⃣');
       await m.react('5️⃣');
+			await m.react('6️⃣');
+			await m.react('7️⃣');
+			await m.react('8️⃣');
       await m.edit({
         embeds: [embed]
       });
@@ -150,7 +151,7 @@ module.exports = {
         .setDescription(
           `暱稱 - **${player['name']}**\n` +
           `性別 - **${player['male'] ? "男性" : "女性"}**\n` +
-          `機型 - **${Player.typesList[player.type]}**` +
+          `職業 - **${Player.typesList[player.type]}**` +
           GameInfo.data
         )
         .setFooter({
@@ -176,7 +177,6 @@ module.exports = {
       });
 
       newUser.save();
-
     } catch (err) {
       console.log(err);
       log(client, err.toString());

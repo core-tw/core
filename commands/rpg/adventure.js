@@ -2,6 +2,8 @@ const { MessageEmbed } = require('discord.js');
 const { Users } = require('./../../_models_.js');
 const { area, errorEmbed, log, random, wait, generate } = require('./../../_functions_.js');
 const { Creatures, Maps, Player: { attribute } } = require('./../../_enum_.js');
+const { addItems } = require('./../../_database_.js');
+const { items: { UUID : itemUUID } } = require('./../../_objects_.js');
 const config = require('./../../config.json');
 const { dodgeLikelihood, allDodgeLikelihood } = require('./../../setting.json');
 const chance = new require('chance')();
@@ -43,7 +45,9 @@ module.exports = {
           })
           .setTimestamp();
 				if(field) {
-					embed.setFields(field);
+					for(let i in field) {
+						embed.addField(field[i].name, field[i].vaule);
+					}
 				}
         return embed;
       }
@@ -140,17 +144,25 @@ module.exports = {
       }
 
       if (user.stat.HEA <= 0) {
-        channel.send(`<死亡>`);
+        channel.send(`您遇到一隻${monsterName}，但輸掉了這場戰鬥`);
+				user.save();
         return;
       }
       // await wait(3000);
-      // 戰利品處理
+
+			// 戰利品處理
       let items = [];
       for (let i in monster.falls) {
         if (chance.bool({ likelihood: monster.falls[i].rate })) {
-          items.push(i);
+					items.push(i);
+					// 預存UUID
+					let UUID = itemUUID + monster.falls[i].data.UUID;
+					await addItems(user, UUID, 1);
         }
       }
+
+
+			// 待改
 			if(items.length > 0) {
 				channel.send(`戰利品: ${items.join("、")}`);
 			}
@@ -167,6 +179,7 @@ module.exports = {
         `def - ${_player.def}\n` +
         `dodge-${_player.dodge}`
       );
+			user.save();
     } catch (err) {
       console.log(err);
       log(client, err.toString());

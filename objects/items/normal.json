@@ -1,1 +1,16 @@
-{}
+{
+	"電晶體": {
+		"UUID": "電晶體_",
+		"forSale": null,
+		"volume": 1,
+		"description": "可以承受超高強度的運算，常被使用在量子系統之中",
+		"boost": {
+			"HEA": null,
+			"SOR": null,
+			"STR": null,
+			"VIT": null,
+			"INT": null,
+			"VEL": null
+		}
+	}
+}

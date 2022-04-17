@@ -133,70 +133,19 @@ client.on('messageCreate', async msg => {
     timestamps.set(author.id, now);
     setTimeout(() => timestamps.delete(author.id), cooldownAmount);
 
-    const user = await loadUser(author.id)
+    const user = await loadUser(author.id);
 
     if (user) {
+			// 偵測死亡
+			if (user.stat.HEA <= 0) {
+				dead(user);
+				user.save();
+				return
+			}
+			
       // 偵測物件
     }
     await cmd.execute(msg, args, client, user);
-    const updateUser = await loadUser(author.id);
-
-    if (updateUser) {
-      // 玩家死亡
-      if (updateUser.stat.HEA <= 0) {
-        let r_coin = coinToDetain * updateUser.level;
-        let byBank = false;
-        let byXp = false;
-        updateUser.stat.HEA = updateUser.stat.tHEA;
-        updateUser.planet = UUID_PREFIX['Maps'] + Maps['planet']['母星'].UUID;
-        updateUser.area = updateUser.planet + Maps['planet']['母星']['area']['韋瓦恩'].UUID;
-
-        if (updateUser.coin >= r_coin) {
-          updateUser.coin -= r_coin;
-        } else {
-          if (updateUser.bank && updateUser.bank.coin >= r_coin) {
-            byBank = true;
-            updateUser.bank.coin -= r_coin;
-          } else {
-            byXp = true;
-            updateUser.xp -= r_coin * 100;
-          }
-        }
-
-        // 生成句子
-        let str = Reactions.sentences[
-          Math.floor(Math.random() * Reactions.sentence.length)
-        ];
-        str
-          .replace(Reactions.tags.name, updateUser.name)
-          .replace(Reactions.tags.gender, updateUser.male ? "男子" : "女子");
-
-        msg.channel.send(str);
-      }
-
-
-      // 玩家升級
-      if (updateUser.xp >= updateUser.reqxp) {
-        updateUser.level += 1;
-
-        updateUser.xp = 0;
-        updateUser.reqxp *= xpIncreaseRate;
-
-        let L = updateUser.level / 10;
-        let fL = floor(L);
-        let a = (L - fL);
-        updateUser.stat.tHEA = (updateUser.level <= 10) ? (100 + updateUser.level) : (0.5 * fL * ((20 * pow(a, 2)) + 10 * fL + updateUser.level)) + 100;
-
-        let upgrade = Player.types[Player.typesList[updateUser.type]].upgrade;
-        updateUser.stat.tSOR += upgrade.SOR;
-        updateUser.stat.tSTR += upgrade.STR;
-        updateUser.stat.tVIT += upgrade.VIT;
-        updateUser.stat.tINT += upgrade.INT;
-        updateUser.stat.tVEL += upgrade.VEL;
-      }
-
-      await updateUser.save();
-    }
   } catch (err) {
     log(client, err.toString());
   } finally {
@@ -204,6 +153,38 @@ client.on('messageCreate', async msg => {
   }
 });
 
+
 client.login(process.env.token);
 
 module.exports = client;
+
+const dead = (user) => {
+	let r_coin = setting.coinToDetain * user.level;
+  let byBank = false;
+  let byXp = false;
+	
+  user.stat.HEA = user.stat.tHEA;
+  user.planet = UUID_PREFIX['Maps'] + Maps['planet']['母星'].UUID;
+  user.area = user.planet + Maps['planet']['母星']['area']['韋瓦恩'].UUID;
+
+  if (user.coin >= r_coin) {
+    user.coin -= r_coin;
+  } else {
+    if (user.bank && user.bank.coin >= r_coin) {
+      byBank = true;
+      user.bank.coin -= r_coin;
+    } else {
+      byXp = true;
+      user.xp -= r_coin * 100;
+    }
+  }
+	
+	// 生成句子
+  let str = Reactions.sentences[
+    Math.floor(Math.random() * Reactions.sentence.length)
+  ];
+  str.replace(Reactions.tags.name, updateUser.name)
+    .replace(Reactions.tags.gender, updateUser.male ? "男子" : "女子");
+
+  msg.channel.send(str);
+}
