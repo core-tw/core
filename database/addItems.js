@@ -17,7 +17,7 @@ module.exports = async (user, itemUUID, num) => {
 		}
 
 		// 沒有item
-    item = new Item({
+    item = new Items({
       owmer: user._id,
       itemId: itemUUID,
     });
@@ -27,8 +27,7 @@ module.exports = async (user, itemUUID, num) => {
 		item.amount += num;
 		item.save();
 		user.items.push(item._id);
-		return true;
-    
+	
 		return true;
   } catch (err) {
 		console.log(err)

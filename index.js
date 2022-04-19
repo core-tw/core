@@ -142,7 +142,6 @@ client.on('messageCreate', async msg => {
 				user.save();
 				return
 			}
-			
       // 偵測物件
     }
     await cmd.execute(msg, args, client, user);

@@ -14,7 +14,7 @@ module.exports = {
   description: '查看升級所需的晶玉和材料',
   minArgs: 0,
   maxArgs: 0,
-  level: null,
+  level: 1,
   cooldown: 10,
   requireItems: [],
   requireBotPermissions: [],

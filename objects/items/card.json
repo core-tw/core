@@ -1,9 +1,37 @@
 {
+	"公民證": {
+		"UUID": "公民證_",
+		"forSale": null,
+		"volume": 1,
+		"description": "帝國公民身分的證明",
+		"boost": {
+			"HEA": null,
+			"SOR": null,
+			"STR": null,
+			"VIT": null,
+			"INT": null,
+			"VEL": null
+		}
+	},
 	"母星通行證": {
 		"UUID": "母星通行證_",
 		"forSale": null,
 		"volume": 1,
 		"description": "可在母星大部分的地方自由移動",
+		"boost": {
+			"HEA": null,
+			"SOR": null,
+			"STR": null,
+			"VIT": null,
+			"INT": null,
+			"VEL": null
+		}
+	},
+	"測試通行證": {
+		"UUID": "測試通行證_",
+		"forSale": 1,
+		"volume": 1,
+		"description": "測試用",
 		"boost": {
 			"HEA": null,
 			"SOR": null,

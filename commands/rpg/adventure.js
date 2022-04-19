@@ -1,7 +1,6 @@
 const { MessageEmbed } = require('discord.js');
-const { Users } = require('./../../_models_.js');
-const { area, errorEmbed, log, random, wait, generate } = require('./../../_functions_.js');
-const { Creatures, Maps, Player: { attribute } } = require('./../../_enum_.js');
+const { errorEmbed, log, random, wait, generate, getAreaByUUID } = require('./../../_functions_.js');
+const { Creatures, Maps } = require('./../../_enum_.js');
 const { addItems } = require('./../../_database_.js');
 const { items: { UUID : itemUUID } } = require('./../../_objects_.js');
 const config = require('./../../config.json');
@@ -53,7 +52,7 @@ module.exports = {
       }
 
       // 先取得玩家位置
-      let a = area.getArea(user.area);
+      let a = getAreaByUUID(user.area);
       if (!a) {
         errorEmbed(channel, author, null, config.error.no);
         return;
@@ -62,7 +61,7 @@ module.exports = {
       // 無生物
       let noCreatureName = null;
       if (!Creatures[a[0]]) noCreatureName = a[0];
-      if (Creatures[a[0]] && !Creatures[a[0]][a[1]]) noCreatureName = a[1];
+      if (!Maps['planet'][a[0]]['area'][a[1]]) noCreatureName = a[1];
 
       if (noCreatureName) {
         msg.reply({

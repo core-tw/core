@@ -2,12 +2,14 @@ const { MessageEmbed } = require('discord.js');
 const { Users } = require('./../../_models_.js');
 const { log } = require('./../../_functions_.js');
 const { Maps, Player, GameInfo, UUID_PREFIX } = require('./../../_enum_.js');
+const { addItems } = require('./../../_database_.js');
+const { items } = require('./../../_objects_.js');
 const config = require('./../../config.json');
 
 // 為遊戲註冊帳號
 module.exports = {
   num: 0,
-  name: ['遊戲開始', '開始遊戲', 'start', 's'],
+  name: ['遊戲開始', '開始遊戲', 'start'],
   type: "general",
   expectedArgs: '',
   description: '開始冒險吧～',
@@ -152,7 +154,7 @@ module.exports = {
           `暱稱 - **${player['name']}**\n` +
           `性別 - **${player['male'] ? "男性" : "女性"}**\n` +
           `職業 - **${Player.typesList[player.type]}**` +
-          GameInfo.data
+					GameInfo.data
         )
         .setFooter({
           text: ""
@@ -175,7 +177,13 @@ module.exports = {
           Maps['planet']['母星'].UUID +
           Maps['planet']['母星']['area']['韋瓦恩'].UUID,
       });
-
+			let itemToGive = "公民證";
+			let res = await addItems(newUser, items.UUID + items.data["公民證"].UUID, 1);
+			if(res) {
+				msg.channel.send(`**< 已獲得 ${itemToGive} >**`);
+			} else {
+				msg.channel.send(config.error.no);
+			}
       newUser.save();
     } catch (err) {
       console.log(err);

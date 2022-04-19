@@ -1,10 +1,9 @@
 const { MessageEmbed } = require('discord.js');
-const { Users } = require('./../../_models_.js');
-const { area, errorEmbed, log } = require('./../../_functions_.js');
+const { errorEmbed, getAreaByUUID, log } = require('./../../_functions_.js');
 const { Player: { typesList } } = require('./../../_enum_.js');
 const { loadUser } = require('./../../_database_.js');
 const config = require('./../../config.json');
-const { coinName } = require('./../../setting.json');
+const { coinName, xpName } = require('./../../setting.json');
 
 /* 個人面板
 */
@@ -35,7 +34,7 @@ module.exports = {
       const { author, channel } = msg;
 
       const createEmbed = (user, icon) => {
-        let a = area.getArea(user.area);
+        let a = getAreaByUUID(user.area);
         if (!a) {
           errorEmbed(channel, author, null, config.error.no);
           return;
@@ -44,14 +43,16 @@ module.exports = {
           `**所在區域 -\\ ${a[0]} ${a[1]} \\ **
 						職業 － ${typesList[user.type]}
 				    等級 － ${user.level}
-				    經驗 － ${user.xp} / ${user.reqxp}`;
+						轉換率 － ${(user.level*(user.stat.HEA/user.stat.tHEA)).toFixed(3)}%
+				    ${xpName} － ${user.xp} / ${user.reqxp}`;
+						
 
         let body = `
 					⨢血⨢ - ${user.stat.HEA} / ${user.stat.tHEA}
-			      	⨢靈⨢ - ${user.stat.SOR} / ${user.stat.tSOR}
-			      	⨢勢⨢ - ${user.stat.STR} / ${user.stat.tVEL}
-			      	⨢體⨢ - ${user.stat.VIT} / ${user.stat.tVEL}
-			      	⨢睿⨢ - ${user.stat.INT} / ${user.stat.tVEL}
+			    ⨢靈⨢ - ${user.stat.SOR} / ${user.stat.tSOR}
+			    ⨢勢⨢ - ${user.stat.STR} / ${user.stat.tVEL}
+			    ⨢體⨢ - ${user.stat.VIT} / ${user.stat.tVEL}
+			    ⨢睿⨢ - ${user.stat.INT} / ${user.stat.tVEL}
 					⨢迅⨢ - ${user.stat.VEL} / ${user.stat.tVEL}
 			
 			      	**${coinName}** - ${user.coin}`;

@@ -1,6 +1,4 @@
-const { MessageEmbed } = require('discord.js');
-const { Users } = require('./../../_models_.js');
-const { area, errorEmbed, log } = require('./../../_functions_.js');
+const { errorEmbed, log } = require('./../../_functions_.js');
 const { loadUser } = require('./../../_database_.js');
 const config = require('./../../config.json');
 const { coinName } = require('./../../setting.json');

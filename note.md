@@ -39,7 +39,7 @@ module.exports = {
 			console.log(err);
 			log(client, err.toString());
 		}
-  	}
+  }
 }
 ```
 
