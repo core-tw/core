@@ -1,18 +1,26 @@
-const { MessageEmbed } = require('discord.js');
-const { Users } = require('./../../_models_.js');
-const { log } = require('./../../_functions_.js');
-const { Maps, Player, GameInfo, UUID_PREFIX } = require('./../../_enum_.js');
-const { addItems } = require('./../../_database_.js');
-const { items } = require('./../../_objects_.js');
-const config = require('./../../config.json');
+const { MessageEmbed } = require("discord.js");
+const {
+	database: {
+		addItems
+	},
+	Enum: { Maps, Player, GameInfo, UUID_PREFIX },
+	functions: {
+		log
+	},
+	models: {
+		Users
+	}
+} = require("./../../lib/index.js");
+const { items } = require("./../../objects/index.js")
+const config = require("./../../config/setting.json");
 
 // 為遊戲註冊帳號
 module.exports = {
   num: 0,
-  name: ['遊戲開始', '開始遊戲', 'start'],
+  name: ["遊戲開始", "開始遊戲", "start"],
   type: "general",
-  expectedArgs: '',
-  description: '開始冒險吧～',
+  expectedArgs: ",
+  description: "開始冒險吧～",
   minArgs: 0,
   maxArgs: 0,
   level: null,
@@ -21,7 +29,7 @@ module.exports = {
   requireBotPermissions: ["MANAGE_MESSAGES"],
   async execute(msg, args, client, user) {
     try {
-      msg.react('✅');
+      msg.react("✅");
       if (user) {
         msg.reply({
           content: `您已經擁有帳戶了喔`,
@@ -53,7 +61,7 @@ module.exports = {
       // 姓名
       let filter = (m) => {
         if (m.author.id === msg.author.id) {
-          player['name'] = m.content;
+          player["name"] = m.content;
           m.delete();
           return true;
         }
@@ -63,17 +71,17 @@ module.exports = {
         filter: filter,
         max: 1,
         time: 120000,
-        errors: ['time']
+        errors: ["time"]
       }).catch(err => { });
 
       // 性別
       filter = (reaction, user) => {
         if (user.id === msg.author.id) {
           if (reaction.emoji.name == "♂️") {
-            player['male'] = true;
+            player["male"] = true;
             return true;
           } else if (reaction.emoji.name == "♀️") {
-            player['male'] = false;
+            player["male"] = false;
             return true;
           }
         }
@@ -81,11 +89,11 @@ module.exports = {
       }
       embed
         .setDescription(
-          `暱稱 - **${player['name']}**\n` +
+          `暱稱 - **${player["name"]}**\n` +
           `請反應下的表情符號決定性別 ♂️／♀️`)
         .setTimestamp();
-      await m.react('♂️');
-      await m.react('♀️');
+      await m.react("♂️");
+      await m.react("♀️");
       await m.edit({
         embeds: [embed]
       });
@@ -93,24 +101,24 @@ module.exports = {
         filter: filter,
         max: 1,
         time: 120000,
-        errors: ['time']
+        errors: ["time"]
       }).catch(err => {});
 
       // 職業
       filter = (reaction, user) => {
         if (user.id === msg.author.id) {
           let cases = {
-            '1️⃣': 0,
-            '2️⃣': 1,
-            '3️⃣': 2,
-            '4️⃣': 3,
-            '5️⃣': 4,
-						'6️⃣': 5,
-						'7️⃣': 6,
-						'8️⃣': 7
+            "1️⃣": 0,
+            "2️⃣": 1,
+            "3️⃣": 2,
+            "4️⃣": 3,
+            "5️⃣": 4,
+						"6️⃣": 5,
+						"7️⃣": 6,
+						"8️⃣": 7
           }
           if (typeof cases[reaction.emoji.name] !== "undefined") {
-            player['type'] = cases[reaction.emoji.name];
+            player["type"] = cases[reaction.emoji.name];
             return true;
           }
         }
@@ -122,21 +130,21 @@ module.exports = {
       }
       embed
         .setDescription(
-          `暱稱 - **${player['name']}**\n` +
-          `性別 - **${player['male'] ? "男性" : "女性"}**\n` +
+          `暱稱 - **${player["name"]}**\n` +
+          `性別 - **${player["male"] ? "男性" : "女性"}**\n` +
           `請反應下的表情符號決定職業` +
           types
         )
         .setTimestamp();
       await m.reactions.removeAll();
-      await m.react('1️⃣');
-      await m.react('2️⃣');
-      await m.react('3️⃣');
-      await m.react('4️⃣');
-      await m.react('5️⃣');
-			await m.react('6️⃣');
-			await m.react('7️⃣');
-			await m.react('8️⃣');
+      await m.react("1️⃣");
+      await m.react("2️⃣");
+      await m.react("3️⃣");
+      await m.react("4️⃣");
+      await m.react("5️⃣");
+			await m.react("6️⃣");
+			await m.react("7️⃣");
+			await m.react("8️⃣");
       await m.edit({
         embeds: [embed]
       });
@@ -144,15 +152,15 @@ module.exports = {
         filter: filter,
         max: 1,
         time: 120000,
-        errors: ['time']
+        errors: ["time"]
       }).catch(err => { });
 
       // 結束
       embed
         .setTitle(``)
         .setDescription(
-          `暱稱 - **${player['name']}**\n` +
-          `性別 - **${player['male'] ? "男性" : "女性"}**\n` +
+          `暱稱 - **${player["name"]}**\n` +
+          `性別 - **${player["male"] ? "男性" : "女性"}**\n` +
           `職業 - **${Player.typesList[player.type]}**` +
 					GameInfo.data
         )
@@ -166,16 +174,16 @@ module.exports = {
       });
       let newUser = new Users({
         userId: msg.author.id,
-        name: player['name'] || msg.author.tag,
-        male: player['male'],
-        type: player['type'],
+        name: player["name"] || msg.author.tag,
+        male: player["male"],
+        type: player["type"],
         planet:
-          UUID_PREFIX['Maps'] +
-          Maps['planet']['母星'].UUID,
+          UUID_PREFIX["Maps"] +
+          Maps["planet"]["母星"].UUID,
         area:
-          UUID_PREFIX['Maps'] +
-          Maps['planet']['母星'].UUID +
-          Maps['planet']['母星']['area']['韋瓦恩'].UUID,
+          UUID_PREFIX["Maps"] +
+          Maps["planet"]["母星"].UUID +
+          Maps["planet"]["母星"]["area"]["韋瓦恩"].UUID,
       });
 			let itemToGive = "公民證";
 			let res = await addItems(newUser, items.UUID + items.data["公民證"].UUID, 1);

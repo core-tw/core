@@ -4,13 +4,34 @@
 		"forSale": null,
 		"volume": 1,
 		"description": "可以承受超高強度的運算，常被使用在量子系統之中",
-		"boost": {
-			"HEA": null,
-			"SOR": null,
-			"STR": null,
-			"VIT": null,
-			"INT": null,
-			"VEL": null
-		}
+		"boost": null
+	},
+	"幾丁質甲殼": {
+		"UUID": "幾丁質甲殼_",
+		"forSale": null,
+		"volume": 3,
+		"description": "很輕，堅硬度不亞於鋼鐵的生物甲殼，有些不法份子會穿上以作為裝甲的替代品",
+		"boost": null
+	},
+	"赤晶體": {
+		"UUID": "赤晶體_",
+		"forSale": null,
+		"volume": 1,
+		"description": "",
+		"boost": null
+	},
+	"冰源能晶": {
+		"UUID": "冰源能晶_",
+		"forSale": null,
+		"volume": 1,
+		"description": "",
+		"boost": null
+	},
+	"墨鋼": {
+		"UUID": "墨鋼_",
+		"forSale": null,
+		"volume": 1,
+		"description": "",
+		"boost": null
 	}
 }

@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
-const { log } = require('./../../_functions_.js');
-const config = require('./../../config.json');
+const { functions: { log } } = require('./../../lib/index.js');
+const config = require('./../../config/setting.json');
 
 // 延遲
 module.exports = {

@@ -1,0 +1,44 @@
+{
+	"prefix": "!",
+	"embedColor": {
+		"normal": "#0080FF",
+		"error": "#ff0000"
+	},
+	"error": {
+		"no": "**< 未知的系統錯誤，請聯絡 櫻2#0915 >**",
+		"notFindUser": "**< 未知的公民序號 >**",
+  	"notFindSkill":"**< 未知的技能序號 >**"
+	},
+	"allowedMentions": { 
+		"repliedUser": false 
+	},
+	"coinName": "晶玉",
+	"xpName": "生體轉換",
+	"xpIncreaseRate": 1.1,
+	"coinToDetain": 500,
+	"dodgeLikelihood": 0.2,
+	"allDodgeLikelihood": 0.1,
+	"shop": [
+		{
+			"potion": "藥水"
+		},
+		{
+			"material": "素材"
+		},
+		{
+			"weapon": "武裝"
+		},
+		{
+			"card": "通行證"
+		},
+		{
+			"increase": "增幅道具"
+		},
+		{
+			"guard": "守護道具"
+		},
+		{
+			"others": "其他"
+		}
+	]
+}

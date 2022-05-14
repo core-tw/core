@@ -20,7 +20,7 @@ module.exports = {
   minArgs: 0,
   maxArgs: 0,
   level: 1,
-  cooldown: 0,//15,
+  cooldown: 120,
   requireItems: [],
   requireBotPermissions: [],
   async execute(msg, args, client, user) {
@@ -34,7 +34,7 @@ module.exports = {
         return;
       }
       const { author, channel } = msg;
-      const createEmbed = (title, content = "", field = null) => {
+      const createEmbed = (title, content = "") => {
         let embed = new MessageEmbed()
           .setTitle(title)
           .setColor(config.embedColor.normal)
@@ -43,11 +43,6 @@ module.exports = {
             text: author.tag
           })
           .setTimestamp();
-				if(field) {
-					for(let i in field) {
-						embed.addField(field[i].name, field[i].vaule);
-					}
-				}
         return embed;
       }
 
@@ -58,15 +53,13 @@ module.exports = {
         return;
       }
 
-      // 無生物
-      let noCreatureName = null;
-      if (!Creatures[a[0]]) noCreatureName = a[0];
-      if (!Maps['planet'][a[0]]['area'][a[1]]) noCreatureName = a[1];
+			let creatures = Maps['planet'][a[0]]['area'][a[1]]['creatures'];
 
-      if (noCreatureName) {
+      // 無生物
+      if (!creatures) {
         msg.reply({
           embeds: [
-            createEmbed(`${noCreatureName}似乎沒有任何生物呢......`)
+            createEmbed(`${a[1]}似乎沒有任何生物呢......`)
           ],
           allowedMentions: config.allowedMentions
         });
@@ -74,8 +67,8 @@ module.exports = {
       }
 
       // 有機率找不到生物
-      let rateToAppear = Maps['planet'][a[0]]['area'][a[1]]['rate'] || 0;
-      if (random(100) >= rateToAppear) {
+      let rateToAppear = Maps['planet'][a[0]]['area'][a[1]]['creatureRate'] || 0;
+      if (!chance.bool({ likelihood: rateToAppear })) {
         await wait(5000);
         msg.reply({
           embeds: [
@@ -87,12 +80,12 @@ module.exports = {
       }
 
       // 隨機生物
-      let monsters = Object.keys(Creatures[a[0]][a[1]]);
+      let monsters = Object.keys(creatures);
       let monsterName = monsters[random(monsters.length)];
-      let monster = Creatures[a[0]][a[1]][monsterName];
+      let monster = creatures[monsterName];
 
       // 生物有機會直接逃跑
-      if (random(100) >= monster['rate']) {
+      if (!chance.bool({ likelihood: monster['rate'] })) {
         await wait(5000);
         msg.reply({
           embeds: [
@@ -103,7 +96,7 @@ module.exports = {
         return;
       }
 
-      let _monster = generate.monster(monster, user.level);
+      let _monster = generate.monster(monster.data, user.level);
 
       let pa = (user.stat.STR * 6 / 8) + (user.stat.VIT / 8) + (user.stat.INT / 8);
       pa = (pa * 2 / 3) + ((user.stat.HEA / user.stat.tHEA) / 3);
@@ -143,41 +136,60 @@ module.exports = {
       }
 
       if (user.stat.HEA <= 0) {
-        channel.send(`您遇到一隻${monsterName}，但輸掉了這場戰鬥`);
+				await wait(4000);
+				msg.reply({
+          embeds: [
+            createEmbed(`您遇到一隻${monsterName}，但輸掉了這場戰鬥`)
+          ],
+          allowedMentions: config.allowedMentions
+        });
 				user.save();
         return;
       }
-      // await wait(3000);
+      
+			await wait(3000);
 
 			// 戰利品處理
       let items = [];
-      for (let i in monster.falls) {
-        if (chance.bool({ likelihood: monster.falls[i].rate })) {
-					items.push(i);
+      for (let i in monster.data.falls) {
+        if (chance.bool({ likelihood: monster.data.falls[i].rate })) {
+					let num = Math.round(Math.random() * (monster.data.falls[i].maxFall - 1)) + 1;
+					items.push({
+						name: i,
+						amount: num
+					});
 					// 預存UUID
-					let UUID = itemUUID + monster.falls[i].data.UUID;
-					await addItems(user, UUID, 1);
+					let UUID = itemUUID + monster.data.falls[i].data.UUID;
+					await addItems(user, UUID, num);
         }
       }
 
-
-			// 待改
+			let finalEmbed = createEmbed(
+				monsterName,
+				`等級 － ${_monster.lv}\n` +
+				`生命 － ${_monster.hp}\n` +
+				`攻擊 － ${_monster.atk}\n` +
+				`防禦 － ${_monster.def}\n` +
+				`閃避 － ${_monster.dodge}`
+			);
+			let itemEmbed = null
 			if(items.length > 0) {
-				channel.send(`戰利品: ${items.join("、")}`);
+				itemEmbed = createEmbed("戰利品");
+				for(let i in items) {
+					itemEmbed.addField(items[i].name, `數量 － ${items[i].amount}`)
+				}
 			}
 
-      channel.send(
-        `${monsterName}\n` +
-        `lv - ${_monster.lv}\n` +
-        `hp - ${_monster.hp}\n` +
-        `atk - ${_monster.atk}\n` +
-        `def - ${_monster.def}\n` +
-        `dodge-${_monster.dodge}\n==========\n我方\n` +
-        `hp - ${user.stat.HEA} / ${user.stat.tHEA}\n` +
-        `atk - ${_player.atk}\n` +
-        `def - ${_player.def}\n` +
-        `dodge-${_player.dodge}`
-      );
+			await msg.reply({
+        embeds: [finalEmbed],
+        allowedMentions: config.allowedMentions
+			});
+			if(itemEmbed) {
+				await msg.channel.send({
+	        embeds: [itemEmbed]
+				});
+			}
+			
 			user.save();
     } catch (err) {
       console.log(err);

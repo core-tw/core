@@ -1,19 +1,20 @@
 const fs = require('fs');
 const express = require('express');
-const config = require('./config.json');
-const setting = require('./setting.json');// 重要常數設定
+const { Client, Intents, Collection } = require('discord.js');
 
+const config = require("./config.js");
+const { database: { connect }} = require("./lib/index.js");
+/*
 const { log, errorEmbed } = require('./_functions_.js');
 const { Users, Items, Banks } = require('./_models_.js');
 const { Player, UUID_PREFIX, Maps, Reactions } = require('./_enum_.js');
 const { loadUser } = require('./_database_.js');
-const { Client, Intents, Collection } = require('discord.js');
 const { floor, random, round, pow } = Math;
+*/
 
 const app = express();
-const port = process.env.port || 3000;
 app.get('/', (req, res) => res.send('link start!'));
-app.listen(port, () => console.log(`連接至http://localhost:${port}`));
+app.listen(config.port, () => console.log(`連接至 https://core.coretw.repl.co:${config.port}`));
 
 const client = new Client({
   intents: [
@@ -23,22 +24,10 @@ const client = new Client({
   ]
 });
 
-client.commands = new Collection();
+// 指令冷卻的Collection
 client.cooldowns = new Collection();
 
-// 將指令添加進Collection
-let commandList = [];
-let commandFolders = fs.readdirSync('./commands');
-for (let folder of commandFolders) {
-  let commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
-  for (let file of commandFiles) {
-    let command = require(`./commands/${folder}/${file}`);
-    client.commands.set(command.num, command);
-    commandList.push(`${command.num}. ${command.name[0]}`);
-  }
-}
-
-// 檢查所有物品
+/* 檢查所有物品
 let itemList = [];
 let itemFiles = fs.readdirSync('./objects/items').filter(file => file.endsWith('.json'));
 for (let file of itemFiles) {
@@ -51,11 +40,12 @@ for (let file of itemFiles) {
     );
   }
 }
+*/
 
 client.on('ready', async () => {
-  console.clear();
-  console.log(config.console_prefix + "core 啟動中");
-  console.time(config.system_time);
+  //console.clear();
+  console.log(config["console_prefix"] + "core 啟動中");
+  console.time(config["system_time"]);
   await client.user.setPresence({
     status: "online"
   });
@@ -64,26 +54,18 @@ client.on('ready', async () => {
   });
 
   console.log(config.console_prefix + "連結至雲端資料庫");
-  mongoose = await require('./_database_.js').connect();
+  await connect();
 
-	console.log(config.console_prefix + "檢查指令");
-  commandList = commandList.sort((a, b) => {
-    return Number(a.split('.')[0]) - Number(b.split('.')[0]);
-  }).join('\n');
-  fs.writeFile('./check/commands.txt', commandList, (err) => {
-    if (err) console.log(err);
-	});
+	console.log(config.console_prefix + "正在生成指令");
+	// 將指令添加進Collection
+	client.commands = await require("./commands/index.js")();
+	console.log(config.console_prefix + "指令生成完畢，已輸入至 ./log/commands.txt");
 });
 
 
 client.on('messageCreate', async msg => {
-  let {
-    content,
-    author,
-    channel
-  } = msg;
-
   try {
+		let { author, channel, content } = msg;
     if (!content.startsWith(config.prefix)) return;
     if (author === client.user) return;
 
