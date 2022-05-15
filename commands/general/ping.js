@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { functions: { log } } = require('./../../lib/index.js');
-const config = require('./../../config/setting.json');
+const setting = require('./../../config/setting.json');
 
 // 延遲
 module.exports = {
@@ -21,11 +21,11 @@ module.exports = {
         embeds: [
           new MessageEmbed()
 			      .setTitle("Pong !")
-			      .setColor(config.embedColor.normal)
+			      .setColor(setting.embedColor.normal)
 			      .setDescription(`API Latency: ${Math.round(client.ws.ping)} ms\nLatency: ${Date.now() - msg.createdTimestamp} ms`)
 			      .setTimestamp()
         ],
-        allowedMentions: config.allowedMentions
+        allowedMentions: setting.allowedMentions
       }).then(() => {
 				msg.react('✅');
 			})

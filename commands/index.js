@@ -2,7 +2,6 @@
 const fs = require("fs");
 const path = require("path");
 const { Collection } = require("discord.js");
-const { console_prefix } = require("./../config.js");
 
 module.exports = () => {
 	return new Promise((resolve, reject) => {
@@ -10,7 +9,7 @@ module.exports = () => {
 		let commandList = [];
 		
 		let commandFolders = fs.readdirSync(__dirname).filter(f => {
-			 path.join(__dirname, f) !== __filename
+			return path.join(__dirname, f) !== __filename
 		});
 		
 		for (let folder of commandFolders) {

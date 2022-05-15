@@ -12,14 +12,14 @@ const {
 	}
 } = require("./../../lib/index.js");
 const { items } = require("./../../objects/index.js")
-const config = require("./../../config/setting.json");
+const setting = require("./../../config/setting.json");
 
 // 為遊戲註冊帳號
 module.exports = {
   num: 0,
   name: ["遊戲開始", "開始遊戲", "start"],
   type: "general",
-  expectedArgs: ",
+  expectedArgs: "",
   description: "開始冒險吧～",
   minArgs: 0,
   maxArgs: 0,
@@ -33,7 +33,7 @@ module.exports = {
       if (user) {
         msg.reply({
           content: `您已經擁有帳戶了喔`,
-          allowedMentions: config.allowedMentions
+          allowedMentions: setting.allowedMentions
         });
         return;
       }
@@ -45,7 +45,7 @@ module.exports = {
       };
       let embed = new MessageEmbed()
         .setTitle(`╠══╬══ Creating player ══╬══╣`)
-        .setColor(config.embedColor.normal)
+        .setColor(setting.embedColor.normal)
         .setAuthor({ name: msg.author.tag, iconURL: msg.author.displayAvatarURL() })
         .setThumbnail(msg.author.displayAvatarURL())
         .setDescription(`請直接輸入你的暱稱：`)
