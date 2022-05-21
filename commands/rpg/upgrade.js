@@ -1,17 +1,18 @@
-const { MessageEmbed } = require('discord.js');
-const { errorEmbed, getUpgNeed, log } = require('./../../_functions_.js');
-const { Player } = require('./../../_enum_.js');
-const { upgrade } = require('./../../_database_.js');
-const config = require('./../../config.json');
-const { coinName } = require('./../../setting.json');
+const { MessageEmbed } = require("discord.js");
+const {
+	database: { upgrade },
+	Enum: { Player },
+	functions: { errorEmbed, getUpgNeed, log }
+} = require("./../../lib/index.js");
+const setting = require("./../../config/setting.json");
 
 // 升級的面板
 module.exports = {
   num: 5,
-  name: ['升級', '生級面板', 'upgrade', 'upg'],
+  name: ["升級", "生級面板", "upgrade", "upg"],
   type: "rpg",
-  expectedArgs: '',
-  description: '查看升級所需的晶玉和材料',
+  expectedArgs: "",
+  description: "查看升級所需的晶玉和材料",
   minArgs: 0,
   maxArgs: 0,
   level: 1,
@@ -20,11 +21,11 @@ module.exports = {
   requireBotPermissions: [],
   async execute(msg, args, client, user) {
     try {
-      await msg.react('✅');
+      await msg.react("✅");
       if (!user) {
         msg.reply({
           content: `您還沒有帳戶喔`,
-          allowedMentions: config.allowedMentions
+          allowedMentions: setting.allowedMentions
         });
         return;
       }
@@ -32,7 +33,7 @@ module.exports = {
 			const createEmbed = (title, content = null, field = null, footer = null) => {
         let embed = new MessageEmbed()
           .setTitle(title)
-          .setColor(config.embedColor.normal)
+          .setColor(setting.embedColor.normal)
           .setTimestamp();
 			
 				if(content) embed.setDescription(content);
@@ -68,7 +69,7 @@ module.exports = {
 						value: needs
 					}], "🔥 升級｜💥升階")
 				],
-        allowedMentions: config.allowedMentions
+        allowedMentions: setting.allowedMentions
       }).then(async m => {
 				if(!bigUpgrade) {
 					await m.react("🔥");
@@ -89,7 +90,7 @@ module.exports = {
 									author.tag)
 								return true;
 							} else {
-								errorEmbed(channel, author, null, `您沒有那麼多${coinName}喔`);
+								errorEmbed(channel, author, null, `您沒有那麼多${setting.coinName}喔`);
 							}
 						}
 						if(reaction.emoji.name == "💥") {
@@ -98,7 +99,7 @@ module.exports = {
 								upgrade(user);
 								return true;
 							} else {
-								errorEmbed(channel, author, null, `您沒有那麼多${coinName}喔`);
+								errorEmbed(channel, author, null, `您沒有那麼多${setting.coinName}喔`);
 							}
 						}
 	        }
@@ -108,7 +109,7 @@ module.exports = {
 	        filter: filter,
 	        max: 1,
 	        time: 120000,
-	        errors: ['time']
+	        errors: ["time"]
 	      }).catch(err => {});	
 				user.save();
 			})

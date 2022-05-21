@@ -1,11 +1,13 @@
-const { MessageEmbed } = require('discord.js');
-const { errorEmbed, log, random, wait, generate, getAreaByUUID } = require('./../../_functions_.js');
-const { Creatures, Maps } = require('./../../_enum_.js');
-const { addItems } = require('./../../_database_.js');
-const { items: { UUID : itemUUID } } = require('./../../_objects_.js');
-const config = require('./../../config.json');
-const { dodgeLikelihood, allDodgeLikelihood } = require('./../../setting.json');
-const chance = new require('chance')();
+const { MessageEmbed } = require("discord.js");
+const {
+	database: { addItems },
+	Enum: { Creatures, Maps },
+	functions: { errorEmbed, log, random, wait, generate, getAreaByUUID },
+	models: { Users }
+} = require("./../../lib/index.js");
+const { items: { UUID : itemUUID } } = require("./../../objects/index.js");
+const setting = require("./../../config/setting.json");
+const chance = new require("chance")();
 
 /* 冒險指令
 	找到獵物=>延遲3秒
@@ -13,10 +15,10 @@ const chance = new require('chance')();
 */
 module.exports = {
   num: 1,
-  name: ['冒險', 'adventure', 'adv'],
+  name: ["冒險", "adventure", "adv"],
   type: "rpg",
-  expectedArgs: '',
-  description: '探索所在區域！',
+  expectedArgs: "",
+  description: "探索所在區域！",
   minArgs: 0,
   maxArgs: 0,
   level: 1,
@@ -25,11 +27,11 @@ module.exports = {
   requireBotPermissions: [],
   async execute(msg, args, client, user) {
     try {
-      await msg.react('✅');
+      await msg.react("✅");
       if (!user) {
         msg.reply({
           content: `您還沒有帳戶喔`,
-          allowedMentions: config.allowedMentions
+          allowedMentions: setting.allowedMentions
         });
         return;
       }
@@ -37,7 +39,7 @@ module.exports = {
       const createEmbed = (title, content = "") => {
         let embed = new MessageEmbed()
           .setTitle(title)
-          .setColor(config.embedColor.normal)
+          .setColor(setting.embedColor.normal)
           .setDescription(content)
           .setFooter({
             text: author.tag
@@ -49,11 +51,11 @@ module.exports = {
       // 先取得玩家位置
       let a = getAreaByUUID(user.area);
       if (!a) {
-        errorEmbed(channel, author, null, config.error.no);
+        errorEmbed(channel, author, null, setting.error.no);
         return;
       }
 
-			let creatures = Maps['planet'][a[0]]['area'][a[1]]['creatures'];
+			let creatures = Maps["planet"][a[0]]["area"][a[1]]["creatures"];
 
       // 無生物
       if (!creatures) {
@@ -61,20 +63,20 @@ module.exports = {
           embeds: [
             createEmbed(`${a[1]}似乎沒有任何生物呢......`)
           ],
-          allowedMentions: config.allowedMentions
+          allowedMentions: setting.allowedMentions
         });
         return;
       }
 
       // 有機率找不到生物
-      let rateToAppear = Maps['planet'][a[0]]['area'][a[1]]['creatureRate'] || 0;
+      let rateToAppear = Maps["planet"][a[0]]["area"][a[1]]["creatureRate"] || 0;
       if (!chance.bool({ likelihood: rateToAppear })) {
         await wait(5000);
         msg.reply({
           embeds: [
             createEmbed(`沒有發現到任何東西呢......`)
           ],
-          allowedMentions: config.allowedMentions
+          allowedMentions: setting.allowedMentions
         });
         return;
       }
@@ -85,13 +87,13 @@ module.exports = {
       let monster = creatures[monsterName];
 
       // 生物有機會直接逃跑
-      if (!chance.bool({ likelihood: monster['rate'] })) {
+      if (!chance.bool({ likelihood: monster["rate"] })) {
         await wait(5000);
         msg.reply({
           embeds: [
             createEmbed(`沒有發現到任何東西呢......`)
           ],
-          allowedMentions: config.allowedMentions
+          allowedMentions: setting.allowedMentions
         });
         return;
       }
@@ -120,8 +122,8 @@ module.exports = {
         // 玩家勝利，但可能死亡
         for (let i = 0; i < Math.round(_monster.hp / _player.damage); i++) {
           // 分次計算閃避
-          if (chance.bool({ likelihood: (_player.dodge / (_player.dodge + _monster.dodge)) * 100 * dodgeLikelihood })) {
-            if (!chance.bool({ likelihood: allDodgeLikelihood * 100 })) {
+          if (chance.bool({ likelihood: (_player.dodge / (_player.dodge + _monster.dodge)) * 100 * setting.dodgeLikelihood })) {
+            if (!chance.bool({ likelihood: setting.allDodgeLikelihood * 100 })) {
               // 減傷
               user.stat.HEA -= Math.floor(_monster.damage * (_player.dodge / (_player.dodge + _monster.dodge)));
             }
@@ -141,7 +143,7 @@ module.exports = {
           embeds: [
             createEmbed(`您遇到一隻${monsterName}，但輸掉了這場戰鬥`)
           ],
-          allowedMentions: config.allowedMentions
+          allowedMentions: setting.allowedMentions
         });
 				user.save();
         return;
@@ -182,7 +184,7 @@ module.exports = {
 
 			await msg.reply({
         embeds: [finalEmbed],
-        allowedMentions: config.allowedMentions
+        allowedMentions: setting.allowedMentions
 			});
 			if(itemEmbed) {
 				await msg.channel.send({

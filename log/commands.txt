@@ -1,2 +1,10 @@
 0. 遊戲開始 | 開始遊戲 | start
+1. 冒險 | adventure | adv
+2. 面板 | profile | p
+3. 給予 | give | g
 4. ping
+5. 升級 | 生級面板 | upgrade | upg
+6. 背包 | inventory | i
+7. 商店 | shop | store | s
+8. 傳送 | 轉移 | transfer | tr
+9. 挖礦 | mining | m

@@ -6,6 +6,7 @@ const {
 		log
 	},
 	database: {
+		dead,
 		loadUser
 	}
 } = require("./../lib/index.js");
@@ -73,7 +74,7 @@ module.exports = {
 	    if (user) {
 				// 偵測死亡
 				if (user.stat.HEA <= 0) {
-					//dead(user);
+					dead(msg, user);
 					user.save();
 					return
 				}
@@ -88,34 +89,3 @@ module.exports = {
 	  }
 	}
 }
-/*
-const dead = (user) => {
-	let r_coin = setting.coinToDetain * user.level;
-  let byBank = false;
-  let byXp = false;
-	
-  user.stat.HEA = user.stat.tHEA;
-  user.planet = UUID_PREFIX['Maps'] + Maps['planet']['母星'].UUID;
-  user.area = user.planet + Maps['planet']['母星']['area']['韋瓦恩'].UUID;
-
-  if (user.coin >= r_coin) {
-    user.coin -= r_coin;
-  } else {
-    if (user.bank && user.bank.coin >= r_coin) {
-      byBank = true;
-      user.bank.coin -= r_coin;
-    } else {
-      byXp = true;
-      user.xp -= r_coin * 100;
-    }
-  }
-	
-	// 生成句子
-  let str = Reactions.sentences[
-    Math.floor(Math.random() * Reactions.sentence.length)
-  ];
-  str.replace(Reactions.tags.name, updateUser.name)
-    .replace(Reactions.tags.gender, updateUser.male ? "男子" : "女子");
-
-  msg.channel.send(str);
-}*/

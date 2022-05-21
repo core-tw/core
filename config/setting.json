@@ -7,9 +7,9 @@
 	"error": {
 		"no": "**< 未知的系統錯誤，請聯絡 櫻2#0915 >**",
 		"notFindUser": "**< 未知的公民序號 >**",
-  	"notFindSkill":"**< 未知的技能序號 >**"
+  		"notFindSkill":"**< 未知的技能序號 >**"
 	},
-	"allowedMentions": { 
+	"allowedMentions": {
 		"repliedUser": false 
 	},
 	"coinName": "晶玉",

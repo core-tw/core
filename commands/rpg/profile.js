@@ -1,18 +1,18 @@
-const { MessageEmbed } = require('discord.js');
-const { errorEmbed, getAreaByUUID, log } = require('./../../_functions_.js');
-const { Player: { typesList } } = require('./../../_enum_.js');
-const { loadUser } = require('./../../_database_.js');
-const config = require('./../../config.json');
-const { coinName, xpName } = require('./../../setting.json');
-
+const { MessageEmbed } = require("discord.js");
+const {
+	database: { loadUser },
+	Enum: { Player: { typesList } },
+	functions: { errorEmbed, getAreaByUUID, log }
+} = require("./../../lib/index.js");
+const setting = require("./../../config/setting.json");
 /* 個人面板
 */
 module.exports = {
   num: 2,
-  name: ['面板', 'profile', 'p'],
+  name: ["面板", "profile", "p"],
   type: "rpg",
-  expectedArgs: '<@user (可無)>',
-  description: '個人面板',
+  expectedArgs: "<@user (可無)>",
+  description: "個人面板",
   minArgs: 0,
   maxArgs: 1,
   level: 1,
@@ -21,12 +21,12 @@ module.exports = {
   requireBotPermissions: [],
   async execute(msg, args, client, user) {
     try {
-      await msg.react('✅');
+      await msg.react("✅");
 
       if (!user) {
         msg.reply({
           content: `您還沒有帳戶喔`,
-          allowedMentions: config.allowedMentions
+          allowedMentions: setting.allowedMentions
         });
         return;
       }
@@ -36,7 +36,7 @@ module.exports = {
       const createEmbed = (user, icon) => {
         let a = getAreaByUUID(user.area);
         if (!a) {
-          errorEmbed(channel, author, null, config.error.no);
+          errorEmbed(channel, author, null, setting.error.no);
           return;
         }
         let info =
@@ -44,7 +44,7 @@ module.exports = {
 						職業 － ${typesList[user.type]}
 				    等級 － ${user.level}
 						轉換率 － ${(user.level*(user.stat.HEA/user.stat.tHEA)).toFixed(3)}%
-				    ${xpName} － ${user.xp} / ${user.reqxp}`;
+				    ${setting.xpName} － ${user.xp} / ${user.reqxp}`;
 						
 
         let body = `
@@ -55,9 +55,9 @@ module.exports = {
 			    ⨢睿⨢ - ${user.stat.INT} / ${user.stat.tVEL}
 					⨢迅⨢ - ${user.stat.VEL} / ${user.stat.tVEL}
 			
-			      	**${coinName}** - ${user.coin}`;
+			      	**${setting.coinName}** - ${user.coin}`;
         let embed = new MessageEmbed()
-          .setColor(config.embedColor.normal)
+          .setColor(setting.embedColor.normal)
           .setAuthor({
             name: user.name,
             iconURL: icon
@@ -88,8 +88,8 @@ module.exports = {
         const another_user = await loadUser(mention_user.id);
         if (!another_user) {
           msg.reply({
-            content: config.error.notFindUser,
-            allowedMentions: config.allowedMentions
+            content: setting.error.notFindUser,
+            allowedMentions: setting.allowedMentions
           });
         }
         let icon = mention_user.displayAvatarURL();
@@ -97,15 +97,15 @@ module.exports = {
           embeds: [
             createEmbed(another_user, icon)
           ],
-          allowedMentions: config.allowedMentions
+          allowedMentions: setting.allowedMentions
         });
       } else {
         if (args[0]) {
           const another_user = await loadUser(args[0]);
           if (!another_user) {
             msg.reply({
-              content: config.error.notFindUser,
-              allowedMentions: config.allowedMentions
+              content: setting.error.notFindUser,
+              allowedMentions: setting.allowedMentions
             });
             return;
           }
@@ -114,7 +114,7 @@ module.exports = {
             embeds: [
               createEmbed(another_user, icon)
             ],
-            allowedMentions: config.allowedMentions
+            allowedMentions: setting.allowedMentions
           });
         } else if (user) {
           let icon = author.displayAvatarURL();
@@ -122,13 +122,13 @@ module.exports = {
             embeds: [
               createEmbed(user, icon)
             ],
-            allowedMentions: config.allowedMentions
+            allowedMentions: setting.allowedMentions
           });
           return;
         } else {
           msg.reply({
-            content: config.error.notFindUser,
-            allowedMentions: config.allowedMentions
+            content: setting.error.notFindUser,
+            allowedMentions: setting.allowedMentions
           });
         }
       }

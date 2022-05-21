@@ -1,15 +1,9 @@
 const { MessageEmbed } = require("discord.js");
 const {
-	database: {
-		addItems
-	},
+	database: { addItems },
 	Enum: { Maps, Player, GameInfo, UUID_PREFIX },
-	functions: {
-		log
-	},
-	models: {
-		Users
-	}
+	functions: { log },
+	models: { Users }
 } = require("./../../lib/index.js");
 const { items } = require("./../../objects/index.js")
 const setting = require("./../../config/setting.json");

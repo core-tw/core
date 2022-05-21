@@ -1,15 +1,16 @@
-const { errorEmbed, log } = require('./../../_functions_.js');
-const { loadUser } = require('./../../_database_.js');
-const config = require('./../../config.json');
-const { coinName } = require('./../../setting.json');
+const {
+	database: { loadUser },
+	functions: { errorEmbed, log }
+} = require("./../../lib/index.js");
+const setting = require("./../../config/setting.json");
 /* 給予
 */
 module.exports = {
   num: 3,
-  name: ['給予', 'give', 'g'],
+  name: ["給予", "give", "g"],
   type: "rpg",
-  expectedArgs: '<@user> <amount>',
-  description: `轉移您身上一部份的${coinName}給其他人`,
+  expectedArgs: "<@user> <amount>",
+  description: `轉移您身上一部份的${setting.coinName}給其他人`,
   minArgs: 2,
   maxArgs: 2,
   level: 1,
@@ -18,11 +19,11 @@ module.exports = {
   requireBotPermissions: [],
   async execute(msg, args, client, user) {
     try {
-      await msg.react('✅');
+      await msg.react("✅");
       if (!user) {
         msg.reply({
           content: `您還沒有帳戶喔`,
-          allowedMentions: config.allowedMentions
+          allowedMentions: setting.allowedMentions
         });
         return;
       }
@@ -33,7 +34,7 @@ module.exports = {
       if (mention_user) {
         const to_user = await loadUser(mention_user.id)
         if (!to_user) {
-          errorEmbed(channel, author, null, config.error.notFindUser);
+          errorEmbed(channel, author, null, setting.error.notFindUser);
           return;
         }
         if (!isNaN(Number(args[1]))) {
@@ -46,7 +47,7 @@ module.exports = {
               errorEmbed(channel, author, null, `您輸入的數字好像怪怪的喔`);
               return;
             } else {
-              errorEmbed(channel, author, null, `您沒有那麼多${coinName}喔`);
+              errorEmbed(channel, author, null, `您沒有那麼多${setting.coinName}喔`);
               return;
             }
           }
@@ -57,7 +58,7 @@ module.exports = {
             await user.save();
             await to_user.save();
           }
-          msg.react('✅');
+          msg.react("✅");
         } else {
           errorEmbed(channel, author, null, `請輸入正確的數字`);
           return;
@@ -78,7 +79,7 @@ module.exports = {
               errorEmbed(channel, author, null, `您輸入的數字好像怪怪的喔`);
               return;
             } else {
-              errorEmbed(channel, author, null, `您沒有那麼多${coinName}喔`);
+              errorEmbed(channel, author, null, `您沒有那麼多${setting.coinName}喔`);
               return;
             }
           }
@@ -89,7 +90,7 @@ module.exports = {
             await user.save();
             await to_user.save();
           }
-          msg.react('✅');
+          msg.react("✅");
         } else {
           errorEmbed(channel, author, null, `請輸入正確的數字`);
           return;

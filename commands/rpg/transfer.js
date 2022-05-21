@@ -1,14 +1,15 @@
-const { errorEmbed, findAreaByUUID, getAreaByUUID, log, wait } = require('./../../_functions_.js');
-const config = require('./../../config.json');
-const { coinName } = require('./../../setting.json');
+const {
+	functions: { errorEmbed, findAreaByUUID, getAreaByUUID, log, wait }
+} = require("./../../lib/index.js");
+const setting = require("./../../config/setting.json");
 
 // 個人物品欄
 module.exports = {
   num: 8,
-  name: ['傳送', '轉移', 'transfer', 'tr'],
+  name: ["傳送", "轉移", "transfer", "tr"],
   type: "rpg",
-  expectedArgs: '<地名>',
-  description: `使用帝國傳送陣進行星球內的移動，不會收取額外的${coinName}`,
+  expectedArgs: "<地名>",
+  description: `使用帝國傳送陣進行星球內的移動，不會收取額外的${setting.coinName}`,
   minArgs: 1,
   maxArgs: 1,
   level: 10,
@@ -17,12 +18,12 @@ module.exports = {
   requireBotPermissions: [],
   async execute(msg, args, client, user) {
     try {
-      await msg.react('✅');
+      await msg.react("✅");
 
       if (!user) {
         msg.reply({
           content: `您還沒有帳戶喔`,
-          allowedMentions: config.allowedMentions
+          allowedMentions: setting.allowedMentions
         });
         return;
       }
@@ -32,7 +33,7 @@ module.exports = {
       let res = findAreaByUUID(user.planet);
       let planet = getAreaByUUID(user.area)[0];
       if (!res || !planet) {
-        errorEmbed(channel, author, null, config.error.no);
+        errorEmbed(channel, author, null, setting.error.no);
         return;
       }
 
@@ -48,7 +49,7 @@ module.exports = {
 
       let m = await msg.reply({
         content: `轉移中...`,
-        allowedMentions: config.allowedMentions
+        allowedMentions: setting.allowedMentions
       });
 
       user.save();
@@ -56,7 +57,7 @@ module.exports = {
 
       m.edit({
         content: `轉移至 ${args[0]}`,
-        allowedMentions: config.allowedMentions
+        allowedMentions: setting.allowedMentions
       });
 
     } catch (err) {
