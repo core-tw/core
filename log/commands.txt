@@ -8,3 +8,5 @@
 7. 商店 | shop | store | s
 8. 傳送 | 轉移 | transfer | tr
 9. 挖礦 | mining | m
+10. 購買 | buy | b
+11. 使用 | use | u

@@ -1,1 +1,16 @@
-{}
+{
+	"傳送水晶": {
+		"UUID": "傳送水晶_",
+		"forSale": 5000,
+		"volume": 1,
+		"description": "跨星球移動的一種手段，藉由星聯網來實現傳送",
+		"boost": {
+			"HEA": null,
+			"SOR": null,
+			"STR": null,
+			"VIT": null,
+			"INT": null,
+			"VEL": null
+		}
+	}
+}

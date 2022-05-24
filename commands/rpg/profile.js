@@ -37,7 +37,7 @@ module.exports = {
         let a = getAreaByUUID(user.area);
         if (!a) {
           errorEmbed(channel, author, null, setting.error.no);
-          return;
+          return null;
         }
         let info =
           `**所在區域 -\\ ${a[0]} ${a[1]} \\ **
@@ -93,12 +93,16 @@ module.exports = {
           });
         }
         let icon = mention_user.displayAvatarURL();
-        msg.reply({
-          embeds: [
-            createEmbed(another_user, icon)
-          ],
-          allowedMentions: setting.allowedMentions
-        });
+				let embed = createEmbed(another_user, icon);
+				if(embed) {
+					msg.reply({
+	          embeds: [
+	            embed
+	          ],
+	          allowedMentions: setting.allowedMentions
+	        });
+				}
+        
       } else {
         if (args[0]) {
           const another_user = await loadUser(args[0]);
@@ -118,12 +122,15 @@ module.exports = {
           });
         } else if (user) {
           let icon = author.displayAvatarURL();
-          msg.reply({
-            embeds: [
-              createEmbed(user, icon)
-            ],
-            allowedMentions: setting.allowedMentions
-          });
+          let embed = createEmbed(user, icon);
+					if(embed) {
+						msg.reply({
+		          embeds: [
+		            embed
+		          ],
+		          allowedMentions: setting.allowedMentions
+		        });
+					}
           return;
         } else {
           msg.reply({

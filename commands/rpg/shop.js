@@ -15,7 +15,7 @@ module.exports = {
   minArgs: 0,
   maxArgs: 1,
   level: 1,
-  cooldown: 3,
+  cooldown: 5,
   requireItems: [],
   requireBotPermissions: ["MANAGE_MESSAGES"],
   async execute(msg, args, client, user) {
@@ -66,7 +66,7 @@ module.exports = {
 							"7️⃣": 6,
 	          }
 						if (typeof cases[reaction.emoji.name] !== "undefined") {
-							let sh = shop[cases[reaction.emoji.name]];
+							let sh = setting.shop[cases[reaction.emoji.name]];
 							let t = Object.keys(sh)[0];
 							itemType = Object.values(sh)[0];
 	            for(let i in shopData[t]) {
@@ -101,9 +101,9 @@ module.exports = {
 	        return embed;
 				}
 				
-				for(let i in shop) {
+				for(let i in setting.shop) {
 					list[i] = {
-						name: Object.values(shop[i])[0],
+						name: Object.values(setting.shop[i])[0],
 						value: numToEmo[i],
 						inline: true
 					};

@@ -1,4 +1,5 @@
 const {
+	Enum: { UUID_PREFIX },
 	functions: { errorEmbed, findAreaByUUID, getAreaByUUID, log, wait }
 } = require("./../../lib/index.js");
 const setting = require("./../../config/setting.json");

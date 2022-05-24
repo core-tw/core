@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const {
+	database: { getItems },
 	functions: { errorEmbed, findObjByUUID, log },
 	models: { Items }
 } = require("./../../lib/index.js");
@@ -32,30 +33,9 @@ module.exports = {
       }
 
       const { author, channel } = msg;
-      let list = [];
+      let list = await getItems(user);
       let currentIndex = 0;
       let max = 10;
-
-      for (let i in user.items) {
-        let item = await Items.findOne({ _id: user.items[i] });
-        if (!item) {
-          errorEmbed(channel, author, null, setting.error.no);
-          return;
-        }
-        if (item.amount > 0) {
-          // 分解UUID
-          let name = findObjByUUID(item.itemId);
-          if (!name) {
-            errorEmbed(channel, author, null, setting.error.no);
-            return;
-          }
-
-          list.push({
-            name: name,
-            amount: item.amount
-          });
-        }
-      }
 
       const createEmbed = (index) => {
         let current = list.slice(index, index + max);

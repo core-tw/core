@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const {
 	database: { addItems },
-	Enum: { Maps, Player, GameInfo, UUID_PREFIX },
+	Enum: { Maps, Player, GameData, UUID_PREFIX },
 	functions: { log },
 	models: { Users }
 } = require("./../../lib/index.js");
@@ -156,7 +156,7 @@ module.exports = {
           `暱稱 - **${player["name"]}**\n` +
           `性別 - **${player["male"] ? "男性" : "女性"}**\n` +
           `職業 - **${Player.typesList[player.type]}**` +
-					GameInfo.data
+					GameData.start.data
         )
         .setFooter({
           text: ""

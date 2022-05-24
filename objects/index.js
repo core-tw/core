@@ -1,5 +1,4 @@
 const fs = require("fs");
-
 const path = require("path");
 const objects = {};
 const getObjectsData = (folder) => {
@@ -19,4 +18,15 @@ objects.items = {
 	data: getObjectsData("items")
 }// 之後會有roles
 
+module.exports = objects;
+
+const objUse = require("./use.js");
+
+for(let i in objects.items.data) {
+	if(objUse[i]) {
+		objects.items.data[i].use = objUse[i];
+	} else {
+		objects.items.data[i].use = null;
+	}
+}
 module.exports = objects;
