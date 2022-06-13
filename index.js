@@ -11,7 +11,8 @@ const { database: { connect }} = require("./lib/index.js");
 	  intents: [
 	    Intents.FLAGS.GUILDS,
 	    Intents.FLAGS.GUILD_MESSAGES,
-	    Intents.FLAGS.GUILD_MESSAGE_REACTIONS
+	    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+			Intents.FLAGS.GUILD_VOICE_STATES
 	  ]
 	});
 	
@@ -32,32 +33,3 @@ const { database: { connect }} = require("./lib/index.js");
 	
 	module.exports = client;
 })();
-
-
-
-
-
-/* 檢查所有物品
-
-const { log, errorEmbed } = require('./_functions_.js');
-const { Users, Items, Banks } = require('./_models_.js');
-const { Player, UUID_PREFIX, Maps, Reactions } = require('./_enum_.js');
-const { loadUser } = require('./_database_.js');
-const { floor, random, round, pow } = Math;
-
-let itemList = [];
-let itemFiles = fs.readdirSync('./objects/items').filter(file => file.endsWith('.json'));
-for (let file of itemFiles) {
-  let f = JSON.parse(
-    fs.readFileSync(`./objects/items/${file}`, 'utf-8')
-  )
-  for (let w in f) {
-    itemList.push(
-      `${f[w]['id']}. ${w} | ${f[w]["type"]} | ${f[w]["volume"]}`
-    );
-  }
-}
-*/
-
-
-

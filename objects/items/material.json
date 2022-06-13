@@ -33,5 +33,12 @@
 		"volume": 1,
 		"description": "",
 		"boost": null
+	},
+	"炎針": {
+		"UUID": "炎針_",
+		"forSale": null,
+		"volume": 1,
+		"description": "銀色的超高溫尖刺，根部為火焰的色澤",
+		"boost": null
 	}
 }

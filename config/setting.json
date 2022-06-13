@@ -18,6 +18,21 @@
 	"coinToDetain": 500,
 	"dodgeLikelihood": 0.2,
 	"allDodgeLikelihood": 0.1,
+	"plot_tag": {
+		"public": "<public>"
+	},
+	"music": {
+		"askChannel": "你還沒進入語音頻道喔～",
+		"otherChannel": "我已經在其他頻道了耶......對不起啦QQ",
+		"errorJoin": "我進不去那個頻道耶...",
+		"errorFind": "我查不到歌啦 Q _ Q",
+		"errorSkip": "我沒辦法跳過歌曲欸......",
+		"errorLoop": "切換循環模式的時候好像哪裡出了問題耶...",
+		"errorPause": "沒辦法暫停歌曲欸 OAO",
+		"errorResume": "播放歌曲時好像出了一咪咪錯誤 O _ O",
+		"errorVolume": "調整音量時好像哪裡出錯了耶...",
+		"noMusic": "沒有任何音樂正在播放喔！"
+	},
 	"shop": [
 		{
 			"potion": "藥水"

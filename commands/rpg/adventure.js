@@ -83,6 +83,8 @@ module.exports = {
 
       // 隨機生物
       let monsters = Object.keys(creatures);
+			
+			// 選之前要先過濾等級過高的
       let monsterName = monsters[random(monsters.length)];
       let monster = creatures[monsterName];
 

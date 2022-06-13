@@ -1,7 +1,8 @@
 const config = require("./../config.js");
 const { Collection } = require("discord.js");
-const { database: { connect }} = require("./../lib/index.js");
-
+const { database: { connect }, Music } = require("./../lib/index.js");
+const Database = require("@replit/database");
+const db = new Database();
 module.exports = {
 	name: 'ready',
 	once: true,
@@ -15,17 +16,31 @@ module.exports = {
 	  await client.user.setActivity("RPG", {
 	    type: "PLAYING"
 	  });
-	
+
+		// 與mongoDB連接
 	  console.log(config.console_prefix + "連結至雲端資料庫");
 	  await connect();
-	
-		console.log(config.console_prefix + "正在載入指令");
+
 		// 將指令添加進Collection
+		console.log(config.console_prefix + "正在載入指令");
 		client.commands = await require("./../commands/index.js")();
 		console.log(config.console_prefix + "指令生成完畢，已輸入至 ./log/commands.txt");
 
+		// 指令冷卻的Collection
 		console.log(config.console_prefix + "重置指令冷卻");
 		client.cooldowns = new Collection();
-		// 指令冷卻的Collection
+
+		// 音樂模組
+		console.log(config.console_prefix + "正在載入音樂模組");
+		client.music = new Music(client);
+
+		// 伺服器設定
+		console.log(config.console_prefix + "正在載入設定資料檔");
+		client.db = db;
+		client.servers = await client.db.get("servers");
+		if(!client.servers) {
+			await client.db.set("servers", {});
+			client.servers = {};
+		}
 	}
 }

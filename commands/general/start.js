@@ -179,11 +179,17 @@ module.exports = {
           Maps["planet"]["母星"].UUID +
           Maps["planet"]["母星"]["area"]["韋瓦恩"].UUID,
       });
-			let itemToGive = "公民證";
-			let res = await addItems(newUser, items.UUID + items.data["公民證"].UUID, 1);
-			if(res) {
-				msg.channel.send(`**< 已獲得 ${itemToGive} >**`);
-			} else {
+			let error = false;
+			for(let i in GameData.start.userItems) {
+				let itemToGive = GameData.start.userItems[i]
+				let res = await addItems(newUser, items.UUID + items.data[itemToGive.name].UUID, itemToGive.amount);
+				if(res) {
+					msg.channel.send(`**< 已獲得 ${itemToGive.name} >**`);
+				} else {
+					error = true;
+				}
+			}
+			if(error) {
 				msg.channel.send(config.error.no);
 			}
       newUser.save();

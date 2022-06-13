@@ -17,9 +17,29 @@ module.exports = {
 	once: false,
   async execute(msg, client) {
 		try {
-			let { author, channel, content } = msg;
+			let { author, channel, content, guild } = msg;
+
+			if (author === client.user) return;
+			
+			if(!client.servers[guild.id]) {
+				// 新的伺服器
+				client.servers[guild.id] = {
+					enableNlp: false
+				}
+
+				client.db.set("servers", client.servers).then(() => {
+					log(client, "已將伺服器 `" + guild.name + "` 加入設定檔");
+				});
+			}
+		
+			if(client.servers[guild.id].enableNlp) {
+				// Nlp系統
+				
+				return;
+			}
+		
 	    if (!content.startsWith(setting.prefix)) return;
-	    if (author === client.user) return;
+	    
 	
 	    let args = content.slice(setting.prefix.length).trim().split(/ +/);
 	    let commandName = args.shift().toLowerCase();
@@ -28,6 +48,10 @@ module.exports = {
 	      client.commands.find((cmd) => cmd.name && cmd.name.includes(commandName));
 	
 	    if (!cmd) return;
+			if(
+				cmd.type == "admin" && 
+				!config.admin_id.includes(author.id)
+			) return;
 	
 	    for (let p in cmd.requireBotPermissions) {
 	      if (!msg.guild.me.permissions.has(cmd.requireBotPermissions[p])) {
