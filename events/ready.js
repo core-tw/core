@@ -2,7 +2,7 @@ const config = require("./../config.js");
 const { Collection } = require("discord.js");
 const { database: { connect }, Music } = require("./../lib/index.js");
 const Database = require("@replit/database");
-const db = new Database();
+
 module.exports = {
 	name: 'ready',
 	once: true,
@@ -34,13 +34,24 @@ module.exports = {
 		console.log(config.console_prefix + "正在載入音樂模組");
 		client.music = new Music(client);
 
+		// 資料庫
+		console.log(config.console_prefix + "正在載入資料庫");
+		client.db = new Database();
+		
 		// 伺服器設定
 		console.log(config.console_prefix + "正在載入設定資料檔");
-		client.db = db;
 		client.servers = await client.db.get("servers");
 		if(!client.servers) {
 			await client.db.set("servers", {});
 			client.servers = {};
+		}
+
+		// 使用者設定
+		console.log(config.console_prefix + "正在載入使用者設定");
+		client.musicUsers = await client.db.get("musicUsers");
+		if(!client.musicUsers) {
+			await client.db.set("musicUsers", {});
+			client.musicUsers = {};
 		}
 	}
 }

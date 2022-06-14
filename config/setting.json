@@ -31,7 +31,8 @@
 		"errorPause": "沒辦法暫停歌曲欸 OAO",
 		"errorResume": "播放歌曲時好像出了一咪咪錯誤 O _ O",
 		"errorVolume": "調整音量時好像哪裡出錯了耶...",
-		"noMusic": "沒有任何音樂正在播放喔！"
+		"noMusic": "沒有任何音樂正在播放喔！",
+		"star": "已將這首歌加入你的個人清單！"
 	},
 	"shop": [
 		{

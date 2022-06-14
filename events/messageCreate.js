@@ -28,7 +28,7 @@ module.exports = {
 				}
 
 				client.db.set("servers", client.servers).then(() => {
-					log(client, "已將伺服器 `" + guild.name + "` 加入設定檔");
+					log(client, "已將伺服器 `" + guild.name + "` 加入設定檔", "normal");
 				});
 			}
 		
