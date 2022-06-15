@@ -29,7 +29,7 @@ module.exports = {
 			
 			let list = client.musicUsers[author.id];
 			if(args.length > 1) {
-				if(["刪除", "delete", "del"].includes(args[0])) {
+				if(["刪除", "delete", "del"].includes(args[0].toLowerCase())) {
 					let num = Number(args[1])-1;
 					if(isNaN(num) || num > list.length || num < 0) {
 						msg.reply({

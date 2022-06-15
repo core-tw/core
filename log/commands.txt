@@ -21,3 +21,4 @@
 20. 切換循環 | 循環 | loop
 21. 音量 | volume | vol
 22. 歌單 | list
+23. 播放歌單 | playlist
