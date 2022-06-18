@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const {
-	functions: { errorEmbed, log }
+	functions: { log }
 } = require("./../../lib/index.js");
 const setting = require("./../../config/setting.json");
 
@@ -13,7 +13,7 @@ module.exports = {
   minArgs: 0,
   maxArgs: 1,
   level: null,
-  cooldown: 10,
+  cooldown: 5,
   requireItems: [],
   requireBotPermissions: ["MANAGE_MESSAGES"],
   async execute(msg, args, client, user) {
@@ -36,6 +36,7 @@ module.exports = {
 		      });
 					return;
 				}
+				await msg.react("✅");
 				let track = list[num];
 				await client.music.play(msg, track.url);
 				return;

@@ -13,7 +13,7 @@ module.exports = {
   minArgs: 0,
   maxArgs: 2,
   level: null,
-  cooldown: 10,
+  cooldown: 5,
   requireItems: [],
   requireBotPermissions: ["MANAGE_MESSAGES"],
   async execute(msg, args, client, user) {

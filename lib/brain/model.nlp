@@ -1,0 +1,3653 @@
+{
+  "settings": {
+    "languages": [
+      "zh"
+    ],
+    "nlu": {
+      "useNoneFeature": false
+    }
+  },
+  "nluManager": {
+    "settings": {
+      "useNoneFeature": false
+    },
+    "languages": [
+      "zh"
+    ],
+    "intentDomains": {},
+    "domainManagers": {
+      "zh": {
+        "settings": {
+          "language": "zh",
+          "useNoneFeature": false,
+          "config": {
+            "activation": "leaky-relu",
+            "hiddenLayers": [],
+            "iterations": 20000,
+            "learningRate": 0.7,
+            "errorThresh": 0.00005,
+            "momentum": 0.5,
+            "deltaErrorThresh": 0.000001,
+            "maxDecimals": 9,
+            "leakyReluAlpha": 0.08,
+            "timeout": 120000
+          }
+        },
+        "language": "zh",
+        "nluClassName": "BrainNLU",
+        "useMasterDomain": true,
+        "trainByDomain": false,
+        "keepStopwords": true,
+        "stemDict": {
+          "早安": {
+            "domain": "default",
+            "intent": "greeting.morning"
+          },
+          "午安": {
+            "domain": "default",
+            "intent": "greeting.afternoon"
+          },
+          "晚安": {
+            "domain": "default",
+            "intent": "greeting.night"
+          },
+          "好,妳": {
+            "domain": "default",
+            "intent": "greeting.hello"
+          },
+          "你好": {
+            "domain": "default",
+            "intent": "greeting.hello"
+          },
+          "您好": {
+            "domain": "default",
+            "intent": "greeting.hello"
+          },
+          "嗨": {
+            "domain": "default",
+            "intent": "greeting.hello"
+          },
+          "再,見": {
+            "domain": "default",
+            "intent": "greeting.bye"
+          },
+          "明天,見": {
+            "domain": "default",
+            "intent": "greeting.bye"
+          },
+          "好,快,我,樂": {
+            "domain": "default",
+            "intent": "feeling.happy"
+          },
+          "很好,心情,我": {
+            "domain": "default",
+            "intent": "feeling.happy"
+          },
+          "好,我,難過": {
+            "domain": "default",
+            "intent": "feeling.sad"
+          },
+          "哭,好,想": {
+            "domain": "default",
+            "intent": "feeling.sad"
+          },
+          "了,我,生氣": {
+            "domain": "default",
+            "intent": "feeling.angry"
+          },
+          "很,我,氣": {
+            "domain": "default",
+            "intent": "feeling.angry"
+          },
+          "很,我,生氣": {
+            "domain": "default",
+            "intent": "feeling.angry"
+          },
+          "你,我,討厭": {
+            "domain": "default",
+            "intent": "feeling.hate"
+          },
+          "你好,笨": {
+            "domain": "default",
+            "intent": "feeling.contempt"
+          },
+          "你好,弱": {
+            "domain": "default",
+            "intent": "feeling.contempt"
+          },
+          "什麼,是,這": {
+            "domain": "default",
+            "intent": "feeling.curious"
+          },
+          "什麼,為": {
+            "domain": "default",
+            "intent": "feeling.curious"
+          },
+          "啊": {
+            "domain": "default",
+            "intent": "feeling.surprise"
+          },
+          "哇": {
+            "domain": "default",
+            "intent": "feeling.surprise"
+          },
+          "哇,喔": {
+            "domain": "default",
+            "intent": "feeling.surprise"
+          },
+          "好,酷": {
+            "domain": "default",
+            "intent": "feeling.surprise"
+          },
+          "別過來": {
+            "domain": "default",
+            "intent": "feeling.fear"
+          },
+          "好,恐怖": {
+            "domain": "default",
+            "intent": "feeling.fear"
+          },
+          "了,我,等不及": {
+            "domain": "default",
+            "intent": "feeling.excited"
+          },
+          "奮,好,我,興": {
+            "domain": "default",
+            "intent": "feeling.excited"
+          },
+          "好,完美": {
+            "domain": "default",
+            "intent": "feeling.satisfy"
+          },
+          "很,意,我,滿": {
+            "domain": "default",
+            "intent": "feeling.satisfy"
+          },
+          "好,意,我,滿": {
+            "domain": "default",
+            "intent": "feeling.satisfy"
+          },
+          "好,痛": {
+            "domain": "default",
+            "intent": "feeling.pain"
+          },
+          "不舒服,身,體": {
+            "domain": "default",
+            "intent": "feeling.pain"
+          },
+          "好,我,無,聊": {
+            "domain": "default",
+            "intent": "feeling.boring"
+          },
+          "好,我,羨慕": {
+            "domain": "default",
+            "intent": "feeling.envious"
+          },
+          "好,想要": {
+            "domain": "default",
+            "intent": "feeling.envious"
+          },
+          "你,幾歲": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "了,你,幾歲": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "了,你,幾歲,請問": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "妳,幾歲": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "了,妳,幾歲": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "了,妳,幾歲,請問": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "幾歲,您": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "了,幾歲,您": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "了,幾歲,您,請問": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "今年,你,幾歲": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "了,今年,你,幾歲": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "今年,妳,幾歲": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "了,今年,妳,幾歲": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "今年,幾歲,您": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "了,今年,幾歲,您": {
+            "domain": "default",
+            "intent": "asking.age"
+          },
+          "你,女,是,是,男,的,的,還": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "你,女,是,是,男": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "你,別,性,是,的": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "你,女生,是": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "你,嗎,女生,是": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "你,是,男生": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "你,嗎,是,男生": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "女,妳,是,是,男,的,的,還": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "女,妳,是,是,男": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "別,妳,性,是,的": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "女生,妳,是": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "嗎,女生,妳,是": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "妳,是,男生": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "嗎,妳,是,男生": {
+            "domain": "default",
+            "intent": "asking.gender"
+          },
+          "你,是,誰": {
+            "domain": "default",
+            "intent": "asking.name"
+          },
+          "什麼,你,叫": {
+            "domain": "default",
+            "intent": "asking.name"
+          },
+          "什麼,你,名子,是,的": {
+            "domain": "default",
+            "intent": "asking.name"
+          },
+          "住,你,哪裡": {
+            "domain": "default",
+            "intent": "asking.place"
+          },
+          "住在,你,哪": {
+            "domain": "default",
+            "intent": "asking.place"
+          },
+          "住在,你,哪裡": {
+            "domain": "default",
+            "intent": "asking.place"
+          },
+          "住,你,哪": {
+            "domain": "default",
+            "intent": "asking.place"
+          },
+          "什麼,你,做,在": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "什麼,做,在,妳": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "什麼,做,在,您": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "你,在,幹什,麼": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "在,妳,幹什,麼": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "在,幹什,您,麼": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "你,在,幹嘛": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "在,妳,幹嘛": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "在,幹嘛,您": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "什麼,你,做,在在,現": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "什麼,做,在在,妳,現": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "什麼,做,在在,您,現": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "你,在在,幹什麼,現": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "在在,妳,幹什麼,現": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "在在,幹什麼,您,現": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "你,在在,幹嘛,現": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "在在,妳,幹嘛,現": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "在在,幹嘛,您,現": {
+            "domain": "default",
+            "intent": "asking.doing"
+          },
+          "你,哪,天,是,生日": {
+            "domain": "default",
+            "intent": "asking.birthday"
+          },
+          "你,哪一天,是,生日": {
+            "domain": "default",
+            "intent": "asking.birthday"
+          },
+          "你,幾號,生日": {
+            "domain": "default",
+            "intent": "asking.birthday"
+          },
+          "你,哪一天,是,生日,的": {
+            "domain": "default",
+            "intent": "asking.birthday"
+          },
+          "你,哪,天,生日": {
+            "domain": "default",
+            "intent": "asking.birthday"
+          },
+          "你,出生,哪,天,的": {
+            "domain": "default",
+            "intent": "asking.birthday"
+          }
+        },
+        "intentDict": {
+          "greeting.morning": "default",
+          "greeting.afternoon": "default",
+          "greeting.night": "default",
+          "greeting.hello": "default",
+          "greeting.bye": "default",
+          "feeling.happy": "default",
+          "feeling.sad": "default",
+          "feeling.angry": "default",
+          "feeling.hate": "default",
+          "feeling.contempt": "default",
+          "feeling.curious": "default",
+          "feeling.surprise": "default",
+          "feeling.fear": "default",
+          "feeling.excited": "default",
+          "feeling.satisfy": "default",
+          "feeling.pain": "default",
+          "feeling.boring": "default",
+          "feeling.envious": "default",
+          "asking.age": "default",
+          "asking.gender": "default",
+          "asking.name": "default",
+          "asking.place": "default",
+          "asking.doing": "default",
+          "asking.birthday": "default"
+        },
+        "useStemDict": true,
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "language": "zh",
+              "useNoneFeature": false,
+              "config": {
+                "activation": "leaky-relu",
+                "hiddenLayers": [],
+                "iterations": 20000,
+                "learningRate": 0.7,
+                "errorThresh": 0.00005,
+                "momentum": 0.5,
+                "deltaErrorThresh": 0.000001,
+                "maxDecimals": 9,
+                "leakyReluAlpha": 0.08,
+                "timeout": 120000
+              }
+            },
+            "language": "zh",
+            "keepStopwords": true,
+            "docs": [
+              {
+                "intent": "greeting.morning",
+                "tokens": [
+                  "早安"
+                ]
+              },
+              {
+                "intent": "greeting.afternoon",
+                "tokens": [
+                  "午安"
+                ]
+              },
+              {
+                "intent": "greeting.night",
+                "tokens": [
+                  "晚安"
+                ]
+              },
+              {
+                "intent": "greeting.hello",
+                "tokens": [
+                  "妳",
+                  "好"
+                ]
+              },
+              {
+                "intent": "greeting.hello",
+                "tokens": [
+                  "你好"
+                ]
+              },
+              {
+                "intent": "greeting.hello",
+                "tokens": [
+                  "您好"
+                ]
+              },
+              {
+                "intent": "greeting.hello",
+                "tokens": [
+                  "嗨"
+                ]
+              },
+              {
+                "intent": "greeting.bye",
+                "tokens": [
+                  "再",
+                  "見"
+                ]
+              },
+              {
+                "intent": "greeting.bye",
+                "tokens": [
+                  "明天",
+                  "見"
+                ]
+              },
+              {
+                "intent": "feeling.happy",
+                "tokens": [
+                  "我",
+                  "好",
+                  "快",
+                  "樂"
+                ]
+              },
+              {
+                "intent": "feeling.happy",
+                "tokens": [
+                  "我",
+                  "心情",
+                  "很好"
+                ]
+              },
+              {
+                "intent": "feeling.sad",
+                "tokens": [
+                  "我",
+                  "好",
+                  "難過"
+                ]
+              },
+              {
+                "intent": "feeling.sad",
+                "tokens": [
+                  "好",
+                  "想",
+                  "哭"
+                ]
+              },
+              {
+                "intent": "feeling.angry",
+                "tokens": [
+                  "我",
+                  "生氣",
+                  "了"
+                ]
+              },
+              {
+                "intent": "feeling.angry",
+                "tokens": [
+                  "我",
+                  "很",
+                  "氣"
+                ]
+              },
+              {
+                "intent": "feeling.angry",
+                "tokens": [
+                  "我",
+                  "很",
+                  "生氣"
+                ]
+              },
+              {
+                "intent": "feeling.hate",
+                "tokens": [
+                  "我",
+                  "討厭",
+                  "你"
+                ]
+              },
+              {
+                "intent": "feeling.contempt",
+                "tokens": [
+                  "你好",
+                  "笨"
+                ]
+              },
+              {
+                "intent": "feeling.contempt",
+                "tokens": [
+                  "你好",
+                  "弱"
+                ]
+              },
+              {
+                "intent": "feeling.curious",
+                "tokens": [
+                  "這",
+                  "是",
+                  "什麼"
+                ]
+              },
+              {
+                "intent": "feeling.curious",
+                "tokens": [
+                  "為",
+                  "什麼"
+                ]
+              },
+              {
+                "intent": "feeling.surprise",
+                "tokens": [
+                  "啊"
+                ]
+              },
+              {
+                "intent": "feeling.surprise",
+                "tokens": [
+                  "哇"
+                ]
+              },
+              {
+                "intent": "feeling.surprise",
+                "tokens": [
+                  "哇",
+                  "喔"
+                ]
+              },
+              {
+                "intent": "feeling.surprise",
+                "tokens": [
+                  "好",
+                  "酷"
+                ]
+              },
+              {
+                "intent": "feeling.fear",
+                "tokens": [
+                  "別過來"
+                ]
+              },
+              {
+                "intent": "feeling.fear",
+                "tokens": [
+                  "好",
+                  "恐怖"
+                ]
+              },
+              {
+                "intent": "feeling.excited",
+                "tokens": [
+                  "我",
+                  "等不及",
+                  "了"
+                ]
+              },
+              {
+                "intent": "feeling.excited",
+                "tokens": [
+                  "我",
+                  "好",
+                  "興",
+                  "奮"
+                ]
+              },
+              {
+                "intent": "feeling.satisfy",
+                "tokens": [
+                  "好",
+                  "完美"
+                ]
+              },
+              {
+                "intent": "feeling.satisfy",
+                "tokens": [
+                  "我",
+                  "很",
+                  "滿",
+                  "意"
+                ]
+              },
+              {
+                "intent": "feeling.satisfy",
+                "tokens": [
+                  "我",
+                  "好",
+                  "滿",
+                  "意"
+                ]
+              },
+              {
+                "intent": "feeling.pain",
+                "tokens": [
+                  "好",
+                  "痛"
+                ]
+              },
+              {
+                "intent": "feeling.pain",
+                "tokens": [
+                  "身",
+                  "體",
+                  "不舒服"
+                ]
+              },
+              {
+                "intent": "feeling.boring",
+                "tokens": [
+                  "我",
+                  "好",
+                  "無",
+                  "聊"
+                ]
+              },
+              {
+                "intent": "feeling.envious",
+                "tokens": [
+                  "我",
+                  "好",
+                  "羨慕"
+                ]
+              },
+              {
+                "intent": "feeling.envious",
+                "tokens": [
+                  "好",
+                  "想要"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "你",
+                  "幾歲"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "你",
+                  "幾歲",
+                  "了"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "請問",
+                  "你",
+                  "幾歲",
+                  "了"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "妳",
+                  "幾歲"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "妳",
+                  "幾歲",
+                  "了"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "請問",
+                  "妳",
+                  "幾歲",
+                  "了"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "您",
+                  "幾歲"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "您",
+                  "幾歲",
+                  "了"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "請問",
+                  "您",
+                  "幾歲",
+                  "了"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "你",
+                  "今年",
+                  "幾歲"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "你",
+                  "今年",
+                  "幾歲",
+                  "了"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "妳",
+                  "今年",
+                  "幾歲"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "妳",
+                  "今年",
+                  "幾歲",
+                  "了"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "您",
+                  "今年",
+                  "幾歲"
+                ]
+              },
+              {
+                "intent": "asking.age",
+                "tokens": [
+                  "您",
+                  "今年",
+                  "幾歲",
+                  "了"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "你",
+                  "是",
+                  "男",
+                  "的",
+                  "還",
+                  "是",
+                  "女",
+                  "的"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "你",
+                  "是",
+                  "男",
+                  "是",
+                  "女"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "你",
+                  "的",
+                  "性",
+                  "別",
+                  "是"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "你",
+                  "是",
+                  "女生"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "你",
+                  "是",
+                  "女生",
+                  "嗎"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "你",
+                  "是",
+                  "男生"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "你",
+                  "是",
+                  "男生",
+                  "嗎"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "妳",
+                  "是",
+                  "男",
+                  "的",
+                  "還",
+                  "是",
+                  "女",
+                  "的"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "妳",
+                  "是",
+                  "男",
+                  "是",
+                  "女"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "妳",
+                  "的",
+                  "性",
+                  "別",
+                  "是"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "妳",
+                  "是",
+                  "女生"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "妳",
+                  "是",
+                  "女生",
+                  "嗎"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "妳",
+                  "是",
+                  "男生"
+                ]
+              },
+              {
+                "intent": "asking.gender",
+                "tokens": [
+                  "妳",
+                  "是",
+                  "男生",
+                  "嗎"
+                ]
+              },
+              {
+                "intent": "asking.name",
+                "tokens": [
+                  "你",
+                  "是",
+                  "誰"
+                ]
+              },
+              {
+                "intent": "asking.name",
+                "tokens": [
+                  "你",
+                  "叫",
+                  "什麼"
+                ]
+              },
+              {
+                "intent": "asking.name",
+                "tokens": [
+                  "你",
+                  "的",
+                  "名子",
+                  "是",
+                  "什麼"
+                ]
+              },
+              {
+                "intent": "asking.place",
+                "tokens": [
+                  "你",
+                  "住",
+                  "哪裡"
+                ]
+              },
+              {
+                "intent": "asking.place",
+                "tokens": [
+                  "你",
+                  "住在",
+                  "哪"
+                ]
+              },
+              {
+                "intent": "asking.place",
+                "tokens": [
+                  "你",
+                  "住在",
+                  "哪裡"
+                ]
+              },
+              {
+                "intent": "asking.place",
+                "tokens": [
+                  "你",
+                  "住",
+                  "哪"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "你",
+                  "在",
+                  "做",
+                  "什麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "妳",
+                  "在",
+                  "做",
+                  "什麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "您",
+                  "在",
+                  "做",
+                  "什麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "你",
+                  "在",
+                  "幹什",
+                  "麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "妳",
+                  "在",
+                  "幹什",
+                  "麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "您",
+                  "在",
+                  "幹什",
+                  "麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "你",
+                  "在",
+                  "幹嘛"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "妳",
+                  "在",
+                  "幹嘛"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "您",
+                  "在",
+                  "幹嘛"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "你",
+                  "現",
+                  "在在",
+                  "做",
+                  "什麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "妳",
+                  "現",
+                  "在在",
+                  "做",
+                  "什麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "您",
+                  "現",
+                  "在在",
+                  "做",
+                  "什麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "你",
+                  "現",
+                  "在在",
+                  "幹什麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "妳",
+                  "現",
+                  "在在",
+                  "幹什麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "您",
+                  "現",
+                  "在在",
+                  "幹什麼"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "你",
+                  "現",
+                  "在在",
+                  "幹嘛"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "妳",
+                  "現",
+                  "在在",
+                  "幹嘛"
+                ]
+              },
+              {
+                "intent": "asking.doing",
+                "tokens": [
+                  "您",
+                  "現",
+                  "在在",
+                  "幹嘛"
+                ]
+              },
+              {
+                "intent": "asking.birthday",
+                "tokens": [
+                  "你",
+                  "生日",
+                  "是",
+                  "哪",
+                  "天"
+                ]
+              },
+              {
+                "intent": "asking.birthday",
+                "tokens": [
+                  "你",
+                  "生日",
+                  "是",
+                  "哪一天"
+                ]
+              },
+              {
+                "intent": "asking.birthday",
+                "tokens": [
+                  "你",
+                  "生日",
+                  "哪",
+                  "天"
+                ]
+              },
+              {
+                "intent": "asking.birthday",
+                "tokens": [
+                  "你",
+                  "生日",
+                  "幾號"
+                ]
+              },
+              {
+                "intent": "asking.birthday",
+                "tokens": [
+                  "你",
+                  "的",
+                  "生日",
+                  "是",
+                  "哪一天"
+                ]
+              },
+              {
+                "intent": "asking.birthday",
+                "tokens": [
+                  "你",
+                  "哪",
+                  "天",
+                  "生日"
+                ]
+              },
+              {
+                "intent": "asking.birthday",
+                "tokens": [
+                  "你",
+                  "哪",
+                  "天",
+                  "出生",
+                  "的"
+                ]
+              }
+            ],
+            "features": {
+              "早安": 1,
+              "午安": 1,
+              "晚安": 1,
+              "妳": 19,
+              "好": 13,
+              "你好": 3,
+              "您好": 1,
+              "嗨": 1,
+              "再": 1,
+              "見": 2,
+              "明天": 1,
+              "我": 13,
+              "快": 1,
+              "樂": 1,
+              "心情": 1,
+              "很好": 1,
+              "難過": 1,
+              "想": 1,
+              "哭": 1,
+              "生氣": 2,
+              "了": 11,
+              "很": 3,
+              "氣": 1,
+              "討厭": 1,
+              "你": 33,
+              "笨": 1,
+              "弱": 1,
+              "這": 1,
+              "是": 24,
+              "什麼": 10,
+              "為": 1,
+              "啊": 1,
+              "哇": 2,
+              "喔": 1,
+              "酷": 1,
+              "別過來": 1,
+              "恐怖": 1,
+              "等不及": 1,
+              "興": 1,
+              "奮": 1,
+              "完美": 1,
+              "滿": 2,
+              "意": 2,
+              "痛": 1,
+              "身": 1,
+              "體": 1,
+              "不舒服": 1,
+              "無": 1,
+              "聊": 1,
+              "羨慕": 1,
+              "想要": 1,
+              "幾歲": 15,
+              "請問": 3,
+              "您": 11,
+              "今年": 6,
+              "男": 4,
+              "的": 9,
+              "還": 2,
+              "女": 4,
+              "性": 2,
+              "別": 2,
+              "女生": 4,
+              "嗎": 4,
+              "男生": 4,
+              "誰": 1,
+              "叫": 1,
+              "名子": 1,
+              "住": 2,
+              "哪裡": 2,
+              "住在": 2,
+              "哪": 6,
+              "在": 9,
+              "做": 6,
+              "幹什": 3,
+              "麼": 3,
+              "幹嘛": 6,
+              "現": 9,
+              "在在": 9,
+              "幹什麼": 3,
+              "生日": 6,
+              "天": 4,
+              "哪一天": 2,
+              "幾號": 1,
+              "出生": 1
+            },
+            "isEditing": false,
+            "className": "BrainNLU",
+            "classifier": {
+              "className": "BrainClassifier",
+              "settings": {
+                "language": "zh",
+                "useNoneFeature": false,
+                "config": {
+                  "activation": "leaky-relu",
+                  "hiddenLayers": [],
+                  "iterations": 20000,
+                  "learningRate": 0.7,
+                  "errorThresh": 0.00005,
+                  "momentum": 0.5,
+                  "deltaErrorThresh": 0.000001,
+                  "maxDecimals": 9,
+                  "leakyReluAlpha": 0.08,
+                  "timeout": 120000
+                }
+              },
+              "labels": [],
+              "network": {
+                "sizes": [
+                  84,
+                  24
+                ],
+                "layers": [
+                  {
+                    "早安": {},
+                    "午安": {},
+                    "晚安": {},
+                    "妳": {},
+                    "好": {},
+                    "你好": {},
+                    "您好": {},
+                    "嗨": {},
+                    "再": {},
+                    "見": {},
+                    "明天": {},
+                    "我": {},
+                    "快": {},
+                    "樂": {},
+                    "心情": {},
+                    "很好": {},
+                    "難過": {},
+                    "想": {},
+                    "哭": {},
+                    "生氣": {},
+                    "了": {},
+                    "很": {},
+                    "氣": {},
+                    "討厭": {},
+                    "你": {},
+                    "笨": {},
+                    "弱": {},
+                    "這": {},
+                    "是": {},
+                    "什麼": {},
+                    "為": {},
+                    "啊": {},
+                    "哇": {},
+                    "喔": {},
+                    "酷": {},
+                    "別過來": {},
+                    "恐怖": {},
+                    "等不及": {},
+                    "興": {},
+                    "奮": {},
+                    "完美": {},
+                    "滿": {},
+                    "意": {},
+                    "痛": {},
+                    "身": {},
+                    "體": {},
+                    "不舒服": {},
+                    "無": {},
+                    "聊": {},
+                    "羨慕": {},
+                    "想要": {},
+                    "幾歲": {},
+                    "請問": {},
+                    "您": {},
+                    "今年": {},
+                    "男": {},
+                    "的": {},
+                    "還": {},
+                    "女": {},
+                    "性": {},
+                    "別": {},
+                    "女生": {},
+                    "嗎": {},
+                    "男生": {},
+                    "誰": {},
+                    "叫": {},
+                    "名子": {},
+                    "住": {},
+                    "哪裡": {},
+                    "住在": {},
+                    "哪": {},
+                    "在": {},
+                    "做": {},
+                    "幹什": {},
+                    "麼": {},
+                    "幹嘛": {},
+                    "現": {},
+                    "在在": {},
+                    "幹什麼": {},
+                    "生日": {},
+                    "天": {},
+                    "哪一天": {},
+                    "幾號": {},
+                    "出生": {}
+                  },
+                  {
+                    "greeting.morning": {
+                      "bias": 0.798036469,
+                      "weights": {
+                        "早安": 11.676571846,
+                        "午安": -0.799083531,
+                        "晚安": -0.798512876,
+                        "妳": -0.445134521,
+                        "好": -0.7234658,
+                        "你好": -0.798790693,
+                        "您好": -0.797374487,
+                        "嗨": -0.796561062,
+                        "再": -0.266712278,
+                        "見": -0.532863677,
+                        "明天": -0.266151905,
+                        "我": -0.554006457,
+                        "快": -0.041671,
+                        "樂": -0.041671,
+                        "心情": -0.131239444,
+                        "很好": -0.131239444,
+                        "難過": -0.02867775,
+                        "想": -0.092058152,
+                        "哭": -0.092058152,
+                        "生氣": -0.128788397,
+                        "了": -0.181613848,
+                        "很": -0.17899625,
+                        "氣": -0.102593705,
+                        "討厭": -0.026053187,
+                        "你": -0.544989824,
+                        "笨": -0.120962739,
+                        "弱": -0.114352405,
+                        "這": -0.133708462,
+                        "是": -0.29487437,
+                        "什麼": -0.468570977,
+                        "為": -0.330428153,
+                        "啊": -0.795076787,
+                        "哇": -0.794810772,
+                        "喔": -0.180414081,
+                        "酷": -0.090139724,
+                        "別過來": -0.792904139,
+                        "恐怖": -0.075677276,
+                        "等不及": -0.062423129,
+                        "完美": -0.074827582,
+                        "滿": -0.032560825,
+                        "意": -0.032560825,
+                        "痛": -0.074637674,
+                        "身": -0.26597026,
+                        "體": -0.26597026,
+                        "不舒服": -0.26597026,
+                        "想要": -0.074234471,
+                        "幾歲": -0.353063017,
+                        "請問": -0.011392447,
+                        "您": -0.44475171,
+                        "今年": -0.045325179,
+                        "男": -0.029629154,
+                        "的": -0.04765157,
+                        "還": -0.008313331,
+                        "女": -0.029629154,
+                        "性": -0.012894504,
+                        "別": -0.012894504,
+                        "女生": -0.05808818,
+                        "嗎": -0.015222932,
+                        "男生": -0.057900891,
+                        "誰": -0.002653559,
+                        "住": -0.116084017,
+                        "哪裡": -0.13698411,
+                        "住在": -0.116085716,
+                        "哪": -0.137040064,
+                        "在": -0.206597179,
+                        "做": -0.004434344,
+                        "幹什": -0.073475733,
+                        "麼": -0.073475733,
+                        "幹嘛": -0.146584526,
+                        "現": -0.123715326,
+                        "在在": -0.123715326,
+                        "幹什麼": -0.105817795,
+                        "生日": -0.134124398,
+                        "天": -0.041854646,
+                        "幾號": -0.118713573,
+                        "出生": -0.026443783
+                      }
+                    },
+                    "greeting.afternoon": {
+                      "bias": 0.798386971,
+                      "weights": {
+                        "早安": -0.790756941,
+                        "午安": 11.676626205,
+                        "晚安": -0.799028814,
+                        "妳": -0.445096195,
+                        "好": -0.726397514,
+                        "你好": -0.799409628,
+                        "您好": -0.798067153,
+                        "嗨": -0.797344327,
+                        "再": -0.267987102,
+                        "見": -0.533874869,
+                        "明天": -0.265887916,
+                        "我": -0.558726966,
+                        "快": -0.044114307,
+                        "樂": -0.044114307,
+                        "心情": -0.132696062,
+                        "很好": -0.132696062,
+                        "難過": -0.030105757,
+                        "想": -0.094755635,
+                        "哭": -0.094755635,
+                        "生氣": -0.131573379,
+                        "了": -0.18105562,
+                        "很": -0.179331139,
+                        "氣": -0.104002237,
+                        "討厭": -0.027430665,
+                        "你": -0.547838986,
+                        "笨": -0.124360397,
+                        "弱": -0.117383562,
+                        "這": -0.137423679,
+                        "是": -0.296417415,
+                        "什麼": -0.47084865,
+                        "為": -0.328730643,
+                        "啊": -0.796008348,
+                        "哇": -0.795847356,
+                        "喔": -0.184770405,
+                        "酷": -0.089716628,
+                        "別過來": -0.79403758,
+                        "恐怖": -0.07380566,
+                        "等不及": -0.058608923,
+                        "完美": -0.072288193,
+                        "滿": -0.030196663,
+                        "意": -0.030196663,
+                        "痛": -0.072070643,
+                        "身": -0.266104311,
+                        "體": -0.266104311,
+                        "不舒服": -0.266104311,
+                        "想要": -0.071737662,
+                        "幾歲": -0.353578627,
+                        "請問": -0.012029103,
+                        "您": -0.444605172,
+                        "今年": -0.046455353,
+                        "男": -0.02951543,
+                        "的": -0.047497008,
+                        "還": -0.008754115,
+                        "女": -0.02951543,
+                        "性": -0.013089793,
+                        "別": -0.013089793,
+                        "女生": -0.056924675,
+                        "嗎": -0.015523001,
+                        "男生": -0.056770705,
+                        "誰": -0.002693504,
+                        "住": -0.114921883,
+                        "哪裡": -0.135655388,
+                        "住在": -0.114880756,
+                        "哪": -0.135751292,
+                        "在": -0.206970841,
+                        "做": -0.00469433,
+                        "幹什": -0.074117102,
+                        "麼": -0.074117102,
+                        "幹嘛": -0.146762803,
+                        "現": -0.124124184,
+                        "在在": -0.124124184,
+                        "幹什麼": -0.105520785,
+                        "生日": -0.133183286,
+                        "天": -0.041604329,
+                        "幾號": -0.117232181,
+                        "出生": -0.025653146
+                      }
+                    },
+                    "greeting.night": {
+                      "bias": 0.798361623,
+                      "weights": {
+                        "早安": -0.791977406,
+                        "午安": -0.79045099,
+                        "晚安": 11.67692852,
+                        "妳": -0.445057034,
+                        "好": -0.729371548,
+                        "你好": -0.800448358,
+                        "您好": -0.798406661,
+                        "嗨": -0.79777658,
+                        "再": -0.270211309,
+                        "見": -0.536476016,
+                        "明天": -0.266264826,
+                        "我": -0.563726008,
+                        "快": -0.046700858,
+                        "樂": -0.046700858,
+                        "心情": -0.134570286,
+                        "很好": -0.134570286,
+                        "難過": -0.031602494,
+                        "想": -0.097636305,
+                        "哭": -0.097636305,
+                        "生氣": -0.134561107,
+                        "了": -0.180266872,
+                        "很": -0.179570526,
+                        "氣": -0.10549219,
+                        "討厭": -0.028880028,
+                        "你": -0.550709724,
+                        "笨": -0.127997279,
+                        "弱": -0.120706208,
+                        "這": -0.141568527,
+                        "是": -0.297891855,
+                        "什麼": -0.474053264,
+                        "為": -0.327515185,
+                        "啊": -0.796563148,
+                        "哇": -0.796511054,
+                        "喔": -0.189424843,
+                        "酷": -0.089398049,
+                        "別過來": -0.794798076,
+                        "恐怖": -0.072107196,
+                        "等不及": -0.054372683,
+                        "完美": -0.069795065,
+                        "滿": -0.027548004,
+                        "意": -0.027548004,
+                        "痛": -0.069122277,
+                        "身": -0.266112,
+                        "體": -0.266112,
+                        "不舒服": -0.266112,
+                        "想要": -0.068841025,
+                        "幾歲": -0.354151756,
+                        "請問": -0.012701234,
+                        "您": -0.444089442,
+                        "今年": -0.048024837,
+                        "男": -0.029479381,
+                        "的": -0.047065143,
+                        "還": -0.009217986,
+                        "女": -0.029479381,
+                        "性": -0.013257743,
+                        "別": -0.013257743,
+                        "女生": -0.055470698,
+                        "嗎": -0.015777361,
+                        "男生": -0.055347133,
+                        "誰": -0.002768863,
+                        "住": -0.113829821,
+                        "哪裡": -0.133841336,
+                        "住在": -0.113801628,
+                        "哪": -0.134885356,
+                        "在": -0.207549319,
+                        "做": -0.004969557,
+                        "幹什": -0.075135969,
+                        "麼": -0.075135969,
+                        "幹嘛": -0.146712318,
+                        "現": -0.12451379,
+                        "在在": -0.12451379,
+                        "幹什麼": -0.105245285,
+                        "生日": -0.132048786,
+                        "天": -0.04109535,
+                        "幾號": -0.115542956,
+                        "出生": -0.024589455
+                      }
+                    },
+                    "greeting.hello": {
+                      "bias": 0.537111349,
+                      "weights": {
+                        "早安": -1.567730904,
+                        "午安": -1.538981795,
+                        "晚安": -1.51090765,
+                        "妳": 6.498019695,
+                        "好": 2.882016659,
+                        "你好": 9.765295029,
+                        "您好": 11.430330276,
+                        "嗨": 11.40418911,
+                        "再": -0.842832625,
+                        "見": -1.664153934,
+                        "明天": -0.821321487,
+                        "我": -3.300086737,
+                        "快": -0.437854946,
+                        "樂": -0.437854946,
+                        "心情": -0.416628718,
+                        "很好": -0.416628718,
+                        "難過": -0.76452589,
+                        "想": -1.930188775,
+                        "哭": -1.930188775,
+                        "生氣": -0.38125056,
+                        "了": -0.982385099,
+                        "很": -0.444126874,
+                        "氣": -0.314752311,
+                        "討厭": -0.098810427,
+                        "你": -1.313887596,
+                        "笨": -10.120581627,
+                        "弱": -10.03246212,
+                        "這": -0.298131227,
+                        "是": -5.31717062,
+                        "什麼": -1.974020243,
+                        "為": -0.908788025,
+                        "啊": -1.910436034,
+                        "哇": -1.932687879,
+                        "喔": -0.480417341,
+                        "酷": -3.578413248,
+                        "別過來": -1.827193737,
+                        "恐怖": -3.521091938,
+                        "等不及": -0.014181449,
+                        "興": -0.250603676,
+                        "奮": -0.250603676,
+                        "完美": -3.424540758,
+                        "滿": -0.211164847,
+                        "意": -0.211164847,
+                        "痛": -3.32555747,
+                        "身": -0.659797132,
+                        "體": -0.659797132,
+                        "不舒服": -0.659797132,
+                        "無": -0.167030349,
+                        "聊": -0.167030349,
+                        "羨慕": -0.243285701,
+                        "想要": -3.199115992,
+                        "幾歲": -6.617000103,
+                        "請問": -0.164838284,
+                        "您": -0.687530577,
+                        "今年": -0.881727755,
+                        "男": -0.964410007,
+                        "的": -0.74758935,
+                        "還": -0.132317618,
+                        "女": -0.964410007,
+                        "性": -0.584803104,
+                        "別": -0.584803104,
+                        "女生": -1.764576316,
+                        "嗎": -0.340863258,
+                        "男生": -1.705250978,
+                        "住": -0.301746011,
+                        "哪裡": -0.337920994,
+                        "住在": -0.302043349,
+                        "哪": -0.340963125,
+                        "在": -4.370471954,
+                        "做": -0.767102778,
+                        "幹什": -1.355310798,
+                        "麼": -1.355310798,
+                        "幹嘛": -2.512727976,
+                        "現": -2.377405405,
+                        "在在": -2.377405405,
+                        "幹什麼": -2.112734795,
+                        "生日": -0.321795762,
+                        "天": -0.075094819,
+                        "幾號": -0.277169853,
+                        "出生": -0.03046889
+                      }
+                    },
+                    "greeting.bye": {
+                      "bias": 0.442869403,
+                      "weights": {
+                        "早安": -0.450622737,
+                        "午安": -0.446539909,
+                        "晚安": -0.443996519,
+                        "妳": -0.347039014,
+                        "好": -0.656624794,
+                        "你好": -0.540085137,
+                        "您好": -0.442913264,
+                        "嗨": -0.442705989,
+                        "再": 4.018406868,
+                        "見": 8.038053513,
+                        "明天": 4.019650459,
+                        "我": -0.675681412,
+                        "快": -0.127389386,
+                        "樂": -0.127389386,
+                        "心情": -0.150916368,
+                        "很好": -0.150916368,
+                        "難過": -0.095149837,
+                        "想": -0.158058137,
+                        "哭": -0.158058137,
+                        "生氣": -0.150990918,
+                        "了": -0.175304264,
+                        "很": -0.155666351,
+                        "氣": -0.097287804,
+                        "討厭": -0.053947136,
+                        "你": -0.517514884,
+                        "笨": -0.252470523,
+                        "弱": -0.232540593,
+                        "這": -0.16342333,
+                        "是": -0.320040852,
+                        "什麼": -0.427521259,
+                        "為": -0.254760623,
+                        "啊": -0.490449637,
+                        "哇": -0.548929632,
+                        "喔": -0.199588969,
+                        "酷": -0.082136065,
+                        "別過來": -0.471605808,
+                        "恐怖": -0.059930332,
+                        "完美": -0.054187022,
+                        "痛": -0.048075099,
+                        "身": -0.211310491,
+                        "體": -0.211310491,
+                        "不舒服": -0.211310491,
+                        "想要": -0.031699061,
+                        "幾歲": -0.368658483,
+                        "請問": -0.025052655,
+                        "您": -0.324579269,
+                        "今年": -0.063453145,
+                        "男": -0.045299627,
+                        "的": -0.043491665,
+                        "還": -0.018052166,
+                        "女": -0.045299627,
+                        "性": -0.024087094,
+                        "別": -0.024087094,
+                        "女生": -0.051320463,
+                        "嗎": -0.025971565,
+                        "男生": -0.03591032,
+                        "住": -0.096308991,
+                        "哪裡": -0.104728051,
+                        "住在": -0.097567283,
+                        "哪": -0.11003191,
+                        "在": -0.213951796,
+                        "做": -0.009337286,
+                        "幹什": -0.094672121,
+                        "麼": -0.094672121,
+                        "幹嘛": -0.134586602,
+                        "現": -0.126595855,
+                        "在在": -0.126595855,
+                        "幹什麼": -0.101951636,
+                        "生日": -0.074133761,
+                        "天": -0.020883683,
+                        "幾號": -0.054602496,
+                        "出生": -0.001352411
+                      }
+                    },
+                    "feeling.happy": {
+                      "bias": 0.040062956,
+                      "weights": {
+                        "早安": -0.040937208,
+                        "午安": -0.04049499,
+                        "晚安": -0.040202625,
+                        "妳": -0.028842755,
+                        "好": -0.56589365,
+                        "你好": -0.152605504,
+                        "您好": -0.040072013,
+                        "嗨": -0.040035024,
+                        "再": -0.015763329,
+                        "見": -0.03070109,
+                        "明天": -0.014937764,
+                        "我": 1.932172775,
+                        "快": 5.546739101,
+                        "樂": 5.546739101,
+                        "心情": 5.26383543,
+                        "很好": 5.26383543,
+                        "難過": -1.535660863,
+                        "想": -0.324690849,
+                        "哭": -0.324690849,
+                        "生氣": -1.083722711,
+                        "了": -1.341991663,
+                        "很": -1.249772668,
+                        "氣": -0.79063791,
+                        "討厭": -0.998543918,
+                        "你": -0.998543918,
+                        "笨": -0.07973022,
+                        "弱": -0.072875269,
+                        "這": -0.064614616,
+                        "是": -0.064614616,
+                        "什麼": -0.136292338,
+                        "為": -0.071677722,
+                        "啊": -0.134961814,
+                        "哇": -0.158159509,
+                        "喔": -0.060760256,
+                        "酷": -0.21483095,
+                        "別過來": -0.122439899,
+                        "恐怖": -0.187352687,
+                        "等不及": -0.654087663,
+                        "興": -0.837333739,
+                        "奮": -0.837333739,
+                        "完美": -0.08680962,
+                        "滿": -0.8025527,
+                        "意": -0.8025527,
+                        "痛": -0.010855579,
+                        "身": -0.033560615,
+                        "體": -0.033560615,
+                        "不舒服": -0.033560615,
+                        "無": -0.769771099,
+                        "聊": -0.769771099,
+                        "羨慕": -1.406089783,
+                        "幾歲": -0.028257398,
+                        "您": -0.028189426,
+                        "今年": -0.007530686,
+                        "在": -0.018132448,
+                        "幹什": -0.007986921,
+                        "麼": -0.007986921,
+                        "幹嘛": -0.011844041,
+                        "現": -0.010642334,
+                        "在在": -0.010642334,
+                        "幹什麼": -0.008943822
+                      }
+                    },
+                    "feeling.sad": {
+                      "bias": -0.565846631,
+                      "weights": {
+                        "妳": -1.048985124,
+                        "好": 1.617084503,
+                        "你好": -0.253446102,
+                        "我": 1.273611784,
+                        "快": -1.161684752,
+                        "樂": -1.161684752,
+                        "心情": -0.353234529,
+                        "很好": -0.353234529,
+                        "難過": 10.167744637,
+                        "想": 5.723927975,
+                        "哭": 5.723927975,
+                        "生氣": -0.498691291,
+                        "了": -0.529778183,
+                        "很": -0.530564606,
+                        "氣": -0.319992095,
+                        "討厭": -0.382541865,
+                        "你": -0.382541865,
+                        "笨": -0.132990465,
+                        "弱": -0.120455645,
+                        "這": -0.109659858,
+                        "是": -0.109659858,
+                        "什麼": -0.22483024,
+                        "為": -0.115170389,
+                        "啊": -0.156965613,
+                        "哇": -0.226994842,
+                        "喔": -0.098824926,
+                        "酷": -1.400296569,
+                        "別過來": -0.09021236,
+                        "恐怖": -1.337582707,
+                        "等不及": -0.241659462,
+                        "興": -1.251982808,
+                        "奮": -1.251982808,
+                        "完美": -1.207848549,
+                        "滿": -1.191749096,
+                        "意": -1.191749096,
+                        "痛": -1.130389929,
+                        "無": -1.172983408,
+                        "聊": -1.172983408,
+                        "羨慕": -2.319616079,
+                        "想要": -1.051471114
+                      }
+                    },
+                    "feeling.angry": {
+                      "bias": -0.299434075,
+                      "weights": {
+                        "妳": -0.734964788,
+                        "好": -2.007511854,
+                        "你好": -0.385900855,
+                        "我": 2.611586332,
+                        "快": -0.155372009,
+                        "樂": -0.155372009,
+                        "心情": -1.152610183,
+                        "很好": -1.152610183,
+                        "難過": -0.29527542,
+                        "生氣": 7.449904442,
+                        "了": 2.501575947,
+                        "很": 2.902748823,
+                        "氣": 7.117899895,
+                        "討厭": -1.256051898,
+                        "你": -1.256051898,
+                        "笨": -0.202311888,
+                        "弱": -0.183588997,
+                        "這": -0.168680638,
+                        "是": -0.168680638,
+                        "什麼": -0.34497565,
+                        "為": -0.176295012,
+                        "啊": -0.254896283,
+                        "哇": -0.354738742,
+                        "喔": -0.151320621,
+                        "酷": -0.086909354,
+                        "別過來": -0.228525698,
+                        "恐怖": -0.070164137,
+                        "等不及": -4.739329338,
+                        "興": -0.619730413,
+                        "奮": -0.619730413,
+                        "完美": -0.006988645,
+                        "滿": -3.035642385,
+                        "意": -3.035642385,
+                        "身": -0.013621963,
+                        "體": -0.013621963,
+                        "不舒服": -0.013621963,
+                        "無": -0.316865742,
+                        "聊": -0.316865742,
+                        "羨慕": -0.385344356,
+                        "幾歲": -1.459372401,
+                        "請問": -0.166734427,
+                        "您": -0.724407196,
+                        "今年": -0.095586546
+                      }
+                    },
+                    "feeling.hate": {
+                      "bias": -1.402125455,
+                      "weights": {
+                        "好": -1.619645596,
+                        "你好": -0.145987511,
+                        "我": 3.29079628,
+                        "快": -0.159971237,
+                        "樂": -0.159971237,
+                        "心情": -0.944269538,
+                        "很好": -0.944269538,
+                        "難過": -0.26886037,
+                        "生氣": -0.640879393,
+                        "了": -1.247562528,
+                        "很": -1.286073923,
+                        "氣": -0.602255702,
+                        "討厭": 8.04617691,
+                        "你": 2.564008236,
+                        "笨": -0.077273652,
+                        "弱": -0.068713859,
+                        "這": -0.065996885,
+                        "是": -0.998954594,
+                        "什麼": -0.67382437,
+                        "為": -0.061772689,
+                        "啊": -0.068929575,
+                        "哇": -0.111785591,
+                        "喔": -0.052335352,
+                        "酷": -0.049492583,
+                        "別過來": -0.057566326,
+                        "恐怖": -0.039818089,
+                        "等不及": -0.655993164,
+                        "興": -0.324284971,
+                        "奮": -0.324284971,
+                        "完美": -0.00090436,
+                        "滿": -0.512313306,
+                        "意": -0.512313306,
+                        "身": -0.010585977,
+                        "體": -0.010585977,
+                        "不舒服": -0.010585977,
+                        "無": -0.27710107,
+                        "聊": -0.27710107,
+                        "羨慕": -0.369455278,
+                        "幾歲": -1.160831094,
+                        "請問": -0.09019006,
+                        "今年": -0.233688653,
+                        "男": -0.244748041,
+                        "的": -0.304599375,
+                        "還": -0.12204086,
+                        "女": -0.244748041,
+                        "性": -0.10871926,
+                        "別": -0.10871926,
+                        "女生": -0.237423941,
+                        "嗎": -0.118635878,
+                        "男生": -0.178817168,
+                        "誰": -0.163249776,
+                        "叫": -0.488338143,
+                        "住": -0.549910426,
+                        "哪裡": -0.61270088,
+                        "住在": -0.54949379,
+                        "哪": -0.635137975,
+                        "在": -0.689498067,
+                        "做": -0.057716932,
+                        "幹什": -0.254202962,
+                        "麼": -0.254202962,
+                        "幹嘛": -0.472557932,
+                        "現": -0.419029146,
+                        "在在": -0.419029146,
+                        "幹什麼": -0.324049354,
+                        "生日": -0.618269145,
+                        "天": -0.148434386,
+                        "幾號": -0.543674111,
+                        "出生": -0.073839344
+                      }
+                    },
+                    "feeling.contempt": {
+                      "bias": -1.153038616,
+                      "weights": {
+                        "早安": -0.29857105,
+                        "午安": -0.288949311,
+                        "晚安": -0.279567242,
+                        "妳": -0.313472629,
+                        "好": -0.568208218,
+                        "你好": 2.505194187,
+                        "您好": -0.086566411,
+                        "嗨": -0.083296895,
+                        "再": -0.050918099,
+                        "見": -0.097315602,
+                        "明天": -0.046397503,
+                        "我": -0.308083653,
+                        "了": -0.220489621,
+                        "很": -0.107469045,
+                        "你": -0.477134764,
+                        "笨": 10.737944603,
+                        "弱": 10.682235718,
+                        "這": -0.178657994,
+                        "是": -0.324322522,
+                        "什麼": -0.411888421,
+                        "為": -0.230283991,
+                        "啊": -0.391291797,
+                        "哇": -0.482673228,
+                        "喔": -0.190119356,
+                        "酷": -0.151255563,
+                        "別過來": -0.360965043,
+                        "恐怖": -0.121972159,
+                        "等不及": -0.130573928,
+                        "興": -0.057806622,
+                        "奮": -0.057806622,
+                        "完美": -0.094491065,
+                        "滿": -0.117219783,
+                        "意": -0.117219783,
+                        "痛": -0.074845277,
+                        "身": -0.183817372,
+                        "體": -0.183817372,
+                        "不舒服": -0.183817372,
+                        "無": -0.00177034,
+                        "聊": -0.00177034,
+                        "羨慕": -0.000712976,
+                        "想要": -0.055603396,
+                        "幾歲": -0.368351489,
+                        "請問": -0.027216569,
+                        "您": -0.282044917,
+                        "今年": -0.064083301,
+                        "男": -0.043104064,
+                        "的": -0.040467545,
+                        "還": -0.017979164,
+                        "女": -0.043104064,
+                        "性": -0.022332169,
+                        "別": -0.022332169,
+                        "女生": -0.048349194,
+                        "嗎": -0.025143398,
+                        "男生": -0.031879183,
+                        "住": -0.090038776,
+                        "哪裡": -0.097513624,
+                        "住在": -0.091419406,
+                        "哪": -0.100691907,
+                        "在": -0.200374141,
+                        "做": -0.002946471,
+                        "幹什": -0.096885942,
+                        "麼": -0.096885942,
+                        "幹嘛": -0.123861179,
+                        "現": -0.118915819,
+                        "在在": -0.118915819,
+                        "幹什麼": -0.095596343,
+                        "生日": -0.057731844,
+                        "天": -0.016747337,
+                        "幾號": -0.041140724,
+                        "出生": -0.000156217
+                      }
+                    },
+                    "feeling.curious": {
+                      "bias": 0.219899466,
+                      "weights": {
+                        "早安": -0.221210763,
+                        "午安": -0.220278114,
+                        "晚安": -0.219918326,
+                        "妳": -1.726412654,
+                        "好": -0.502655208,
+                        "你好": -0.222722232,
+                        "您好": -0.21969308,
+                        "嗨": -0.2194978,
+                        "再": -0.078689389,
+                        "見": -0.154091954,
+                        "明天": -0.07540261,
+                        "我": -0.274870366,
+                        "了": -0.19083114,
+                        "很": -0.091082342,
+                        "你": -4.178412914,
+                        "笨": -0.042869475,
+                        "弱": -0.039979335,
+                        "這": 4.849006653,
+                        "是": 1.791345239,
+                        "什麼": 5.640388966,
+                        "為": 6.638134003,
+                        "啊": -0.367670566,
+                        "哇": -0.435566515,
+                        "喔": -0.167383417,
+                        "酷": -0.133988082,
+                        "別過來": -0.344765723,
+                        "恐怖": -0.108028546,
+                        "等不及": -0.112673081,
+                        "興": -0.057436015,
+                        "奮": -0.057436015,
+                        "完美": -0.07981275,
+                        "滿": -0.10198468,
+                        "意": -0.10198468,
+                        "痛": -0.063053221,
+                        "身": -0.164909124,
+                        "體": -0.164909124,
+                        "不舒服": -0.164909124,
+                        "無": -0.001979422,
+                        "聊": -0.001979422,
+                        "羨慕": -0.000797179,
+                        "想要": -0.046657696,
+                        "幾歲": -0.282634795,
+                        "請問": -0.025826691,
+                        "您": -1.645779371,
+                        "今年": -0.052107386,
+                        "男": -0.351589084,
+                        "的": -1.890342951,
+                        "還": -0.121392965,
+                        "女": -0.351589084,
+                        "性": -0.132501543,
+                        "別": -0.132501543,
+                        "女生": -0.500561535,
+                        "嗎": -0.230060562,
+                        "男生": -0.436562359,
+                        "叫": -1.681487441,
+                        "名子": -1.636448622,
+                        "在": -1.685526133,
+                        "做": -2.528822184,
+                        "現": -0.843295276,
+                        "在在": -0.843295276
+                      }
+                    },
+                    "feeling.surprise": {
+                      "bias": 1.720353975,
+                      "weights": {
+                        "早安": -1.710126162,
+                        "午安": -1.708129287,
+                        "晚安": -1.705940247,
+                        "妳": -1.824621201,
+                        "好": 0.116156772,
+                        "你好": -1.703544259,
+                        "您好": -1.699311733,
+                        "嗨": -1.696431637,
+                        "再": -0.571061313,
+                        "見": -1.141189694,
+                        "明天": -0.570128381,
+                        "我": -1.732155085,
+                        "快": -0.048705291,
+                        "樂": -0.048705291,
+                        "難過": -0.094354533,
+                        "想": -0.912751377,
+                        "哭": -0.912751377,
+                        "了": -0.460328221,
+                        "很": -0.136704326,
+                        "你": -1.378903627,
+                        "笨": -0.248974696,
+                        "弱": -0.234781533,
+                        "這": -0.038343944,
+                        "是": -0.676183403,
+                        "什麼": -1.01075232,
+                        "為": -0.697773576,
+                        "啊": 10.776294708,
+                        "哇": 10.500123978,
+                        "喔": 0.431910247,
+                        "酷": 10.650018692,
+                        "別過來": -1.716587186,
+                        "恐怖": -1.840831995,
+                        "等不及": -0.283943892,
+                        "興": -0.470181763,
+                        "奮": -0.470181763,
+                        "完美": -1.840565205,
+                        "滿": -0.376316637,
+                        "意": -0.376316637,
+                        "痛": -1.836393833,
+                        "身": -0.592136204,
+                        "體": -0.592136204,
+                        "不舒服": -0.592136204,
+                        "無": -0.177779868,
+                        "聊": -0.177779868,
+                        "羨慕": -0.280875504,
+                        "想要": -1.834030271,
+                        "幾歲": -0.882542431,
+                        "請問": -0.058014613,
+                        "您": -0.875747502,
+                        "今年": -0.154250294,
+                        "男": -0.173968673,
+                        "的": -0.161870122,
+                        "還": -0.069173306,
+                        "女": -0.173968673,
+                        "性": -0.092696831,
+                        "別": -0.092696831,
+                        "女生": -0.208540335,
+                        "嗎": -0.102811351,
+                        "男生": -0.157340124,
+                        "誰": -0.005293958,
+                        "叫": -0.101589076,
+                        "住": -0.205218524,
+                        "哪裡": -0.223422036,
+                        "住在": -0.206311598,
+                        "哪": -0.230358899,
+                        "在": -0.569618165,
+                        "做": -0.173046395,
+                        "幹什": -0.189657792,
+                        "麼": -0.189657792,
+                        "幹嘛": -0.296274096,
+                        "現": -0.321042061,
+                        "在在": -0.321042061,
+                        "幹什麼": -0.231682047,
+                        "生日": -0.197323039,
+                        "天": -0.042250805,
+                        "幾號": -0.155072227
+                      }
+                    },
+                    "feeling.fear": {
+                      "bias": 0.915834669,
+                      "weights": {
+                        "早安": -0.917256355,
+                        "午安": -0.916102946,
+                        "晚安": -0.915357351,
+                        "妳": -1.641326547,
+                        "好": 0.727202594,
+                        "你好": -0.914414048,
+                        "您好": -0.912380874,
+                        "嗨": -0.911185682,
+                        "再": -0.305272639,
+                        "見": -0.610191047,
+                        "明天": -0.304918826,
+                        "我": -1.57304275,
+                        "快": -0.036084667,
+                        "樂": -0.036084667,
+                        "難過": -0.069822446,
+                        "想": -0.821359515,
+                        "哭": -0.821359515,
+                        "了": -0.216791689,
+                        "很": -0.033540968,
+                        "你": -0.773697853,
+                        "笨": -0.133041814,
+                        "弱": -0.125830367,
+                        "這": -0.046068501,
+                        "是": -0.337504894,
+                        "什麼": -0.554458261,
+                        "為": -0.360466301,
+                        "啊": -0.908330321,
+                        "哇": -0.907820463,
+                        "喔": -0.199665576,
+                        "酷": -1.626530051,
+                        "別過來": 11.56320858,
+                        "恐怖": 10.840273857,
+                        "等不及": -0.137186512,
+                        "興": -0.382654727,
+                        "奮": -0.382654727,
+                        "完美": -1.64364922,
+                        "滿": -0.373697907,
+                        "意": -0.373697907,
+                        "痛": -1.64994514,
+                        "身": -0.341923714,
+                        "體": -0.341923714,
+                        "不舒服": -0.341923714,
+                        "無": -0.240541101,
+                        "聊": -0.240541101,
+                        "羨慕": -0.333058,
+                        "想要": -1.645340919,
+                        "幾歲": -0.457631618,
+                        "請問": -0.024745181,
+                        "您": -0.536846817,
+                        "今年": -0.085004218,
+                        "男": -0.079417869,
+                        "的": -0.075697243,
+                        "還": -0.035638049,
+                        "女": -0.079417869,
+                        "性": -0.039950222,
+                        "別": -0.039950222,
+                        "女生": -0.094543129,
+                        "嗎": -0.046713822,
+                        "男生": -0.068414994,
+                        "誰": -0.009110406,
+                        "叫": -0.059100434,
+                        "住": -0.116241507,
+                        "哪裡": -0.127108991,
+                        "住在": -0.116715483,
+                        "哪": -0.130498618,
+                        "在": -0.296720147,
+                        "做": -0.088823669,
+                        "幹什": -0.100107253,
+                        "麼": -0.100107253,
+                        "幹嘛": -0.159931153,
+                        "現": -0.171103686,
+                        "在在": -0.171103686,
+                        "幹什麼": -0.118961819,
+                        "生日": -0.118874997,
+                        "天": -0.02465065,
+                        "幾號": -0.094333321,
+                        "出生": -0.00010897
+                      }
+                    },
+                    "feeling.excited": {
+                      "bias": -0.330954069,
+                      "weights": {
+                        "早安": -0.013427097,
+                        "午安": -0.01272627,
+                        "晚安": -0.012061954,
+                        "妳": -0.579681993,
+                        "好": -0.35321331,
+                        "你好": -0.010175227,
+                        "您好": -0.009631002,
+                        "嗨": -0.00911586,
+                        "再": -0.007996577,
+                        "見": -0.01513888,
+                        "明天": -0.007142304,
+                        "我": 2.00900197,
+                        "快": -0.804886937,
+                        "樂": -0.804886937,
+                        "心情": -0.950937212,
+                        "很好": -0.950937212,
+                        "難過": -1.329512477,
+                        "想": -0.00271369,
+                        "哭": -0.00271369,
+                        "生氣": -4.176678658,
+                        "了": 2.507339239,
+                        "很": -1.075266123,
+                        "氣": -0.601848722,
+                        "討厭": -0.554742515,
+                        "你": -1.121926427,
+                        "是": -0.004203027,
+                        "什麼": -0.003383729,
+                        "等不及": 8.307876587,
+                        "興": 5.587590694,
+                        "奮": 5.587590694,
+                        "完美": -0.342114627,
+                        "滿": -1.197174549,
+                        "意": -1.197174549,
+                        "痛": -0.333327711,
+                        "身": -0.114130251,
+                        "體": -0.114130251,
+                        "不舒服": -0.114130251,
+                        "無": -0.885825813,
+                        "聊": -0.885825813,
+                        "羨慕": -1.384855866,
+                        "想要": -0.100011684,
+                        "幾歲": -1.655745745,
+                        "請問": -0.352466851,
+                        "您": -0.549703181,
+                        "今年": -0.148896426,
+                        "男": -0.002186822,
+                        "的": -0.001981221,
+                        "還": -0.00129393,
+                        "女": -0.002186822,
+                        "性": -0.000687291,
+                        "別": -0.000687291,
+                        "女生": -0.000951974,
+                        "嗎": -0.000481802,
+                        "男生": -0.00037694,
+                        "在": -0.005474732,
+                        "做": -0.003383729,
+                        "幹什": -0.001714019,
+                        "麼": -0.001714019,
+                        "幹嘛": -0.001894335,
+                        "現": -0.002654625,
+                        "在在": -0.002654625,
+                        "幹什麼": -0.001137274
+                      }
+                    },
+                    "feeling.satisfy": {
+                      "bias": 0.097859014,
+                      "weights": {
+                        "早安": -0.154794693,
+                        "午安": -0.151528358,
+                        "晚安": -0.148525625,
+                        "妳": -1.519544601,
+                        "好": 1.42272675,
+                        "你好": -0.119162239,
+                        "您好": -0.117461495,
+                        "嗨": -0.115995795,
+                        "再": -0.047488961,
+                        "見": -0.092333794,
+                        "明天": -0.044844836,
+                        "我": -0.595398962,
+                        "快": -0.532206953,
+                        "樂": -0.532206953,
+                        "心情": -0.393231183,
+                        "很好": -0.393231183,
+                        "難過": -0.950360358,
+                        "想": -0.763023376,
+                        "哭": -0.763023376,
+                        "生氣": -0.962639391,
+                        "了": -0.344610006,
+                        "很": 1.425625443,
+                        "氣": -0.968642175,
+                        "討厭": -0.035380267,
+                        "你": -0.353487164,
+                        "笨": -0.000206178,
+                        "弱": -0.000183336,
+                        "是": -0.169132963,
+                        "什麼": -0.089924783,
+                        "為": -0.019848522,
+                        "啊": -0.10192918,
+                        "哇": -0.102645315,
+                        "喔": -0.026790427,
+                        "酷": -1.511929154,
+                        "別過來": -0.096485801,
+                        "恐怖": -1.504491329,
+                        "等不及": -0.009094295,
+                        "興": -0.460482061,
+                        "奮": -0.460482061,
+                        "完美": 10.95855999,
+                        "滿": 5.78659153,
+                        "意": 5.78659153,
+                        "痛": -1.528851151,
+                        "身": -0.132063106,
+                        "體": -0.132063106,
+                        "不舒服": -0.132063106,
+                        "無": -0.824848831,
+                        "聊": -0.824848831,
+                        "羨慕": -1.245105386,
+                        "想要": -1.522520661,
+                        "幾歲": -0.316767305,
+                        "請問": -0.052256651,
+                        "您": -0.14658691,
+                        "今年": -0.029216053,
+                        "男": -0.065755978,
+                        "的": -0.061742734,
+                        "還": -0.033255521,
+                        "女": -0.065755978,
+                        "性": -0.028487217,
+                        "別": -0.028487217,
+                        "女生": -0.049513254,
+                        "嗎": -0.026948068,
+                        "男生": -0.025376495,
+                        "叫": -0.010113144,
+                        "住": -0.012890772,
+                        "哪裡": -0.014230873,
+                        "住在": -0.012941889,
+                        "哪": -0.011601788,
+                        "在": -0.105968803,
+                        "做": -0.059963156,
+                        "幹什": -0.034590989,
+                        "麼": -0.034590989,
+                        "幹嘛": -0.029384075,
+                        "現": -0.04363057,
+                        "在在": -0.04363057,
+                        "幹什麼": -0.025661152
+                      }
+                    },
+                    "feeling.pain": {
+                      "bias": 0.287218859,
+                      "weights": {
+                        "早安": -0.373400122,
+                        "午安": -0.364787191,
+                        "晚安": -0.356941462,
+                        "妳": -1.565594435,
+                        "好": 1.272029877,
+                        "你好": -0.359775275,
+                        "您好": -0.321004063,
+                        "嗨": -0.316162467,
+                        "再": -0.141779453,
+                        "見": -0.273672432,
+                        "明天": -0.131893009,
+                        "我": -1.468900919,
+                        "快": -0.156820819,
+                        "樂": -0.156820819,
+                        "心情": -0.00075873,
+                        "很好": -0.00075873,
+                        "難過": -0.238717034,
+                        "想": -0.799246907,
+                        "哭": -0.799246907,
+                        "生氣": -0.000301949,
+                        "了": -0.184998021,
+                        "很": -0.00067746,
+                        "氣": -0.00037551,
+                        "你": -0.639182746,
+                        "笨": -0.063632347,
+                        "弱": -0.058334928,
+                        "是": -0.324809223,
+                        "什麼": -0.239092737,
+                        "為": -0.098646633,
+                        "啊": -0.296834499,
+                        "哇": -0.303201288,
+                        "喔": -0.093433641,
+                        "酷": -1.557081461,
+                        "別過來": -0.28702119,
+                        "恐怖": -1.553675532,
+                        "興": -0.048239455,
+                        "奮": -0.048239455,
+                        "完美": -1.548533916,
+                        "滿": -0.043972857,
+                        "意": -0.043972857,
+                        "痛": 10.924787521,
+                        "身": 4.070870876,
+                        "體": 4.070870876,
+                        "不舒服": 4.070870876,
+                        "無": -0.425641149,
+                        "聊": -0.425641149,
+                        "羨慕": -0.554073572,
+                        "想要": -1.563038707,
+                        "幾歲": -0.499048918,
+                        "請問": -0.056067962,
+                        "您": -0.37495327,
+                        "今年": -0.060348243,
+                        "男": -0.101664543,
+                        "的": -0.094893098,
+                        "還": -0.042196099,
+                        "女": -0.101664543,
+                        "性": -0.052696992,
+                        "別": -0.052696992,
+                        "女生": -0.105559371,
+                        "嗎": -0.055892237,
+                        "男生": -0.064888321,
+                        "叫": -0.037182152,
+                        "住": -0.072378986,
+                        "哪裡": -0.078348808,
+                        "住在": -0.073080823,
+                        "哪": -0.077024937,
+                        "在": -0.244760484,
+                        "做": -0.103263959,
+                        "幹什": -0.086170919,
+                        "麼": -0.086170919,
+                        "幹嘛": -0.103716418,
+                        "現": -0.131677896,
+                        "在在": -0.131677896,
+                        "幹什麼": -0.083287105,
+                        "生日": -0.033078451,
+                        "天": -0.009913928,
+                        "幾號": -0.023164522
+                      }
+                    },
+                    "feeling.boring": {
+                      "bias": -0.509755955,
+                      "weights": {
+                        "早安": -0.027422506,
+                        "午安": -0.026068715,
+                        "晚安": -0.024780696,
+                        "妳": -0.440889895,
+                        "好": 0.599798381,
+                        "你好": -0.015682636,
+                        "您好": -0.014814342,
+                        "嗨": -0.013994119,
+                        "再": -0.013009684,
+                        "見": -0.024578942,
+                        "明天": -0.011569256,
+                        "我": 0.959218442,
+                        "快": -0.663806081,
+                        "樂": -0.663806081,
+                        "心情": -0.308970362,
+                        "很好": -0.308970362,
+                        "難過": -1.049204469,
+                        "想": -0.149722397,
+                        "哭": -0.149722397,
+                        "生氣": -0.231230155,
+                        "了": -0.346984208,
+                        "很": -0.290959299,
+                        "氣": -0.191268802,
+                        "討厭": -0.110469215,
+                        "你": -0.35513562,
+                        "是": -0.129979506,
+                        "什麼": -0.054657422,
+                        "酷": -0.15755032,
+                        "恐怖": -0.147787333,
+                        "等不及": -0.106821954,
+                        "興": -0.529563904,
+                        "奮": -0.529563904,
+                        "完美": -0.107579611,
+                        "滿": -0.52553761,
+                        "意": -0.52553761,
+                        "痛": -0.090050772,
+                        "無": 5.72535038,
+                        "聊": 5.72535038,
+                        "羨慕": -1.049258351,
+                        "想要": -0.374453187,
+                        "幾歲": -0.236901581,
+                        "請問": -0.036652382,
+                        "您": -0.118688844,
+                        "今年": -0.023603644,
+                        "男": -0.048751149,
+                        "的": -0.045588616,
+                        "還": -0.0236827,
+                        "女": -0.048751149,
+                        "性": -0.021905914,
+                        "別": -0.021905914,
+                        "女生": -0.038801983,
+                        "嗎": -0.020963248,
+                        "男生": -0.020520458,
+                        "叫": -0.009085722,
+                        "住": -0.012167836,
+                        "哪裡": -0.0134091,
+                        "住在": -0.012226885,
+                        "哪": -0.010985621,
+                        "在": -0.082945876,
+                        "做": -0.045571703,
+                        "幹什": -0.027572975,
+                        "麼": -0.027572975,
+                        "幹嘛": -0.024106516,
+                        "現": -0.035163328,
+                        "在在": -0.035163328,
+                        "幹什麼": -0.020858008
+                      }
+                    },
+                    "feeling.envious": {
+                      "bias": -0.38523757,
+                      "weights": {
+                        "早安": -0.167814985,
+                        "午安": -0.160210192,
+                        "晚安": -0.153001666,
+                        "妳": -1.900252819,
+                        "好": 2.239385605,
+                        "你好": -0.097318761,
+                        "您好": -0.09293665,
+                        "嗨": -0.088744715,
+                        "再": -0.063446008,
+                        "見": -0.120677538,
+                        "明天": -0.057231527,
+                        "我": 0.8303684,
+                        "快": -1.480677485,
+                        "樂": -1.480677485,
+                        "心情": -0.335344851,
+                        "很好": -0.335344851,
+                        "難過": -2.683584929,
+                        "想": -1.029848814,
+                        "哭": -1.029848814,
+                        "生氣": -0.189962298,
+                        "了": -0.361755401,
+                        "很": -0.284077346,
+                        "氣": -0.181644365,
+                        "你": -0.637725174,
+                        "是": -0.31355229,
+                        "什麼": -0.150827155,
+                        "酷": -1.856594563,
+                        "恐怖": -1.85443604,
+                        "等不及": -0.084722273,
+                        "興": -1.345618844,
+                        "奮": -1.345618844,
+                        "完美": -1.849942207,
+                        "滿": -1.342486382,
+                        "意": -1.342486382,
+                        "痛": -1.842188239,
+                        "無": -1.34085393,
+                        "聊": -1.34085393,
+                        "羨慕": 9.815264702,
+                        "想要": 10.630247116,
+                        "幾歲": -0.497155607,
+                        "請問": -0.064050376,
+                        "您": -0.380322099,
+                        "今年": -0.05723099,
+                        "男": -0.096118174,
+                        "的": -0.09054029,
+                        "還": -0.042248979,
+                        "女": -0.096118174,
+                        "性": -0.048291311,
+                        "別": -0.048291311,
+                        "女生": -0.098258086,
+                        "嗎": -0.050767507,
+                        "男生": -0.063270159,
+                        "誰": -0.007614557,
+                        "叫": -0.041711003,
+                        "住": -0.06369935,
+                        "哪裡": -0.069912784,
+                        "住在": -0.064048238,
+                        "哪": -0.061511982,
+                        "在": -0.229757428,
+                        "做": -0.109116152,
+                        "幹什": -0.081067815,
+                        "麼": -0.081067815,
+                        "幹嘛": -0.08569666,
+                        "現": -0.115649611,
+                        "在在": -0.115649611,
+                        "幹什麼": -0.069526397,
+                        "生日": -0.012837881,
+                        "天": -0.003677179,
+                        "幾號": -0.009160702
+                      }
+                    },
+                    "asking.age": {
+                      "bias": 0.158843119,
+                      "weights": {
+                        "早安": -0.212269619,
+                        "午安": -0.207811281,
+                        "晚安": -0.203584239,
+                        "妳": 1.085058689,
+                        "好": -1.242562771,
+                        "你好": -0.195381835,
+                        "您好": -0.175464347,
+                        "嗨": -0.173227414,
+                        "再": -0.074977547,
+                        "見": -0.144247636,
+                        "明天": -0.069270097,
+                        "我": -1.16756165,
+                        "快": -0.013144446,
+                        "樂": -0.013144446,
+                        "心情": -0.025099287,
+                        "很好": -0.025099287,
+                        "難過": -0.007240647,
+                        "想": -0.009691497,
+                        "哭": -0.009691497,
+                        "生氣": -0.579270005,
+                        "了": 0.000124153,
+                        "討厭": -0.108394958,
+                        "你": 1.085312247,
+                        "笨": -0.033078276,
+                        "弱": -0.030205905,
+                        "是": -2.545657396,
+                        "什麼": -0.960204899,
+                        "啊": -0.165161088,
+                        "哇": -0.169100299,
+                        "喔": -0.053728048,
+                        "別過來": -0.163145393,
+                        "等不及": -0.434413195,
+                        "身": -0.059636846,
+                        "體": -0.059636846,
+                        "不舒服": -0.059636846,
+                        "幾歲": 11.255761147,
+                        "請問": 0.000115777,
+                        "您": 1.085211635,
+                        "今年": 0.000151021,
+                        "男": -1.05331552,
+                        "的": -0.997154176,
+                        "還": -0.612384498,
+                        "女": -1.05331552,
+                        "性": -0.384769648,
+                        "別": -0.384769648,
+                        "女生": -0.72706306,
+                        "嗎": -0.390605628,
+                        "男生": -0.380508929,
+                        "叫": -0.387551874,
+                        "住": -0.632788897,
+                        "哪裡": -0.707636774,
+                        "住在": -0.633217275,
+                        "哪": -0.71358645,
+                        "在": -1.167830586,
+                        "做": -0.572653115,
+                        "幹什": -0.360189915,
+                        "麼": -0.360189915,
+                        "幹嘛": -0.432113856,
+                        "現": -0.589031816,
+                        "在在": -0.589031816,
+                        "幹什麼": -0.391905636,
+                        "生日": -0.723212004,
+                        "天": -0.15521732,
+                        "幾號": -0.567994773
+                      }
+                    },
+                    "asking.gender": {
+                      "bias": -0.056891076,
+                      "weights": {
+                        "早安": -0.085011765,
+                        "午安": -0.081613474,
+                        "晚安": -0.078397989,
+                        "妳": 0.759285927,
+                        "好": -0.702396095,
+                        "你好": -0.079388902,
+                        "您好": -0.057132494,
+                        "嗨": -0.055032942,
+                        "再": -0.034580518,
+                        "見": -0.066154346,
+                        "明天": -0.031573828,
+                        "我": -0.378057092,
+                        "心情": -0.021293357,
+                        "很好": -0.021293357,
+                        "生氣": -0.01479774,
+                        "了": -0.181236371,
+                        "很": -0.032943077,
+                        "氣": -0.01814534,
+                        "討厭": -0.32382071,
+                        "你": 0.759026527,
+                        "笨": -0.016425658,
+                        "弱": -0.014878222,
+                        "這": -1.009819269,
+                        "是": 5.491677284,
+                        "什麼": -4.424563885,
+                        "啊": -0.016241349,
+                        "哇": -0.02297047,
+                        "喔": -0.009588698,
+                        "別過來": -0.014481861,
+                        "身": -0.009704175,
+                        "體": -0.009704175,
+                        "不舒服": -0.009704175,
+                        "幾歲": -0.702224851,
+                        "請問": -0.059022352,
+                        "您": -0.001800633,
+                        "今年": -0.115694351,
+                        "男": 3.15301919,
+                        "的": -0.185356691,
+                        "還": 0.184913576,
+                        "女": 3.15301919,
+                        "性": 3.245653868,
+                        "別": 3.245653868,
+                        "女生": 6.304259777,
+                        "嗎": 0.002063471,
+                        "男生": 6.303936481,
+                        "誰": -6.190991402,
+                        "叫": -0.757404804,
+                        "名子": -2.615407944,
+                        "住": -0.653667152,
+                        "哪裡": -0.769932985,
+                        "住在": -0.581476927,
+                        "哪": -1.66911757,
+                        "在": -0.803775549,
+                        "做": -0.041939978,
+                        "幹什": -0.397243977,
+                        "麼": -0.397243977,
+                        "幹嘛": -0.477293998,
+                        "現": -0.460214645,
+                        "在在": -0.460214645,
+                        "幹什麼": -0.347512335,
+                        "生日": -3.698949575,
+                        "天": -1.203906417,
+                        "哪一天": -2.495043278
+                      }
+                    },
+                    "asking.name": {
+                      "bias": -1.44736354,
+                      "weights": {
+                        "妳": -0.348742425,
+                        "我": -0.906949997,
+                        "了": -0.444564909,
+                        "討厭": -0.906949997,
+                        "你": 3.14360857,
+                        "這": -3.257329941,
+                        "是": 0.936250985,
+                        "什麼": 3.704148293,
+                        "為": -2.255698681,
+                        "幾歲": -1.698350549,
+                        "請問": -0.139860392,
+                        "您": -0.176708862,
+                        "今年": -0.303810328,
+                        "男": -1.422484517,
+                        "的": 0.968534529,
+                        "還": -0.97230798,
+                        "女": -1.422484517,
+                        "性": -1.806046128,
+                        "別": -1.806046128,
+                        "女生": -2.630342245,
+                        "嗎": -0.796008468,
+                        "男生": -2.621138334,
+                        "誰": 9.857308388,
+                        "叫": 7.099452496,
+                        "名子": 5.194637775,
+                        "住": -1.033639789,
+                        "哪裡": -1.166046381,
+                        "住在": -1.139933228,
+                        "哪": -1.735794067,
+                        "在": -2.338588476,
+                        "做": -3.076915026,
+                        "幹什": -0.172826484,
+                        "麼": -0.172826484,
+                        "幹嘛": -0.173455447,
+                        "現": -1.237455845,
+                        "在在": -1.237455845,
+                        "幹什麼": -0.152848482,
+                        "生日": -2.429617405,
+                        "天": -0.72826761,
+                        "哪一天": -1.918774366,
+                        "幾號": -0.051266409,
+                        "出生": -0.268690884
+                      }
+                    },
+                    "asking.place": {
+                      "bias": -0.006593222,
+                      "weights": {
+                        "早安": -0.167011335,
+                        "午安": -0.159581318,
+                        "晚安": -0.152510464,
+                        "妳": -0.157635406,
+                        "好": -0.189782262,
+                        "你好": -0.188394845,
+                        "您好": -0.138818458,
+                        "嗨": -0.133250013,
+                        "再": -0.086699262,
+                        "見": -0.165509298,
+                        "明天": -0.078810021,
+                        "我": -0.985104978,
+                        "快": -0.025241865,
+                        "樂": -0.025241865,
+                        "心情": -0.030769248,
+                        "很好": -0.030769248,
+                        "難過": -0.017207703,
+                        "想": -0.051306911,
+                        "哭": -0.051306911,
+                        "生氣": -0.026915414,
+                        "了": -0.576490641,
+                        "很": -0.03239283,
+                        "氣": -0.019365625,
+                        "討厭": -0.865605175,
+                        "你": 1.782866597,
+                        "笨": -0.03140825,
+                        "弱": -0.028385373,
+                        "是": -1.75463903,
+                        "什麼": -1.4172436,
+                        "啊": -0.08008901,
+                        "哇": -0.109203085,
+                        "喔": -0.045911402,
+                        "酷": -0.009941766,
+                        "別過來": -0.072170831,
+                        "恐怖": -0.005966653,
+                        "完美": -0.005271173,
+                        "痛": -0.004559064,
+                        "身": -0.045684803,
+                        "體": -0.045684803,
+                        "不舒服": -0.045684803,
+                        "想要": -0.001651816,
+                        "幾歲": -1.776261091,
+                        "請問": -0.188791037,
+                        "您": -0.027994109,
+                        "今年": -0.332572103,
+                        "男": -0.125042349,
+                        "的": -1.342963219,
+                        "女": -0.125042349,
+                        "女生": -0.179298237,
+                        "嗎": -0.089033231,
+                        "男生": -0.121635221,
+                        "誰": -0.080610745,
+                        "叫": -0.366386324,
+                        "住": 6.25226593,
+                        "哪裡": 4.471529484,
+                        "住在": 6.252279282,
+                        "哪": 4.471343994,
+                        "在": -2.031285048,
+                        "做": -1.050857782,
+                        "幹什": -0.673569262,
+                        "麼": -0.673569262,
+                        "幹嘛": -0.958140135,
+                        "現": -1.263633251,
+                        "在在": -1.263633251,
+                        "幹什麼": -0.61235106,
+                        "生日": -2.685945272,
+                        "天": -3.56166172,
+                        "哪一天": -0.225277215,
+                        "幾號": -0.241969913,
+                        "出生": -1.342963219
+                      }
+                    },
+                    "asking.doing": {
+                      "bias": -0.369768011,
+                      "weights": {
+                        "早安": -0.400874019,
+                        "午安": -0.380506337,
+                        "晚安": -0.361163288,
+                        "妳": 1.401364565,
+                        "好": -1.242911339,
+                        "你好": -0.480724335,
+                        "您好": -0.284552902,
+                        "嗨": -0.27006644,
+                        "再": -0.213745236,
+                        "見": -0.406119853,
+                        "明天": -0.192374587,
+                        "我": -0.955376923,
+                        "快": -0.113338418,
+                        "樂": -0.113338418,
+                        "心情": -0.167903438,
+                        "很好": -0.167903438,
+                        "難過": -0.06843324,
+                        "想": -0.077952296,
+                        "哭": -0.077952296,
+                        "生氣": -0.196230844,
+                        "了": -0.736798167,
+                        "很": -0.179997861,
+                        "氣": -0.106404282,
+                        "討厭": -0.30306673,
+                        "你": 1.401357889,
+                        "笨": -0.107637063,
+                        "弱": -0.09689267,
+                        "這": -0.393714368,
+                        "是": -1.992149234,
+                        "什麼": 0.4240053,
+                        "為": -0.742479205,
+                        "啊": -0.118094675,
+                        "哇": -0.189982995,
+                        "喔": -0.085430056,
+                        "別過來": -0.102261335,
+                        "身": -0.082820348,
+                        "體": -0.082820348,
+                        "不舒服": -0.082820348,
+                        "幾歲": -1.7210145,
+                        "請問": -0.226503581,
+                        "您": 1.401364446,
+                        "今年": -0.240078583,
+                        "男": -0.017013974,
+                        "的": -0.34964788,
+                        "女": -0.017013974,
+                        "女生": -0.022709409,
+                        "嗎": -0.012679942,
+                        "男生": -0.010497554,
+                        "叫": -1.455546379,
+                        "名子": -0.085573114,
+                        "住": -0.356725991,
+                        "哪裡": -0.694169164,
+                        "住在": -0.337443352,
+                        "哪": -1.347730398,
+                        "在": 7.943084717,
+                        "做": 3.101315498,
+                        "幹什": 1.76266098,
+                        "麼": 1.76266098,
+                        "幹嘛": 3.525321245,
+                        "現": 3.97154212,
+                        "在在": 3.97154212,
+                        "幹什麼": 3.52532053,
+                        "生日": -2.226956606,
+                        "天": -1.347730398,
+                        "哪一天": -0.681300998,
+                        "幾號": -0.388716191,
+                        "出生": -0.190790966
+                      }
+                    },
+                    "asking.birthday": {
+                      "bias": -0.82188156,
+                      "weights": {
+                        "早安": -0.251615316,
+                        "午安": -0.237552956,
+                        "晚安": -0.224276558,
+                        "妳": -0.211742133,
+                        "好": -0.512547493,
+                        "你好": -0.312752664,
+                        "您好": -0.188735738,
+                        "嗨": -0.178187624,
+                        "再": -0.168229029,
+                        "見": -0.317654014,
+                        "明天": -0.149424985,
+                        "我": -1.28120327,
+                        "快": -0.127177924,
+                        "樂": -0.127177924,
+                        "心情": -0.13626042,
+                        "很好": -0.13626042,
+                        "難過": -0.083238877,
+                        "想": -0.090388551,
+                        "哭": -0.090388551,
+                        "生氣": -0.147001281,
+                        "了": -0.890291154,
+                        "很": -0.134112045,
+                        "氣": -0.079527847,
+                        "討厭": -0.707996905,
+                        "你": 1.610816956,
+                        "笨": -0.059762936,
+                        "弱": -0.05308149,
+                        "這": -0.372805804,
+                        "是": -0.090035357,
+                        "什麼": -1.123356581,
+                        "為": -0.044468202,
+                        "啊": -0.057648141,
+                        "哇": -0.102768995,
+                        "喔": -0.048342708,
+                        "別過來": -0.048682708,
+                        "身": -0.04596192,
+                        "體": -0.04596192,
+                        "不舒服": -0.04596192,
+                        "幾歲": -1.772051454,
+                        "請問": -0.279806495,
+                        "今年": -0.387822956,
+                        "男": -1.266829491,
+                        "的": 0.631206453,
+                        "還": -0.801212072,
+                        "女": -1.266829491,
+                        "性": -0.870494902,
+                        "別": -0.870494902,
+                        "女生": -0.936411738,
+                        "嗎": -0.490621179,
+                        "男生": -0.649801195,
+                        "誰": -0.621672094,
+                        "叫": -0.081605554,
+                        "名子": -0.624477088,
+                        "住": -1.601801634,
+                        "哪裡": -0.040704299,
+                        "住在": -1.605303168,
+                        "哪": 0.82907778,
+                        "在": -0.445389479,
+                        "幹什": -0.162403613,
+                        "麼": -0.162403613,
+                        "幹嘛": -0.317567438,
+                        "現": -0.266165048,
+                        "在在": -0.266165048,
+                        "幹什麼": -0.231583253,
+                        "生日": 6.956335068,
+                        "天": 3.995475054,
+                        "哪一天": 4.423687458,
+                        "幾號": 4.641656399,
+                        "出生": 6.10447979
+                      }
+                    }
+                  }
+                ],
+                "trainOpts": {
+                  "iterations": 20000,
+                  "errorThresh": 0.00005,
+                  "fixedError": false,
+                  "deltaErrorThresh": 0.000001,
+                  "learningRate": 0.7,
+                  "momentum": 0.5,
+                  "leakyReluAlpha": 0.08,
+                  "maxDecimals": 9,
+                  "log": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extraSentences": [
+      [
+        "zh",
+        "早安"
+      ],
+      [
+        "zh",
+        "午安"
+      ],
+      [
+        "zh",
+        "晚安"
+      ],
+      [
+        "zh",
+        "妳好"
+      ],
+      [
+        "zh",
+        "你好"
+      ],
+      [
+        "zh",
+        "您好"
+      ],
+      [
+        "zh",
+        "嗨"
+      ],
+      [
+        "zh",
+        "再見"
+      ],
+      [
+        "zh",
+        "明天見"
+      ],
+      [
+        "zh",
+        "我好快樂"
+      ],
+      [
+        "zh",
+        "我心情很好"
+      ],
+      [
+        "zh",
+        "我好難過"
+      ],
+      [
+        "zh",
+        "好想哭"
+      ],
+      [
+        "zh",
+        "我生氣了"
+      ],
+      [
+        "zh",
+        "我很氣"
+      ],
+      [
+        "zh",
+        "我很生氣"
+      ],
+      [
+        "zh",
+        "我討厭你"
+      ],
+      [
+        "zh",
+        "你好笨"
+      ],
+      [
+        "zh",
+        "你好弱"
+      ],
+      [
+        "zh",
+        "這是什麼"
+      ],
+      [
+        "zh",
+        "為什麼"
+      ],
+      [
+        "zh",
+        "啊"
+      ],
+      [
+        "zh",
+        "哇"
+      ],
+      [
+        "zh",
+        "哇喔"
+      ],
+      [
+        "zh",
+        "好酷"
+      ],
+      [
+        "zh",
+        "別過來"
+      ],
+      [
+        "zh",
+        "好恐怖"
+      ],
+      [
+        "zh",
+        "我等不及了"
+      ],
+      [
+        "zh",
+        "我好興奮"
+      ],
+      [
+        "zh",
+        "好完美"
+      ],
+      [
+        "zh",
+        "我很滿意"
+      ],
+      [
+        "zh",
+        "我好滿意"
+      ],
+      [
+        "zh",
+        "好痛"
+      ],
+      [
+        "zh",
+        "身體不舒服"
+      ],
+      [
+        "zh",
+        "我好無聊"
+      ],
+      [
+        "zh",
+        "我好羨慕"
+      ],
+      [
+        "zh",
+        "好想要"
+      ],
+      [
+        "zh",
+        "你幾歲"
+      ],
+      [
+        "zh",
+        "你幾歲了"
+      ],
+      [
+        "zh",
+        "請問你幾歲了"
+      ],
+      [
+        "zh",
+        "妳幾歲"
+      ],
+      [
+        "zh",
+        "妳幾歲了"
+      ],
+      [
+        "zh",
+        "請問妳幾歲了"
+      ],
+      [
+        "zh",
+        "您幾歲"
+      ],
+      [
+        "zh",
+        "您幾歲了"
+      ],
+      [
+        "zh",
+        "請問您幾歲了"
+      ],
+      [
+        "zh",
+        "你今年幾歲"
+      ],
+      [
+        "zh",
+        "你今年幾歲了"
+      ],
+      [
+        "zh",
+        "妳今年幾歲"
+      ],
+      [
+        "zh",
+        "妳今年幾歲了"
+      ],
+      [
+        "zh",
+        "您今年幾歲"
+      ],
+      [
+        "zh",
+        "您今年幾歲了"
+      ],
+      [
+        "zh",
+        "你是男的還是女的"
+      ],
+      [
+        "zh",
+        "你是男是女"
+      ],
+      [
+        "zh",
+        "你的性別是"
+      ],
+      [
+        "zh",
+        "你是女生"
+      ],
+      [
+        "zh",
+        "你是女生嗎"
+      ],
+      [
+        "zh",
+        "你是男生"
+      ],
+      [
+        "zh",
+        "你是男生嗎"
+      ],
+      [
+        "zh",
+        "妳是男的還是女的"
+      ],
+      [
+        "zh",
+        "妳是男是女"
+      ],
+      [
+        "zh",
+        "妳的性別是"
+      ],
+      [
+        "zh",
+        "妳是女生"
+      ],
+      [
+        "zh",
+        "妳是女生嗎"
+      ],
+      [
+        "zh",
+        "妳是男生"
+      ],
+      [
+        "zh",
+        "妳是男生嗎"
+      ],
+      [
+        "zh",
+        "你是誰"
+      ],
+      [
+        "zh",
+        "你叫什麼"
+      ],
+      [
+        "zh",
+        "你的名子是什麼"
+      ],
+      [
+        "zh",
+        "你住哪裡"
+      ],
+      [
+        "zh",
+        "你住在哪"
+      ],
+      [
+        "zh",
+        "你住在哪裡"
+      ],
+      [
+        "zh",
+        "你住哪"
+      ],
+      [
+        "zh",
+        "你在做什麼"
+      ],
+      [
+        "zh",
+        "妳在做什麼"
+      ],
+      [
+        "zh",
+        "您在做什麼"
+      ],
+      [
+        "zh",
+        "你在幹什麼"
+      ],
+      [
+        "zh",
+        "妳在幹什麼"
+      ],
+      [
+        "zh",
+        "您在幹什麼"
+      ],
+      [
+        "zh",
+        "你在幹嘛"
+      ],
+      [
+        "zh",
+        "妳在幹嘛"
+      ],
+      [
+        "zh",
+        "您在幹嘛"
+      ],
+      [
+        "zh",
+        "你現在在做什麼"
+      ],
+      [
+        "zh",
+        "妳現在在做什麼"
+      ],
+      [
+        "zh",
+        "您現在在做什麼"
+      ],
+      [
+        "zh",
+        "你現在在幹什麼"
+      ],
+      [
+        "zh",
+        "妳現在在幹什麼"
+      ],
+      [
+        "zh",
+        "您現在在幹什麼"
+      ],
+      [
+        "zh",
+        "你現在在幹嘛"
+      ],
+      [
+        "zh",
+        "妳現在在幹嘛"
+      ],
+      [
+        "zh",
+        "您現在在幹嘛"
+      ],
+      [
+        "zh",
+        "你生日是哪天"
+      ],
+      [
+        "zh",
+        "你生日是哪一天"
+      ],
+      [
+        "zh",
+        "你生日哪天"
+      ],
+      [
+        "zh",
+        "你生日幾號"
+      ],
+      [
+        "zh",
+        "你的生日是哪一天"
+      ],
+      [
+        "zh",
+        "你哪天生日"
+      ],
+      [
+        "zh",
+        "你哪天出生的"
+      ]
+    ]
+  },
+  "nerManager": {
+    "settings": {},
+    "threshold": 0.8,
+    "builtins": [
+      "Number",
+      "Ordinal",
+      "Percentage",
+      "Age",
+      "Currency",
+      "Dimension",
+      "Temperature",
+      "DateTime",
+      "PhoneNumber",
+      "IpAddress",
+      "Boolean",
+      "Email",
+      "Hashtag",
+      "URL"
+    ],
+    "namedEntities": {}
+  },
+  "slotManager": {},
+  "responses": {},
+  "actions": {},
+  "utteranceDict": {
+    "?": "help"
+  }
+}

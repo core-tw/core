@@ -11,7 +11,7 @@ module.exports = {
   minArgs: 0,
   maxArgs: 0,
   level: null,
-  cooldown: 10,
+  cooldown: 5,
   requireItems: [],
   requireBotPermissions: ["CONNECT"],
   async execute(msg, args, client, user) {

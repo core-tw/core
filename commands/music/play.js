@@ -11,7 +11,7 @@ module.exports = {
   minArgs: 1,
   maxArgs: null,
   level: null,
-  cooldown: 10,
+  cooldown: 5,
   requireItems: [],
   requireBotPermissions: ["SPEAK"],
   async execute(msg, args, client, user) {
