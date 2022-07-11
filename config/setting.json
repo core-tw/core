@@ -1,5 +1,5 @@
 {
-	"prefix": "!",
+	"prefix": "core.",
 	"embedColor": {
 		"normal": "#0080FF",
 		"error": "#ff0000"
@@ -11,6 +11,9 @@
 	},
 	"allowedMentions": {
 		"repliedUser": false 
+	},
+	"superior": {
+		"music": ["music", "m"]
 	},
 	"coinName": "晶玉",
 	"xpName": "生體轉換",

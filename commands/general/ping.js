@@ -4,34 +4,34 @@ const setting = require('./../../config/setting.json');
 
 // 延遲
 module.exports = {
-  num: 4,
-  name: ['ping'],
-  type: "general",
-  expectedArgs: '',
-  description: '延遲毫秒數',
-  minArgs: 0,
-  maxArgs: 0,
-  level: null,
-  cooldown: null,
-  requireItems: [],
-  requireBotPermissions: [],
-  async execute(msg, args, client, user) {
-		try {
-			msg.reply({
-        embeds: [
-          new MessageEmbed()
-			      .setTitle("Pong !")
-			      .setColor(setting.embedColor.normal)
-			      .setDescription(`API Latency: ${Math.round(client.ws.ping)} ms\nLatency: ${Date.now() - msg.createdTimestamp} ms`)
-			      .setTimestamp()
-        ],
-        allowedMentions: setting.allowedMentions
-      }).then(() => {
-				msg.react('✅');
-			})
-		} catch (err) {
-      console.log(err);
-      log(client, err.toString());
+    num: 4,
+    name: ['ping'],
+    type: "general",
+    expectedArgs: '',
+    description: '延遲毫秒數',
+    minArgs: 0,
+    maxArgs: 0,
+    level: null,
+    cooldown: null,
+    requireItems: [],
+    requireBotPermissions: [],
+    async execute(msg, args, client, user) {
+        try {
+            msg.reply({
+                embeds: [
+                    new MessageEmbed()
+                        .setTitle("Pong !")
+                        .setColor(setting.embedColor.normal)
+                        .setDescription(`API Latency: ${Math.round(client.ws.ping)} ms\nLatency: ${Date.now() - msg.createdTimestamp} ms`)
+                        .setTimestamp()
+                ],
+                allowedMentions: setting.allowedMentions
+            }).then(() => {
+                msg.react('✅');
+            });
+        } catch (err) {
+            console.log(err);
+            log(client, err.toString());
+        }
     }
-  }
 }

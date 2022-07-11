@@ -1,24 +1,24 @@
-0. 遊戲開始 | 開始遊戲 | start
+0. 遊戲開始 | start
 1. 冒險 | adventure | adv
-2. 面板 | profile | p
+2. 面板 | profile | pf
 3. 給予 | give | g
 4. ping
-5. 升級 | 生級面板 | upgrade | upg
+5. 升級 | upgrade | upg
 6. 背包 | inventory | i
-7. 商店 | shop | store | s
-8. 傳送 | 轉移 | transfer | tr
-9. 挖礦 | mining | m
+7. 商店 | shop | sh
+8. 轉移 | move | mv
+9. 挖礦 | mining | mi
 10. 購買 | buy | b
 11. 使用 | use | u
 12. 頭像 | setAvatar | seta
 13. 加入 | join
 14. 離開 | leave
-15. 暫停播放 | 暫停 | pause
-16. 播放歌曲 | 播放 | play
-17. 播放隊伍 | 播放隊列 | 隊伍 | 隊列 | queue | now
-18. 恢復播放 | 恢復 | resume
-19. 跳過歌曲 | 跳過 | skip
-20. 切換循環 | 循環 | loop
+15. 暫停 | pause | pa
+16. 播放歌曲 | 播放 | play | pl
+17. 隊列 | queue | now
+18. 恢復 | resume | rs
+19. 跳過 | skip | sk
+20. 循環 | loop | lp
 21. 音量 | volume | vol
 22. 歌單 | list
 23. 播放歌單 | playlist

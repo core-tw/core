@@ -1,1 +1,1 @@
-run = "node_modules/.bin/node --trace-warnings index.js"
+run = "node_modules/.bin/node --trace-warnings ./index.js"
