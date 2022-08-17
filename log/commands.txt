@@ -23,3 +23,5 @@
 22. 歌單 | list
 23. 播放歌單 | playlist
 24. 過濾器 | filter
+25. 紀錄 | record | rec
+26. 頻道紀錄 | chrecord | chrec

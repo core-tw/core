@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const express = require("express");
 const { Client, Intents, Collection } = require("discord.js");
 
@@ -16,8 +17,9 @@ const { database: { connect }, functions: { connectWeb } } = require("./lib/inde
         ]
     });
 
-    client.login(process.env.token).then(() => {/*
+    client.login(process.env.token).then(() => {
         setTimeout(() => {
+			if (client.isReady()) return;
             // node_modules/.bin/node --trace-warnings ./index.js
             require("child_process").exec("kill 1", (error, stdout, stderr) => {
                 console.log(stdout.toString(), stderr.toString());
@@ -31,22 +33,24 @@ const { database: { connect }, functions: { connectWeb } } = require("./lib/inde
                     }, 30000);
                 }
             });
-        }, 30000);*/
+        }, 30000);
     });
 
     // 捕捉異常錯誤
     process.on("uncaughtException", (err) => {
-        console.error("未捕捉的異常錯誤", err.message);
+       	console.error("未捕捉的異常錯誤", err);
     });
 
     process.on("unhandledRejection", (err, promise) => {
-        console.error("未捕捉的失敗回傳", err.message);
+        console.error("未捕捉的失敗回傳", err);
     });
     // 事件監聽
     console.log(config["console_prefix"] + "載入事件監聽");
     require("./events/index.js")(client);
 
     const app = express();
+	app.use('/public', express.static(__dirname + '/public'));
+
     let firstThreePing = [];
     app.get("/", async (req, res) => {
         let ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
@@ -64,12 +68,16 @@ const { database: { connect }, functions: { connectWeb } } = require("./lib/inde
         });
     });
 
+	app.get("/download", async (req, res) => {
+		res.sendFile(path.join(__dirname, "./public/html/download.html"));
+	});
+
     app.listen(config["port"], () => {
         console.log(
             config["console_prefix"] +
             `連接至 core.coretw.repl.co:${config["port"]}`
         );
     });
-
-    module.exports = client;
+	
+	module.exports = client;
 })();

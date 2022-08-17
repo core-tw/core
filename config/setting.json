@@ -1,64 +1,67 @@
 {
-	"prefix": "core.",
-	"embedColor": {
-		"normal": "#0080FF",
-		"error": "#ff0000"
-	},
-	"error": {
-		"no": "**< 未知的系統錯誤，請聯絡 櫻2#0915 >**",
-		"notFindUser": "**< 未知的公民序號 >**",
-  	"notFindSkill":"**< 未知的技能序號 >**"
-	},
-	"allowedMentions": {
-		"repliedUser": false 
-	},
-	"superior": {
-		"music": ["music", "m"]
-	},
-	"coinName": "晶玉",
-	"xpName": "生體轉換",
-	"xpIncreaseRate": 1.1,
-	"coinToDetain": 500,
-	"dodgeLikelihood": 0.2,
-	"allDodgeLikelihood": 0.1,
-	"plot_tag": {
-		"public": "<public>"
-	},
-	"music": {
-		"askChannel": "你還沒進入語音頻道喔～",
-		"otherChannel": "我已經在其他頻道了耶......對不起啦QQ",
-		"errorJoin": "我進不去那個頻道耶...",
-		"errorFind": "我查不到歌啦 Q _ Q",
-		"errorSkip": "我沒辦法跳過歌曲欸......",
-		"errorLoop": "切換循環模式的時候好像哪裡出了問題耶...",
-		"errorPause": "沒辦法暫停歌曲欸 OAO",
-		"errorResume": "播放歌曲時好像出了一咪咪錯誤 O _ O",
-		"errorVolume": "調整音量時好像哪裡出錯了耶...",
-		"noMusic": "沒有任何音樂正在播放喔！",
-		"star": "已將這首歌加入你的個人清單！",
-		"plzPause": "請先將音樂暫停喔～"
-	},
-	"shop": [
-		{
-			"potion": "藥水"
-		},
-		{
-			"material": "素材"
-		},
-		{
-			"weapon": "武裝"
-		},
-		{
-			"card": "通行證"
-		},
-		{
-			"increase": "增幅道具"
-		},
-		{
-			"guard": "守護道具"
-		},
-		{
-			"others": "其他"
-		}
-	]
+    "prefix": "core.",
+    "embedColor": {
+        "normal": "#0080FF",
+        "error": "#ff0000"
+    },
+    "error": {
+        "no": "**< 未知的系統錯誤，請聯絡 櫻2#0915 >**",
+        "notFindUser": "**< 未知的公民序號 >**",
+        "notFindSkill": "**< 未知的技能序號 >**"
+    },
+    "allowedMentions": {
+        "repliedUser": false
+    },
+    "superior": {
+        "music": [
+            "music",
+            "m"
+        ]
+    },
+    "coinName": "晶玉",
+    "xpName": "生體轉換",
+    "xpIncreaseRate": 1.1,
+    "coinToDetain": 500,
+    "dodgeLikelihood": 0.2,
+    "allDodgeLikelihood": 0.1,
+    "plot_tag": {
+        "public": "<public>"
+    },
+    "music": {
+        "askChannel": "你還沒進入語音頻道喔～",
+        "otherChannel": "我已經在其他頻道了耶......對不起啦QQ",
+        "errorJoin": "我進不去那個頻道耶...",
+        "errorFind": "我查不到歌啦 Q _ Q",
+        "errorSkip": "我沒辦法跳過歌曲欸......",
+        "errorLoop": "切換循環模式的時候好像哪裡出了問題耶...",
+        "errorPause": "沒辦法暫停歌曲欸 OAO",
+        "errorResume": "播放歌曲時好像出了一咪咪錯誤 O _ O",
+        "errorVolume": "調整音量時好像哪裡出錯了耶...",
+        "noMusic": "沒有任何音樂正在播放喔！",
+        "star": "已將這首歌加入你的個人清單！",
+        "plzPause": "請先將音樂暫停喔～"
+    },
+    "shop": [
+        {
+            "potion": "藥水"
+        },
+        {
+            "material": "素材"
+        },
+        {
+            "weapon": "武裝"
+        },
+        {
+            "card": "通行證"
+        },
+        {
+            "increase": "增幅道具"
+        },
+        {
+            "guard": "守護道具"
+        },
+        {
+            "others": "其他"
+        }
+    ]
 }
