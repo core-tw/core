@@ -25,3 +25,4 @@
 24. 過濾器 | filter
 25. 紀錄 | record | rec
 26. 頻道紀錄 | chrecord | chrec
+27. gettime
