@@ -25,7 +25,7 @@ const makeDirnameFilename = (name, chunk) => {
         ]
     });
 
-    client.login(process.env.token).then(() => {
+    client.login(config["token"]).then(() => {
         setTimeout(() => {
 			if (client.isReady()) return;
             // node_modules/.bin/node --trace-warnings ./index.js
