@@ -1,7 +1,6 @@
 const config = require("./../config.js");
 const { Collection } = require("discord.js");
-const { database: { connect }, Music } = require("./../lib/index.js");
-const Database = require("@replit/database");
+const { database: { connect, Database }, Music } = require("./../lib/index.js");
 
 module.exports = {
     name: 'ready',
