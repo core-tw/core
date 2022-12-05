@@ -26,3 +26,4 @@
 25. 紀錄 | record | rec
 26. 頻道紀錄 | chrecord | chrec
 27. gettime
+28. 串流 | webcam | wc

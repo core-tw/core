@@ -1,12 +1,20 @@
 const fs = require("fs");
 const path = require("path");
+//const bodyParser = require('body-parser')
 const express = require("express");
+//const fileUpload = require("express-fileupload");
 const { Client, Intents, Collection } = require("discord.js");
 
 const config = require("./config.js");
 
 const { database: { connect }, functions: { connectWeb } } = require("./lib/index.js");
 
+const makeDirnameFilename = (name, chunk) => {
+	const dirname = `/public/uploads/${name}`;
+	const filename = `${dirname}/${chunk}.webm`;
+	return [dirname, filename];
+}
+	
 (async () => {
     const client = new Client({
         intents: [
@@ -21,7 +29,7 @@ const { database: { connect }, functions: { connectWeb } } = require("./lib/inde
         setTimeout(() => {
 			if (client.isReady()) return;
             // node_modules/.bin/node --trace-warnings ./index.js
-            require("child_process").exec("kill 1", (error, stdout, stderr) => {
+            require("child_process").exec("kill 1 ; node_modules/.bin/node --trace-warnings ./index.js", (error, stdout, stderr) => {
                 console.log(stdout.toString(), stderr.toString());
                 if (error !== null) {
                     console.log(`exec error: ${error}`);
@@ -49,14 +57,25 @@ const { database: { connect }, functions: { connectWeb } } = require("./lib/inde
     require("./events/index.js")(client);
 
     const app = express();
+	//app.use(bodyParser.urlencoded())
+	//app.use(bodyParser.json())
+	//app.use(fileUpload({
+	//    useTempFiles: true,
+	//    tempFileDir: '/public/tmp'
+	//}))
+
 	app.use('/public', express.static(__dirname + '/public'));
 
     let firstThreePing = [];
     app.get("/", async (req, res) => {
         let ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
 
-        if (firstThreePing.includes(ip)) return;
-        if (!firstThreePing.includes(ip) && firstThreePing.length < 3) return firstThreePing.push(ip);
+        if (firstThreePing.includes(ip)) return res.send(`Core is ready.`);
+        if (!firstThreePing.includes(ip) && firstThreePing.length < 3) {
+			firstThreePing.push(ip);
+			res.send(`Core is ready.`);
+			return 
+		}
         connectWeb(
             client,
             `\`IP ${ip} connect to core.coretw.repl.co/\``
@@ -71,6 +90,27 @@ const { database: { connect }, functions: { connectWeb } } = require("./lib/inde
 	app.get("/download", async (req, res) => {
 		res.sendFile(path.join(__dirname, "./public/html/download.html"));
 	});
+
+	app.get("/download", async (req, res) => {
+		res.sendFile(path.join(__dirname, "./public/html/download.html"));
+	});
+	app.get("/webcam", async (req, res) => {
+		res.sendFile(path.join(__dirname, "./public/html/webcam.html"));
+	});
+	/*
+	app.put("/webcamupload", async (req, res) => {
+		const file = req.files.file;
+	    const [dirname, filename] = makeDirnameFilename(req.body.name, req.body.chunk);
+	
+	    fs.promises.mkdir(dirname, {recursive: true})
+	        .then(
+	            file.mv(filename)
+	        )
+	
+	    res.statusCode = 200;
+	    res.setHeader('Content-Type', 'text/plain');
+	    res.end('Upload\n');
+	});*/
 
     app.listen(config["port"], () => {
         console.log(
