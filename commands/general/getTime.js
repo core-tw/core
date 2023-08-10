@@ -7,7 +7,7 @@ module.exports = {
     num: 27,
     name: ['gettime'],
     type: "general",
-    expectedArgs: '',
+    expectedArgs: '<message id>',
     description: '取得訊息時間',
     minArgs: 1,
     maxArgs: 1,
@@ -17,13 +17,14 @@ module.exports = {
     requireBotPermissions: [],
     async execute(msg, args, client, user) {
         try {
+
             msg.reply({
                 embeds: [
                     new MessageEmbed()
                         .setTitle("Message Time:")
                         .setColor(setting.embedColor.normal)
                         .setDescription(
-							new Date(Number(BigInt(args[0]) >> 22n) + 1420070400000).toLocaleString('zh-TW'))
+                            new Date(Number(BigInt(args[0]) >> 22n) + 1420070400000).toLocaleString('zh-TW'))
                 ],
                 allowedMentions: setting.allowedMentions
             }).then(() => {

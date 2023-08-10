@@ -1,0 +1,160 @@
+{
+    "planet": {
+        "母星": {
+            "UUID": "母星_",
+            "description": "帝國的母星，初始之地。唯一一個從概念上杜絕死亡的星球\n除了韋瓦恩之外，其餘皆是王族人的專屬領域，玩家們闖入就會被王都守衛軍擊殺\n但若有任務掉落，極其稀有的王族通行證，則可安全進入",
+            "area": {
+                "韋瓦恩": {
+                    "UUID": "韋瓦恩_",
+                    "description": "帝國母星的行政中樞",
+                    "creatureRate": 0,
+                    "mineralRate": 0,
+                    "biomes": "plains",
+                    "creatures": null,
+                    "minerals": null
+                },
+                "王族居住地": {
+                    "UUID": "王族居住地_",
+                    "description": "帝國王族的居住地",
+                    "creatureRate": 0,
+                    "mineralRate": 0,
+                    "biomes": "plains",
+                    "creatures": null,
+                    "minerals": null
+                }
+            }
+        },
+        "蓋耶諾恩": {
+            "UUID": "蓋耶諾恩_",
+            "description": "帝國的第一個殖民星，現為全宇宙最繁華的星球\n在這裡，公民們可以盡情的狂歡，且賭博的收穫在這裡會有加成",
+            "area": {
+                "密爾斯": {
+                    "UUID": "密爾斯_",
+                    "description": "蓋耶諾恩的首都",
+                    "creatureRate": 0,
+                    "mineralRate": 0,
+                    "biomes": "plains",
+                    "creatures": {
+                        "夢蟲": {
+                            "appearRate": 95
+                        }
+                    },
+                    "minerals": null
+                }
+            }
+        },
+        "凡格爾礦星": {
+            "UUID": "凡格爾礦星_",
+            "description": "出產各種稀有礦物",
+            "area": {
+                "赤晶礦場": {
+                    "UUID": "0001_",
+                    "description": "出產赤晶體",
+                    "creatureRate": 80,
+                    "mineralRate": 80,
+                    "biomes": "caves",
+                    "creatures": {
+                        "蝕礦蟲": {
+                            "appearRate": 85
+                        }
+                    },
+                    "minerals": {
+                        "赤晶體": {
+                            "appearRate": 70
+                        }
+                    }
+                },
+                "冰源礦場": {
+                    "UUID": "冰源礦場_",
+                    "description": "出產冰源能晶",
+                    "creatureRate": 80,
+                    "mineralRate": 80,
+                    "biomes": "caves",
+                    "creatures": {
+                        "夢蟲": {
+                            "appearRate": 70
+                        }
+                    }
+                },
+                "minerals": {
+                    "冰源礦": {
+                        "appearRate": 70
+                    }
+                }
+            },
+            "墨鋼礦場": {
+                "UUID": "墨鋼礦場_",
+                "description": "出產墨鋼",
+                "creatureRate": 80,
+                "mineralRate": 80,
+                "biomes": "caves",
+                "creatures": {
+                    "電晶蟻": {
+                        "appearRate": 90
+                    },
+                    "裝甲電晶蟻": {
+                        "appearRate": 95
+                    },
+                    "雷霆嗜殺蟻": {
+                        "appearRate": 99
+                    }
+                },
+                "minerals": {
+                    "墨鋼礦": {
+                        "appearRate": 70
+                    }
+                }
+            }
+        }
+    },
+    "卡美洛": {
+        "UUID": "0004_",
+        "description": "",
+        "area": {}
+    },
+    "奧林帕斯": {
+        "UUID": "0005_",
+        "description": "",
+        "area": {}
+    },
+    "尤格多拉希爾": {
+        "UUID": "0006_",
+        "description": "",
+        "area": {}
+    },
+    "瑪阿特": {
+        "UUID": "0007_",
+        "description": "",
+        "area": {}
+    },
+    "迦南": {
+        "UUID": "0008_",
+        "description": "",
+        "area": {}
+    },
+    "葦原中地": {
+        "UUID": "0009_",
+        "description": "",
+        "area": {}
+    },
+    "烏魯克": {
+        "UUID": "00010_",
+        "description": "",
+        "area": {}
+    },
+    "波波爾烏": {
+        "UUID": "00011_",
+        "description": "",
+        "area": {}
+    },
+    "納塔羅闇": {
+        "UUID": "00012_",
+        "description": "",
+        "area": {}
+    },
+    "阿卡姆": {
+        "UUID": "00013_",
+        "description": "",
+        "area": {}
+    }
+}

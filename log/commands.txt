@@ -10,7 +10,7 @@
 9. 挖礦 | mining | mi
 10. 購買 | buy | b
 11. 使用 | use | u
-12. 頭像 | setAvatar | seta
+12. 頭像 | setavatar | seta
 13. 加入 | join
 14. 離開 | leave
 15. 暫停 | pause | pa
@@ -27,3 +27,5 @@
 26. 頻道紀錄 | chrecord | chrec
 27. gettime
 28. 串流 | webcam | wc
+29. 播放紀錄 | playrecord | prec
+30. 播放檔案歌曲 | 播放檔案 | playfile | plf

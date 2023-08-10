@@ -48,7 +48,6 @@ const makeDirnameFilename = (name, chunk) => {
     process.on("uncaughtException", (err) => {
        	console.error("未捕捉的異常錯誤", err);
     });
-
     process.on("unhandledRejection", (err, promise) => {
         console.error("未捕捉的失敗回傳", err);
     });

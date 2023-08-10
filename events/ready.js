@@ -52,5 +52,10 @@ module.exports = {
             await client.db.set("musicUsers", {});
             client.musicUsers = {};
         }
+
+        // llama聊天設定
+        console.log(config.console_prefix + "正在載入AI模型");
+        client.aiChat = require("../subsystem/ai-chat/index.v3.js");
+        client.aiChat.init(client);
     }
 }

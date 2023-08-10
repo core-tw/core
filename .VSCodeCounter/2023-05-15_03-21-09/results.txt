@@ -1,0 +1,195 @@
+Date : 2023-05-15 03:21:09
+Directory : d:\Dev\projects\core
+Total : 128 files,  136969 codes, 557 comments, 702 blanks, all 138228 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |         22 |    131,172 |          0 |          3 |    131,175 |
+| JavaScript |         97 |      5,651 |        557 |        674 |      6,882 |
+| Markdown   |          6 |        104 |          0 |         12 |        116 |
+| HTML       |          2 |         29 |          0 |          8 |         37 |
+| Python     |          1 |         13 |          0 |          5 |         18 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                  | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                     |        128 |    136,969 |        557 |        702 |    138,228 |
+| . (Files)                                                             |          4 |     10,826 |         25 |         26 |     10,877 |
+| commands                                                              |         32 |      2,041 |         56 |        141 |      2,238 |
+| commands (Files)                                                      |          1 |         31 |          1 |          6 |         38 |
+| commands\admin                                                        |          5 |        187 |          2 |          8 |        197 |
+| commands\general                                                      |          2 |         70 |          2 |          3 |         75 |
+| commands\music                                                        |         13 |        561 |          1 |         28 |        590 |
+| commands\rpg                                                          |         11 |      1,192 |         50 |         96 |      1,338 |
+| config                                                                |          2 |         68 |          0 |          0 |         68 |
+| config (Files)                                                        |          1 |         67 |          0 |          0 |         67 |
+| config\servers                                                        |          1 |          1 |          0 |          0 |          1 |
+| events                                                                |          3 |        164 |         14 |         32 |        210 |
+| lib                                                                   |         51 |    119,102 |        327 |        278 |    119,707 |
+| lib (Files)                                                           |          1 |         43 |          2 |          5 |         50 |
+| lib\brain_old                                                         |         12 |    117,347 |        247 |         99 |    117,693 |
+| lib\brain_old (Files)                                                 |          6 |        716 |        227 |         43 |        986 |
+| lib\brain_old\backup                                                  |          4 |    116,520 |         19 |         33 |    116,572 |
+| lib\brain_old\poetry                                                  |          2 |        111 |          1 |         23 |        135 |
+| lib\database                                                          |          7 |        169 |          6 |         21 |        196 |
+| lib\enum                                                              |          9 |        387 |          2 |          5 |        394 |
+| lib\enum (Files)                                                      |          8 |        376 |          1 |          5 |        382 |
+| lib\enum\old                                                          |          1 |         11 |          1 |          0 |         12 |
+| lib\functions                                                         |         14 |        265 |         28 |         26 |        319 |
+| lib\models                                                            |          4 |         61 |         15 |         25 |        101 |
+| lib\music                                                             |          1 |        548 |          0 |         40 |        588 |
+| lib\recorder                                                          |          3 |        282 |         27 |         57 |        366 |
+| objects                                                               |         10 |        169 |         53 |         14 |        236 |
+| objects (Files)                                                       |          3 |         61 |         53 |         14 |        128 |
+| objects\items                                                         |          7 |        108 |          0 |          0 |        108 |
+| old                                                                   |          4 |         79 |          0 |         10 |         89 |
+| plot                                                                  |          2 |         39 |          0 |          4 |         43 |
+| public                                                                |          8 |        189 |          8 |         54 |        251 |
+| public\html                                                           |          2 |         29 |          0 |          8 |         37 |
+| public\js                                                             |          2 |        135 |          8 |         42 |        185 |
+| public\old-js                                                         |          4 |         25 |          0 |          4 |         29 |
+| subsystem                                                             |         12 |      4,292 |         74 |        143 |      4,509 |
+| subsystem\ai-chat                                                     |          6 |        473 |         72 |        101 |        646 |
+| subsystem\karirin                                                     |          4 |      3,771 |          0 |         25 |      3,796 |
+| subsystem\pyTest                                                      |          1 |         13 |          0 |          5 |         18 |
+| subsystem\roleGiver                                                   |          1 |         35 |          2 |         12 |         49 |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                              | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| d:\Dev\projects\core\commands\admin\chrecorder.js                     | JavaScript |         38 |          0 |          1 |         39 |
+| d:\Dev\projects\core\commands\admin\playRecord.js                     | JavaScript |         51 |          0 |          2 |         53 |
+| d:\Dev\projects\core\commands\admin\record.js                         | JavaScript |         41 |          0 |          1 |         42 |
+| d:\Dev\projects\core\commands\admin\setAvatar.js                      | JavaScript |         22 |          2 |          0 |         24 |
+| d:\Dev\projects\core\commands\admin\webcam.js                         | JavaScript |         35 |          0 |          4 |         39 |
+| d:\Dev\projects\core\commands\general\getTime.js                      | JavaScript |         35 |          1 |          2 |         38 |
+| d:\Dev\projects\core\commands\general\ping.js                         | JavaScript |         35 |          1 |          1 |         37 |
+| d:\Dev\projects\core\commands\index.js                                | JavaScript |         31 |          1 |          6 |         38 |
+| d:\Dev\projects\core\commands\music\filter.js                         | JavaScript |         67 |          0 |          1 |         68 |
+| d:\Dev\projects\core\commands\music\join.js                           | JavaScript |         29 |          0 |          1 |         30 |
+| d:\Dev\projects\core\commands\music\leave.js                          | JavaScript |         26 |          0 |          1 |         27 |
+| d:\Dev\projects\core\commands\music\list.js                           | JavaScript |        140 |          1 |          6 |        147 |
+| d:\Dev\projects\core\commands\music\loop.js                           | JavaScript |         32 |          0 |          1 |         33 |
+| d:\Dev\projects\core\commands\music\pause.js                          | JavaScript |         26 |          0 |          1 |         27 |
+| d:\Dev\projects\core\commands\music\play.js                           | JavaScript |         26 |          0 |          1 |         27 |
+| d:\Dev\projects\core\commands\music\playfile.js                       | JavaScript |         54 |          0 |         11 |         65 |
+| d:\Dev\projects\core\commands\music\playlist.js                       | JavaScript |         51 |          0 |          1 |         52 |
+| d:\Dev\projects\core\commands\music\queue.js                          | JavaScript |         26 |          0 |          1 |         27 |
+| d:\Dev\projects\core\commands\music\resume.js                         | JavaScript |         26 |          0 |          1 |         27 |
+| d:\Dev\projects\core\commands\music\skip.js                           | JavaScript |         26 |          0 |          1 |         27 |
+| d:\Dev\projects\core\commands\music\volume.js                         | JavaScript |         32 |          0 |          1 |         33 |
+| d:\Dev\projects\core\commands\rpg\adventure.js                        | JavaScript |        167 |         17 |         19 |        203 |
+| d:\Dev\projects\core\commands\rpg\buy.js                              | JavaScript |         58 |          2 |          5 |         65 |
+| d:\Dev\projects\core\commands\rpg\give.js                             | JavaScript |         98 |          2 |          4 |        104 |
+| d:\Dev\projects\core\commands\rpg\inventory.js                        | JavaScript |         70 |          2 |          6 |         78 |
+| d:\Dev\projects\core\commands\rpg\mining.js                           | JavaScript |        100 |         10 |          9 |        119 |
+| d:\Dev\projects\core\commands\rpg\move.js                             | JavaScript |         59 |          1 |          9 |         69 |
+| d:\Dev\projects\core\commands\rpg\profile.js                          | JavaScript |        136 |          3 |         10 |        149 |
+| d:\Dev\projects\core\commands\rpg\shop.js                             | JavaScript |        147 |          3 |         18 |        168 |
+| d:\Dev\projects\core\commands\rpg\start.js                            | JavaScript |        190 |          6 |          6 |        202 |
+| d:\Dev\projects\core\commands\rpg\upgrade.js                          | JavaScript |        112 |          2 |          7 |        121 |
+| d:\Dev\projects\core\commands\rpg\use.js                              | JavaScript |         55 |          2 |          3 |         60 |
+| d:\Dev\projects\core\config.js                                        | JavaScript |         13 |          0 |          9 |         22 |
+| d:\Dev\projects\core\config\servers\950248968787460106.json           | JSON       |          1 |          0 |          0 |          1 |
+| d:\Dev\projects\core\config\setting.json                              | JSON       |         67 |          0 |          0 |         67 |
+| d:\Dev\projects\core\events\index.js                                  | JavaScript |         13 |          1 |          2 |         16 |
+| d:\Dev\projects\core\events\messageCreate.js                          | JavaScript |        108 |          4 |         21 |        133 |
+| d:\Dev\projects\core\events\ready.js                                  | JavaScript |         43 |          9 |          9 |         61 |
+| d:\Dev\projects\core\index.js                                         | JavaScript |         83 |         25 |         15 |        123 |
+| d:\Dev\projects\core\lib\brain_old\backup\init.LSTM.js                | JavaScript |        200 |         19 |         33 |        252 |
+| d:\Dev\projects\core\lib\brain_old\backup\lstmModel.json              | JSON       |     64,824 |          0 |          0 |     64,824 |
+| d:\Dev\projects\core\lib\brain_old\backup\lstmModel.white.backup.json | JSON       |     51,225 |          0 |          0 |     51,225 |
+| d:\Dev\projects\core\lib\brain_old\backup\nlp.json                    | JSON       |        271 |          0 |          0 |        271 |
+| d:\Dev\projects\core\lib\brain_old\data.js                            | JavaScript |        313 |          0 |          1 |        314 |
+| d:\Dev\projects\core\lib\brain_old\index.js                           | JavaScript |         88 |         28 |         12 |        128 |
+| d:\Dev\projects\core\lib\brain_old\init.NLP.js                        | JavaScript |         40 |          0 |          1 |         41 |
+| d:\Dev\projects\core\lib\brain_old\init.js                            | JavaScript |         40 |          0 |          1 |         41 |
+| d:\Dev\projects\core\lib\brain_old\lstm.js                            | JavaScript |        226 |        199 |         26 |        451 |
+| d:\Dev\projects\core\lib\brain_old\poetry\README.md                   | Markdown   |          1 |          0 |          0 |          1 |
+| d:\Dev\projects\core\lib\brain_old\poetry\init.js                     | JavaScript |        110 |          1 |         23 |        134 |
+| d:\Dev\projects\core\lib\brain_old\test.js                            | JavaScript |          9 |          0 |          2 |         11 |
+| d:\Dev\projects\core\lib\database\Database.js                         | JavaScript |         42 |          0 |          2 |         44 |
+| d:\Dev\projects\core\lib\database\addItems.js                         | JavaScript |         28 |          2 |          5 |         35 |
+| d:\Dev\projects\core\lib\database\connect.js                          | JavaScript |          9 |          0 |          1 |         10 |
+| d:\Dev\projects\core\lib\database\dead.js                             | JavaScript |         32 |          3 |          5 |         40 |
+| d:\Dev\projects\core\lib\database\getItems.js                         | JavaScript |         26 |          1 |          2 |         29 |
+| d:\Dev\projects\core\lib\database\loadUser.js                         | JavaScript |         10 |          0 |          1 |         11 |
+| d:\Dev\projects\core\lib\database\upgrade.js                          | JavaScript |         22 |          0 |          5 |         27 |
+| d:\Dev\projects\core\lib\enum\UUID_PREFIX.js                          | JavaScript |          8 |          0 |          0 |          8 |
+| d:\Dev\projects\core\lib\enum\biomes.json                             | JSON       |         17 |          0 |          0 |         17 |
+| d:\Dev\projects\core\lib\enum\creatures.json                          | JSON       |         65 |          0 |          0 |         65 |
+| d:\Dev\projects\core\lib\enum\gameData.js                             | JavaScript |         12 |          0 |          1 |         13 |
+| d:\Dev\projects\core\lib\enum\old\classes.js                          | JavaScript |         11 |          1 |          0 |         12 |
+| d:\Dev\projects\core\lib\enum\player.js                               | JavaScript |        100 |          1 |          3 |        104 |
+| d:\Dev\projects\core\lib\enum\reaction.js                             | JavaScript |         11 |          0 |          1 |         12 |
+| d:\Dev\projects\core\lib\enum\readme.md                               | Markdown   |          3 |          0 |          0 |          3 |
+| d:\Dev\projects\core\lib\enum\universe.json                           | JSON       |        160 |          0 |          0 |        160 |
+| d:\Dev\projects\core\lib\functions\battle.廢棄.js                       | JavaScript |        114 |         14 |         14 |        142 |
+| d:\Dev\projects\core\lib\functions\connectWeb.js                      | JavaScript |         10 |          1 |          1 |         12 |
+| d:\Dev\projects\core\lib\functions\errorEmbed.js                      | JavaScript |         18 |          1 |          0 |         19 |
+| d:\Dev\projects\core\lib\functions\findAreaByUUID.js                  | JavaScript |         12 |          2 |          0 |         14 |
+| d:\Dev\projects\core\lib\functions\findObjByUUID.js                   | JavaScript |         12 |          0 |          1 |         13 |
+| d:\Dev\projects\core\lib\functions\generate.js                        | JavaScript |         23 |          4 |          4 |         31 |
+| d:\Dev\projects\core\lib\functions\getAreaByUUID.js                   | JavaScript |         17 |          2 |          0 |         19 |
+| d:\Dev\projects\core\lib\functions\getShop.js                         | JavaScript |         11 |          1 |          1 |         13 |
+| d:\Dev\projects\core\lib\functions\getUpgNeed.js                      | JavaScript |          6 |          1 |          1 |          8 |
+| d:\Dev\projects\core\lib\functions\log.js                             | JavaScript |         13 |          1 |          2 |         16 |
+| d:\Dev\projects\core\lib\functions\random.js                          | JavaScript |          4 |          0 |          0 |          4 |
+| d:\Dev\projects\core\lib\functions\roleSay.js                         | JavaScript |         15 |          0 |          1 |         16 |
+| d:\Dev\projects\core\lib\functions\skill.js                           | JavaScript |          7 |          1 |          1 |          9 |
+| d:\Dev\projects\core\lib\functions\wait.js                            | JavaScript |          3 |          0 |          0 |          3 |
+| d:\Dev\projects\core\lib\index.js                                     | JavaScript |         43 |          2 |          5 |         50 |
+| d:\Dev\projects\core\lib\models\Bank.js                               | JavaScript |          6 |          1 |          3 |         10 |
+| d:\Dev\projects\core\lib\models\Item.js                               | JavaScript |          7 |          2 |          4 |         13 |
+| d:\Dev\projects\core\lib\models\Title.js                              | JavaScript |          6 |          0 |          3 |          9 |
+| d:\Dev\projects\core\lib\models\User.js                               | JavaScript |         42 |         12 |         15 |         69 |
+| d:\Dev\projects\core\lib\music\music.js                               | JavaScript |        548 |          0 |         40 |        588 |
+| d:\Dev\projects\core\lib\recorder\chrecorder.js                       | JavaScript |        153 |          0 |         25 |        178 |
+| d:\Dev\projects\core\lib\recorder\recorder.js                         | JavaScript |        119 |         27 |         29 |        175 |
+| d:\Dev\projects\core\lib\recorder\test.js                             | JavaScript |         10 |          0 |          3 |         13 |
+| d:\Dev\projects\core\objects\index.js                                 | JavaScript |         29 |         23 |         10 |         62 |
+| d:\Dev\projects\core\objects\info.md                                  | Markdown   |         30 |          0 |          3 |         33 |
+| d:\Dev\projects\core\objects\items\card.json                          | JSON       |         44 |          0 |          0 |         44 |
+| d:\Dev\projects\core\objects\items\guard.json                         | JSON       |          1 |          0 |          0 |          1 |
+| d:\Dev\projects\core\objects\items\increase.json                      | JSON       |          1 |          0 |          0 |          1 |
+| d:\Dev\projects\core\objects\items\material.json                      | JSON       |         44 |          0 |          0 |         44 |
+| d:\Dev\projects\core\objects\items\others.json                        | JSON       |         16 |          0 |          0 |         16 |
+| d:\Dev\projects\core\objects\items\potion.json                        | JSON       |          1 |          0 |          0 |          1 |
+| d:\Dev\projects\core\objects\items\weapon.json                        | JSON       |          1 |          0 |          0 |          1 |
+| d:\Dev\projects\core\objects\use.js                                   | JavaScript |          2 |         30 |          1 |         33 |
+| d:\Dev\projects\core\old\README.md                                    | Markdown   |          0 |          0 |          1 |          1 |
+| d:\Dev\projects\core\old\ecosystem.config.js                          | JavaScript |          9 |          0 |          1 |         10 |
+| d:\Dev\projects\core\old\note.md                                      | Markdown   |         58 |          0 |          7 |         65 |
+| d:\Dev\projects\core\old\todo.md                                      | Markdown   |         12 |          0 |          1 |         13 |
+| d:\Dev\projects\core\package-lock.json                                | JSON       |     10,687 |          0 |          1 |     10,688 |
+| d:\Dev\projects\core\package.json                                     | JSON       |         43 |          0 |          1 |         44 |
+| d:\Dev\projects\core\plot\index.js                                    | JavaScript |         28 |          0 |          3 |         31 |
+| d:\Dev\projects\core\plot\role.js                                     | JavaScript |         11 |          0 |          1 |         12 |
+| d:\Dev\projects\core\public\html\download.html                        | HTML       |         16 |          0 |          5 |         21 |
+| d:\Dev\projects\core\public\html\webcam.html                          | HTML       |         13 |          0 |          3 |         16 |
+| d:\Dev\projects\core\public\js\download.js                            | JavaScript |         98 |          8 |         32 |        138 |
+| d:\Dev\projects\core\public\js\webcam.js                              | JavaScript |         37 |          0 |         10 |         47 |
+| d:\Dev\projects\core\public\old-js\WebAudioRecorder.min.js            | JavaScript |          1 |          0 |          1 |          2 |
+| d:\Dev\projects\core\public\old-js\WebAudioRecorderMp3.min.js         | JavaScript |         13 |          0 |          1 |         14 |
+| d:\Dev\projects\core\public\old-js\WebAudioRecorderOgg.min.js         | JavaScript |         10 |          0 |          1 |         11 |
+| d:\Dev\projects\core\public\old-js\WebAudioRecorderWav.min.js         | JavaScript |          1 |          0 |          1 |          2 |
+| d:\Dev\projects\core\subsystem\ai-chat\AIManger.js                    | JavaScript |        107 |         34 |         22 |        163 |
+| d:\Dev\projects\core\subsystem\ai-chat\beta.js                        | JavaScript |         97 |          1 |         27 |        125 |
+| d:\Dev\projects\core\subsystem\ai-chat\config.json                    | JSON       |          3 |          0 |          0 |          3 |
+| d:\Dev\projects\core\subsystem\ai-chat\index.js                       | JavaScript |        219 |          3 |         46 |        268 |
+| d:\Dev\projects\core\subsystem\ai-chat\tags.json                      | JSON       |         34 |          0 |          0 |         34 |
+| d:\Dev\projects\core\subsystem\ai-chat\test.js                        | JavaScript |         13 |         34 |          6 |         53 |
+| d:\Dev\projects\core\subsystem\karirin\config.json                    | JSON       |         14 |          0 |          0 |         14 |
+| d:\Dev\projects\core\subsystem\karirin\index.js                       | JavaScript |        104 |          0 |         24 |        128 |
+| d:\Dev\projects\core\subsystem\karirin\package-lock.json              | JSON       |      3,636 |          0 |          1 |      3,637 |
+| d:\Dev\projects\core\subsystem\karirin\package.json                   | JSON       |         17 |          0 |          0 |         17 |
+| d:\Dev\projects\core\subsystem\pyTest\bot.py                          | Python     |         13 |          0 |          5 |         18 |
+| d:\Dev\projects\core\subsystem\roleGiver\index.js                     | JavaScript |         35 |          2 |         12 |         49 |
+| Total                                                                 |            |    136,969 |        557 |        702 |    138,228 |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+

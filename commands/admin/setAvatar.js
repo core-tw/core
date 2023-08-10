@@ -2,7 +2,7 @@
 */
 module.exports = {
     num: 12,
-    name: ['頭像', 'setAvatar', 'seta'],
+    name: ['頭像', 'setavatar', 'seta'],
     type: "admin",
     expectedArgs: "<link>",
     description: "更改頭像",

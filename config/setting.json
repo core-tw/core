@@ -24,8 +24,8 @@
     "coinToDetain": 500,
     "dodgeLikelihood": 0.2,
     "allDodgeLikelihood": 0.1,
-    "plot_tag": {
-        "public": "<public>"
+    "record": {
+        "noReference": "請回覆包含音訊檔案的訊息"
     },
     "music": {
         "askChannel": "你還沒進入語音頻道喔～",

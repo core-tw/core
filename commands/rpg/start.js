@@ -7,6 +7,7 @@ const {
 } = require("./../../lib/index.js");
 const { items } = require("./../../objects/index.js")
 const setting = require("./../../config/setting.json");
+const plot = require("../../plot/index.js");
 
 // 為遊戲註冊帳號
 module.exports = {
@@ -155,8 +156,8 @@ module.exports = {
                 .setDescription(
                     `暱稱 - **${player["name"]}**\n` +
                     `性別 - **${player["male"] ? "男性" : "女性"}**\n` +
-                    `職業 - **${Player.typesList[player.type]}**` +
-                    GameData.start.data
+                    `職業 - **${Player.typesList[player.type]}**\n\n` +
+                    plot["主線"].plots["序章"].plots["戰火漫天的世界。"].plots["start"].text
                 )
                 .setFooter({
                     text: ""

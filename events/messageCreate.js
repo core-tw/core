@@ -15,8 +15,8 @@ module.exports = {
 
             if (author === client.user) return;
 
-			if(!client.servers) return;
-			
+            if (!client.servers) return;
+
             if (!client.servers[guild.id]) {
                 // 新的伺服器
                 client.servers[guild.id] = {
@@ -35,7 +35,7 @@ module.exports = {
             }
 
             if (!content.startsWith(setting.prefix)) return;
-			
+
             let args = content
                 .slice(setting.prefix.length)
                 .trim()
@@ -45,16 +45,16 @@ module.exports = {
                 client.commands.get(commandName) ||
                 client.commands.find(cmd => {
                     if (cmd.superior) {
-						let inc = (cmd.superior.includes(commandName) && cmd.name.includes(args[0]));
-						if(inc) args.shift();
-						return inc;
+                        let inc = (cmd.superior.includes(commandName) && cmd.name.includes(args[0]));
+                        if (inc) args.shift();
+                        return inc;
                     } else {
                         return cmd.name.includes(commandName);
                     }
                 });
 
             if (!cmd) return;
-			
+
             if (cmd.type == 'admin' && !config.admin_id.includes(author.id)) return;
 
             for (let p in cmd.requireBotPermissions) {

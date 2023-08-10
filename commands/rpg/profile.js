@@ -43,18 +43,18 @@ module.exports = {
                 let info =
                     `**所在區域 -\\ ${a[0]} ${a[1]} \\ **
 						職業 － ${typesList[user.type]}
-				    等級 － ${user.level}
-						轉換率 － ${(user.level * (user.stat.HEA / user.stat.tHEA)).toFixed(3)}%
-				    ${setting.xpName} － ${user.xp} / ${user.reqxp}`;
+				        等級 － ${user.level}
+						轉換率 － ${(user.level * (user.act.HEA / user.stat.HEA)).toFixed(3)}%
+				        ${setting.xpName} － ${user.xp} / ${user.reqxp}`;
 
 
                 let body = `
-					⨢血⨢ - ${user.stat.HEA} / ${user.stat.tHEA}
-			    ⨢靈⨢ - ${user.stat.SOR} / ${user.stat.tSOR}
-			    ⨢勢⨢ - ${user.stat.STR} / ${user.stat.tVEL}
-			    ⨢體⨢ - ${user.stat.VIT} / ${user.stat.tVEL}
-			    ⨢睿⨢ - ${user.stat.INT} / ${user.stat.tVEL}
-					⨢迅⨢ - ${user.stat.VEL} / ${user.stat.tVEL}
+					⨢血⨢ - ${user.act.HEA} / ${user.stat.HEA}
+                    ⨢靈⨢ - ${user.act.SOR} / ${user.stat.SOR}
+                    ⨢勢⨢ - ${user.act.STR} / ${user.stat.VEL}
+                    ⨢體⨢ - ${user.act.VIT} / ${user.stat.VEL}
+                    ⨢睿⨢ - ${user.act.INT} / ${user.stat.VEL}
+					⨢迅⨢ - ${user.act.VEL} / ${user.stat.VEL}
 			
 			      	**${setting.coinName}** - ${user.coin}`;
                 let embed = new MessageEmbed()

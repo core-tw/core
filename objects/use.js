@@ -1,4 +1,4 @@
-var obj = {};
+var obj = {};/*
 const Maps = require("./../lib/enum/maps.js");
 const UUID_PREFIX = require("./../lib/enum/UUID_PREFIX.js");
 const errorEmbed = require("./../lib/functions/errorEmbed.js");
@@ -28,6 +28,6 @@ obj["傳送水晶"] = async (msg, args, user) => {
     content: `已抵達 ${args[1]} ${area}`,
     allowedMentions: setting.allowedMentions
   })
-}
+}*/
 
 module.exports = obj;
